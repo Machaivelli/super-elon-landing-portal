@@ -26,23 +26,23 @@ export const Hero = () => {
             alt="Super Elon Coin Logo"
             className="w-48 h-48 mx-auto mb-8 animate-float rounded-full border-4 border-neon-blue shadow-lg shadow-neon-blue/50"
           />
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-yellow to-neon-orange bg-clip-text text-transparent">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-yellow to-neon-orange bg-clip-text text-transparent font-['Orbitron'] animate-pulse">
             Super Elon Coin
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto">
-            De ultieme memecoin geïnspireerd door de visionaire tech-titan
+          <p className="text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto font-['Orbitron']">
+            The ultimate memecoin inspired by the visionary tech titan
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 text-white font-bold py-4 px-8 rounded-full neon-border"
+              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 text-white font-bold py-4 px-8 rounded-full neon-border font-['Orbitron']"
             >
-              Koop Nu
+              Buy Now
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-neon-blue text-neon-blue hover:bg-neon-blue/10 font-bold py-4 px-8 rounded-full"
+              className="border-neon-blue text-neon-blue hover:bg-neon-blue/10 font-bold py-4 px-8 rounded-full font-['Orbitron']"
             >
               Whitepaper
             </Button>

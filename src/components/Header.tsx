@@ -12,19 +12,21 @@ export const Header = () => {
               alt="Super Elon Coin"
               className="h-10 w-10 rounded-full"
             />
-            <span className="ml-2 text-white font-bold text-xl">Super Elon</span>
+            <span className="ml-2 text-white font-bold text-xl font-['Orbitron'] animate-bounce">
+              Super Elon Coin
+            </span>
           </div>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#about" className="text-white hover:text-neon-blue transition-colors">Over Ons</a>
-            <a href="#tokenomics" className="text-white hover:text-neon-blue transition-colors">Tokenomics</a>
-            <a href="#roadmap" className="text-white hover:text-neon-blue transition-colors">Roadmap</a>
+            <a href="#about" className="text-white hover:text-neon-blue transition-colors font-['Orbitron']">About Us</a>
+            <a href="#tokenomics" className="text-white hover:text-neon-blue transition-colors font-['Orbitron']">Tokenomics</a>
+            <a href="#roadmap" className="text-white hover:text-neon-blue transition-colors font-['Orbitron']">Roadmap</a>
             <Button
               variant="outline"
-              className="border-neon-blue text-neon-blue hover:bg-neon-blue/10"
+              className="border-neon-blue text-neon-blue hover:bg-neon-blue/10 font-['Orbitron']"
             >
-              Koop Nu
+              Buy Now
             </Button>
           </nav>
 
