@@ -3,9 +3,17 @@ import { Button } from "./ui/button";
 
 export const Hero = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-pattern">
+    <div 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{
+        backgroundImage: "url('/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
       {/* Floating elements */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-black/30">
         <img
           src="/lovable-uploads/8d2b8be3-006b-4e70-a33a-182c4ba7c2b6.png"
           alt="Floating coin"
@@ -21,12 +29,12 @@ export const Hero = () => {
           <img
             src="/lovable-uploads/151bd015-eb26-4db6-82d4-4ec6741ed896.png"
             alt="Super Elon Coin Logo"
-            className="w-48 h-48 mx-auto mb-8 animate-float"
+            className="w-48 h-48 mx-auto mb-8 animate-float rounded-full border-4 border-neon-blue shadow-lg shadow-neon-blue/50"
           />
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-yellow to-neon-orange bg-clip-text text-transparent">
             Super Elon Coin
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto">
             De ultieme memecoin geïnspireerd door de visionaire tech-titan
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
