@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 export const Hero = () => {
   return (
     <div 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
       style={{
         backgroundImage: "url('/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png')",
         backgroundSize: "cover",
