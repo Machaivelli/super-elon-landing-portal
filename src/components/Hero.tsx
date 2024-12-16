@@ -14,11 +14,6 @@ export const Hero = () => {
     >
       {/* Floating elements */}
       <div className="absolute inset-0 bg-black/30">
-        <img
-          src="/lovable-uploads/8d2b8be3-006b-4e70-a33a-182c4ba7c2b6.png"
-          alt="Floating coin"
-          className="absolute w-16 h-16 hero-coin top-1/4 left-1/4"
-        />
         <Rocket className="absolute w-12 h-12 text-neon-orange animate-float top-1/3 right-1/4" />
         <DollarSign className="absolute w-10 h-10 text-neon-yellow animate-float delay-1000 bottom-1/3 left-1/3" />
       </div>
