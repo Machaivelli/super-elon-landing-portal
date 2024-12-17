@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { PlayButton } from './PlayButton';
 import { ProgressBar } from './ProgressBar';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 export const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -9,6 +10,7 @@ export const AudioPlayer = () => {
   const [duration, setDuration] = useState("0:00");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const progressInterval = useRef<number>();
+  const isMobile = useIsMobile();
 
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
@@ -97,12 +99,12 @@ export const AudioPlayer = () => {
   }, [isPlaying]);
 
   return (
-    <div className="fixed top-24 left-4 z-50 flex flex-col gap-1 backdrop-blur-sm rounded-lg p-3 border border-purple-500/20 shadow-lg hover:shadow-purple-500/30 transition-all duration-300 min-w-[200px] group">
+    <div className={`fixed ${isMobile ? 'bottom-4 left-4 right-4' : 'top-24 left-4'} z-50 flex flex-col gap-1 backdrop-blur-sm rounded-lg p-2 border border-purple-500/20 shadow-lg hover:shadow-purple-500/30 transition-all duration-300 ${isMobile ? 'w-auto' : 'min-w-[200px]'} group`}>
       <div className="text-[10px] font-mono text-white/70 text-center">
         Super Elon Theme
       </div>
       
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <PlayButton isPlaying={isPlaying} onClick={togglePlay} />
         <ProgressBar 
           progress={progress}
