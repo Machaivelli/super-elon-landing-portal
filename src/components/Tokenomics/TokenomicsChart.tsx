@@ -25,8 +25,8 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
       transition={{ duration: 0.8 }}
       className="w-full max-w-md aspect-square relative"
     >
-      {/* Glow Effect Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-purple-500/10 to-blue-500/10 rounded-full blur-xl" />
+      {/* Enhanced glow effect background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-purple-500/10 to-blue-500/10 rounded-full blur-xl animate-pulse-glow" />
       
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
@@ -39,12 +39,15 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
             dataKey="value"
             animationBegin={0}
             animationDuration={1500}
+            onMouseEnter={(data, index) => {
+              // Handle hover animation if needed
+            }}
           >
             {chartData.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={entry.color}
-                className="hover:opacity-80 transition-opacity duration-300 drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]"
+                className="hover:opacity-80 transition-opacity duration-300"
                 style={{
                   filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))'
                 }}
@@ -55,10 +58,14 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 return (
-                  <div className="glass-card p-4 rounded-lg border border-white/10">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="glass-card p-4 rounded-lg border border-white/10"
+                  >
                     <p className="text-white font-bold font-serif">{payload[0].name}</p>
                     <p className="text-yellow-400">{`${payload[0].value}%`}</p>
-                  </div>
+                  </motion.div>
                 );
               }
               return null;

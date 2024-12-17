@@ -56,47 +56,77 @@ const tokenomicsData = [
 export const TokenomicsSection = () => {
   return (
     <section className="relative min-h-screen py-20 overflow-hidden">
+      {/* Gradient transition overlay at the top */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0f1729] to-transparent z-10"></div>
+      
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-[url('/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png')] bg-cover bg-center bg-fixed"
         style={{ willChange: 'transform' }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+      
+      {/* Enhanced gradient overlay for better text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90 backdrop-blur-sm" />
 
       {/* Content Container */}
-      <div className="relative container mx-auto px-4">
-        {/* Title Section */}
+      <div className="relative container mx-auto px-4 z-20">
+        {/* Title Section with refined animation */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white font-serif animate-pulse-glow drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400 font-serif drop-shadow-[0_0_8px_rgba(255,215,0,0.3)]">
             Tokenomics – Engineered for Success & Stability
           </h2>
-          <p className="text-xl text-gray-300 font-light">
+          <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
             A fair and transparent distribution, designed to take us to the moon and beyond.
           </p>
         </motion.div>
 
         {/* Chart and Cards Layout */}
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Chart Section */}
-          <div className="flex justify-center">
+          {/* Chart Section with enhanced animations */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="flex justify-center"
+          >
             <TokenomicsChart data={tokenomicsData} />
-          </div>
+          </motion.div>
 
-          {/* Cards Grid */}
+          {/* Cards Grid with staggered animation */}
           <div className="grid gap-6">
             {tokenomicsData.map((item, index) => (
-              <TokenomicsCard key={index} {...item} />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                viewport={{ once: true }}
+              >
+                <TokenomicsCard {...item} />
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Scrolling Stats and CTA */}
-        <div className="text-center">
+        {/* Scrolling Stats and CTA with enhanced animations */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
           <ScrollingStats />
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -105,8 +135,11 @@ export const TokenomicsSection = () => {
           >
             Buy Now – Secure Your Spot in the Moon Mission!
           </motion.button>
-        </div>
+        </motion.div>
       </div>
+
+      {/* Gradient transition overlay at the bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0f1729] to-transparent z-10"></div>
     </section>
   );
 };
