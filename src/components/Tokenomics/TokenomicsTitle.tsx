@@ -5,9 +5,9 @@ export const TokenomicsTitle = () => {
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="text-center mb-8"
+      className="text-center mb-12"
     >
       <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif drop-shadow-[0_2px_4px_rgba(255,215,0,0.3)]">
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400">

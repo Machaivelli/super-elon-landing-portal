@@ -69,13 +69,24 @@ export default {
           "50%": { transform: "translateY(-20px)" },
         },
         "pulse-glow": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
+          "0%, 100%": { 
+            opacity: "1",
+            boxShadow: "0 0 15px theme('colors.neon.blue'), 0 0 30px theme('colors.neon.purple')"
+          },
+          "50%": { 
+            opacity: "0.5",
+            boxShadow: "0 0 25px theme('colors.neon.blue'), 0 0 50px theme('colors.neon.purple')"
+          },
+        },
+        "bounce-subtle": {
+          "0%, 100%": { transform: "translateY(-5%)" },
+          "50%": { transform: "translateY(0)" },
         },
       },
       animation: {
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "bounce-subtle": "bounce-subtle 2s infinite",
       },
     },
   },
