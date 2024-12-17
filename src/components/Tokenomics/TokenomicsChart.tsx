@@ -26,7 +26,7 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="w-full max-w-[280px] aspect-square relative mx-auto"
+      className="w-full max-w-[240px] aspect-square relative mx-auto"
     >
       {/* Enhanced glow effect background */}
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-purple-500/10 to-blue-500/10 rounded-full blur-xl animate-pulse-glow" />
@@ -37,8 +37,8 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
             data={chartData}
             cx="50%"
             cy="50%"
-            outerRadius="80%"
-            innerRadius="60%"
+            outerRadius="70%"
+            innerRadius="50%"
             dataKey="value"
             animationBegin={0}
             animationDuration={1500}
@@ -47,18 +47,11 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
               <Cell
                 key={`cell-${index}`}
                 fill={entry.color}
-                className="hover:opacity-80 transition-opacity duration-300 cursor-pointer hover:scale-105 transform"
+                className="hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                 style={{
                   filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))'
                 }}
-              >
-                <animate
-                  attributeName="opacity"
-                  values="0.7;1;0.7"
-                  dur="3s"
-                  repeatCount="indefinite"
-                />
-              </Cell>
+              />
             ))}
           </Pie>
           <Tooltip
@@ -68,12 +61,12 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-black/80 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-sm"
+                    className="bg-black/80 backdrop-blur-sm p-2 rounded-lg border border-white/10 text-xs"
                   >
-                    <p className="text-white font-bold flex items-center gap-2 text-base">
+                    <p className="text-white font-bold flex items-center gap-1">
                       {payload[0].payload.emoji} {payload[0].name}
                     </p>
-                    <p className="text-yellow-400 font-mono text-lg">
+                    <p className="text-yellow-400 font-mono text-base">
                       {payload[0].value}%
                     </p>
                   </motion.div>
@@ -85,24 +78,24 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
         </PieChart>
       </ResponsiveContainer>
 
-      {/* Emoji Overlays */}
+      {/* Emoji Overlays with Enhanced Animation */}
       {chartData.map((item, index) => {
         const angle = (360 / chartData.length) * index;
-        const radius = 100; // Adjust based on chart size
+        const radius = 85; // Adjusted for smaller chart
         const x = Math.cos((angle * Math.PI) / 180) * radius;
         const y = Math.sin((angle * Math.PI) / 180) * radius;
 
         return (
           <motion.div
             key={`emoji-${index}`}
-            className="absolute text-xl transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute text-base transform -translate-x-1/2 -translate-y-1/2"
             style={{
               left: `calc(50% + ${x}px)`,
               top: `calc(50% + ${y}px)`,
             }}
             whileHover={{ scale: 1.2 }}
             animate={{
-              y: [0, -5, 0],
+              y: [0, -3, 0],
             }}
             transition={{
               duration: 2,
@@ -114,6 +107,27 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
           </motion.div>
         );
       })}
+
+      {/* Orbiting Stars */}
+      {[...Array(3)].map((_, i) => (
+        <motion.div
+          key={`star-${i}`}
+          className="absolute w-1 h-1 bg-white rounded-full"
+          animate={{
+            rotate: 360,
+          }}
+          transition={{
+            duration: 3 + i,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          style={{
+            left: '50%',
+            top: '50%',
+            transformOrigin: `0 ${60 + i * 10}px`,
+          }}
+        />
+      ))}
     </motion.div>
   );
 };
