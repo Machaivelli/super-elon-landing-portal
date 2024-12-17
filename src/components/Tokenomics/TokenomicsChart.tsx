@@ -21,8 +21,9 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
       className="w-full max-w-md aspect-square relative"
     >
       {/* Enhanced glow effect background */}

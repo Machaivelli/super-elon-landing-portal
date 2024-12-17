@@ -28,7 +28,7 @@ export const TokenomicsCard: React.FC<TokenomicsCardProps> = ({
         y: -5,
         transition: { duration: 0.2 }
       }}
-      className="glass-card p-4 relative overflow-hidden group border border-white/10"
+      className="glass-card p-4 relative overflow-hidden group"
       style={{
         background: 'rgba(255, 255, 255, 0.03)',
         backdropFilter: 'blur(10px)',
