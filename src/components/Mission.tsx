@@ -9,7 +9,7 @@ export const Mission = () => {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0f1729] to-transparent z-10"></div>
       
       {/* Main content */}
-      <div className="min-h-screen relative">
+      <div className="min-h-screen relative bg-gradient-to-b from-[#000000]/80 via-[#1a0f29] to-[#0f1729]">
         <div className="container mx-auto px-4 pt-32 relative z-20">
           <div className="max-w-5xl mx-auto text-center space-y-12">
             <h2 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-orange bg-clip-text text-transparent font-['Orbitron']">
@@ -17,9 +17,9 @@ export const Mission = () => {
             </h2>
             
             {/* Phase 2 Image */}
-            <div className="relative w-80 h-80 md:w-[600px] md:h-[600px] mx-auto mb-4 transform hover:scale-105 transition-transform duration-300">
+            <div className="relative w-96 h-96 md:w-[800px] md:h-[800px] mx-auto mb-4 transform hover:scale-105 transition-transform duration-500">
               <img 
-                src="/lovable-uploads/102f6c7a-6409-4cb6-92c7-b646064e0589.png"
+                src="/lovable-uploads/e562df77-0c3a-4788-a4fc-6ca16de09950.png"
                 alt="Phase 2"
                 className="w-full h-full object-contain rounded-lg animate-float"
               />

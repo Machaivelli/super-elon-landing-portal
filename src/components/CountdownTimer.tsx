@@ -33,20 +33,20 @@ const CountdownTimer = () => {
 
   return (
     <div className="flex flex-col items-center space-y-4">
-      <div className="rounded-xl p-8 bg-[#1A1F2C]/80 backdrop-blur-sm animate-float">
-        <div className="grid grid-cols-4 gap-6 text-center mb-4">
+      <div className="rounded-xl p-8 bg-black/40 backdrop-blur-sm animate-float shadow-2xl border border-white/5">
+        <div className="grid grid-cols-4 gap-8 text-center mb-6">
           {Object.entries(timeLeft).map(([unit, value]) => (
             <div key={unit} className="flex flex-col">
-              <span className="text-4xl md:text-6xl font-bold bg-gradient-to-b from-neon-blue to-neon-purple bg-clip-text text-transparent animate-pulse-glow">
+              <span className="text-5xl md:text-7xl font-bold text-white animate-pulse-glow">
                 {value.toString().padStart(2, '0')}
               </span>
-              <span className="text-base md:text-xl text-gray-400 capitalize mt-2">
+              <span className="text-lg md:text-2xl text-gray-400 capitalize mt-2 font-['Orbitron']">
                 {unit}
               </span>
             </div>
           ))}
         </div>
-        <h3 className="text-3xl md:text-4xl font-bold mt-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-orange bg-clip-text text-transparent animate-pulse-glow">
+        <h3 className="text-4xl md:text-5xl font-bold mt-6 text-white font-['Orbitron'] animate-pulse-glow">
           Phase 2 Begins In
         </h3>
       </div>
