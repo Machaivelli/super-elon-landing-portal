@@ -4,14 +4,17 @@ import { Button } from "./ui/button";
 export const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      <img 
-        src="/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png" 
-        alt="Hero Background" 
-        className="absolute inset-0 w-full h-full object-cover opacity-70"
-      />
+      {/* Decorative image */}
+      <div className="absolute right-0 top-20 w-64 h-64 opacity-20 rotate-12">
+        <img 
+          src="/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png" 
+          alt="Decorative Space" 
+          className="w-full h-full object-cover rounded-2xl"
+        />
+      </div>
 
       {/* Floating elements with parallax */}
-      <div className="absolute inset-0 bg-black/30">
+      <div className="absolute inset-0">
         <Rocket className="absolute w-12 h-12 text-neon-orange animate-float top-1/3 right-1/4" />
         <DollarSign className="absolute w-10 h-10 text-neon-yellow animate-float delay-1000 bottom-1/3 left-1/3" />
       </div>

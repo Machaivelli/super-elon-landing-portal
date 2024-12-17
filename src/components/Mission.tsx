@@ -9,12 +9,14 @@ export const Mission = () => {
       
       {/* Main content */}
       <div className="min-h-screen relative">
-        <img 
-          src="/lovable-uploads/c4b71e3b-ca71-43ea-9c85-0a29e9603a9c.png"
-          alt="Mission Background"
-          className="absolute inset-0 w-full h-full object-cover opacity-90"
-        />
-        <div className="absolute inset-0 bg-black/10" />
+        {/* Decorative image */}
+        <div className="absolute left-0 bottom-20 w-72 h-72 opacity-20 -rotate-12">
+          <img 
+            src="/lovable-uploads/c4b71e3b-ca71-43ea-9c85-0a29e9603a9c.png"
+            alt="Decorative Mission"
+            className="w-full h-full object-cover rounded-2xl"
+          />
+        </div>
         
         <div className="container mx-auto px-4 pt-32 relative z-20">
           <div className="max-w-3xl mx-auto text-center">
