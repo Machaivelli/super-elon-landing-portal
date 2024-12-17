@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { Timer, Users, ArrowRight, Rocket, Flame } from "lucide-react";
+import { Timer, Users, ArrowRight, Rocket, Fire } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { motion } from "framer-motion";
 import { Progress } from "./ui/progress";
@@ -71,7 +71,7 @@ export const Mission = () => {
               }}
               className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold"
             >
-              <Flame className="w-4 h-4 animate-pulse" />
+              <Fire className="w-4 h-4 animate-pulse" />
               The Next Big Crypto Surge Is Here!
             </motion.div>
 
