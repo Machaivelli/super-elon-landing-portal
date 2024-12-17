@@ -57,7 +57,9 @@ export const TokenomicsCard: React.FC<TokenomicsCardProps> = ({
             <span className="text-base font-bold text-yellow-400">{percentage}%</span>
             <span className="text-xs text-gray-400">({amount})</span>
           </div>
-          <p className="text-xs text-gray-300 line-clamp-2">{description}</p>
+          <p className={`text-xs text-gray-300 ${title !== "Team & Development" ? "line-clamp-2" : ""}`}>
+            {description}
+          </p>
         </div>
       </div>
 
