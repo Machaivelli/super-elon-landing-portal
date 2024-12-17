@@ -28,7 +28,6 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
     background: linear-gradient(to bottom, #0f1729, #000000);
@@ -60,8 +59,8 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  pointer-events: none;
-  animation: floatUp 15s linear infinite;
+  cursor: pointer;
+  animation: floatUp 15s linear infinite, sway 3s ease-in-out infinite;
   opacity: 0.4;
   transition: opacity 0.3s ease;
   transform: rotate(-45deg);
@@ -69,6 +68,11 @@
 
 .floating-decor:hover {
   opacity: 0.8;
+}
+
+.floating-decor.exploding {
+  animation: explode 0.5s ease-out forwards;
+  pointer-events: none;
 }
 
 @keyframes starFall {
@@ -101,7 +105,7 @@
 
 @keyframes floatUp {
   0% {
-    transform: translateY(100vh) rotate(-45deg);
+    transform: translateY(100vh) rotate(-45deg) translateX(0);
     opacity: 0;
   }
   10% {
@@ -111,7 +115,31 @@
     opacity: 0.4;
   }
   100% {
-    transform: translateY(-100vh) rotate(-45deg);
+    transform: translateY(-100vh) rotate(-45deg) translateX(0);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: rotate(-45deg) translateX(0);
+  }
+  50% {
+    transform: rotate(-45deg) translateX(10px);
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: rotate(-45deg) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: rotate(-45deg) scale(1.5);
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(-45deg) scale(2);
     opacity: 0;
   }
 }
