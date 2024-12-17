@@ -1,15 +1,14 @@
 import { Button } from "./ui/button";
-import { Rocket, Timer, Users, ArrowRight } from "lucide-react";
-import CountdownTimer from "./CountdownTimer";
-import { motion } from "framer-motion";
-import { Progress } from "./ui/progress";
+import { Rocket, Diamond, Flame } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Mission = () => {
   return (
-    <div className="relative py-6 flex items-center justify-center overflow-hidden">
-      {/* Background gradient and stars */}
+    <div className="relative min-h-screen py-16 overflow-hidden">
+      {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-900 to-gray-900" />
+        {/* Animated stars */}
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
@@ -25,92 +24,131 @@ export const Mission = () => {
 
       {/* Main content container */}
       <div className="relative container mx-auto px-4 z-10">
-        <div className="max-w-2xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
+          {/* Left Column - Animated Visuals */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-center space-y-4"
+            className="relative h-[400px]"
           >
-            {/* Urgency Badge */}
-            <motion.div
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ 
-                repeat: Infinity, 
-                repeatType: "reverse", 
-                duration: 1.5 
+            {/* Floating rockets and coins */}
+            <AnimatePresence>
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ y: 400, opacity: 0 }}
+                  animate={{ 
+                    y: -400,
+                    opacity: [0, 1, 1, 0],
+                    x: Math.sin(i) * 50
+                  }}
+                  transition={{
+                    duration: 4,
+                    delay: i * 0.8,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                  className="absolute left-1/2"
+                >
+                  <Rocket 
+                    className="w-8 h-8 text-neon-orange transform -rotate-45" 
+                    style={{
+                      filter: "drop-shadow(0 0 10px rgba(255,126,51,0.5))"
+                    }}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* Right Column - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-center md:text-left space-y-6"
+          >
+            {/* Main Headline */}
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold text-neon-blue font-['Orbitron'] leading-tight"
+              animate={{
+                textShadow: [
+                  "0 0 20px rgba(0,243,255,0.5)",
+                  "0 0 40px rgba(0,243,255,0.8)",
+                  "0 0 20px rgba(0,243,255,0.5)"
+                ]
               }}
-              className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold mb-4"
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
             >
-              <Timer className="w-4 h-4 animate-pulse" />
-              Limited Time Opportunity
-            </motion.div>
+              HODL Super Elon Coin – Don't Miss the Next Crypto Revolution! 🚀
+            </motion.h2>
 
-            {/* Main Title */}
-            <h2 className="text-3xl md:text-4xl font-bold text-neon-blue font-['Orbitron'] drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-              Don't Miss Out – Join the Super Elon Revolution Now!
-            </h2>
+            {/* Subheading */}
+            <motion.h3 
+              className="text-xl md:text-2xl text-neon-purple font-['Orbitron']"
+              animate={{ scale: [1, 1.02, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Diamond className="inline-block w-6 h-6 mr-2 text-neon-yellow" />
+              Turn Your Diamond Hands into Gold – The Future of Memecoins Is Here!
+            </motion.h3>
 
-            {/* Subtitle */}
-            <p className="text-lg text-white/90 font-['Orbitron'] max-w-xl mx-auto">
-              Be Part of the Future of Memecoins – The Clock is Ticking!
+            {/* Success Message */}
+            <p className="text-lg text-white/90 font-['Orbitron']">
+              HODLers are already seeing insane gains – Super Elon Coin is your chance to 1000x your investment. 
+              The moon is waiting! <Flame className="inline-block w-5 h-5 text-neon-orange" />
             </p>
 
-            {/* Progress and Stats */}
-            <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 space-y-3 border border-neon-blue/20">
-              <div className="flex justify-between text-sm text-white/80 mb-1">
-                <span>Spots Filled</span>
-                <span className="text-neon-blue">87% Complete</span>
-              </div>
-              <Progress value={87} className="h-2" />
-              <div className="flex items-center justify-center gap-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-neon-orange" />
-                  <span className="text-white/80">1,500+ Joined This Week</span>
-                </div>
-                <div className="text-red-400 font-semibold">
-                  Only 100 Spots Left!
-                </div>
-              </div>
-            </div>
-
-            {/* Countdown Timer */}
-            <div className="w-full">
-              <CountdownTimer />
-            </div>
-
-            {/* CTA Section */}
-            <div className="space-y-4 pt-4">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-full font-['Orbitron'] 
-                         shadow-[0_0_20px_rgba(255,126,51,0.5)] hover:shadow-[0_0_30px_rgba(255,126,51,0.7)]
-                         transition-all duration-300 flex items-center gap-2 mx-auto text-lg animate-pulse"
+            {/* CTA Button */}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="pt-4"
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-6 rounded-full font-['Orbitron'] 
+                         shadow-[0_0_30px_rgba(255,126,51,0.5)] hover:shadow-[0_0_50px_rgba(255,126,51,0.7)]
+                         transition-all duration-300 text-xl group animate-pulse"
               >
-                <Rocket className="w-5 h-5" />
-                Secure Your Spot Now!
-                <ArrowRight className="w-5 h-5" />
-              </motion.button>
+                <Rocket className="w-6 h-6 group-hover:rotate-[-45deg] transition-transform duration-300" />
+                Join Now and HODL to the Moon!
+              </Button>
+            </motion.div>
 
-              {/* Social Proof */}
-              <motion.div
-                className="flex items-center gap-2 bg-black/40 backdrop-blur-sm rounded-full p-2 border border-neon-blue/30 max-w-fit mx-auto"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.2 }}
-              >
-                <img
-                  src="/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png"
-                  alt="Early Adopter"
-                  className="w-6 h-6 rounded-full"
-                />
-                <span className="text-xs text-white/90 font-['Orbitron']">
-                  "Already 10x my investment!" - CryptoWhale
-                </span>
-              </motion.div>
-            </div>
+            {/* Urgency Message */}
+            <motion.p
+              className="text-neon-orange font-['Orbitron'] text-lg"
+              animate={{
+                opacity: [1, 0.5, 1],
+                scale: [1, 1.02, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity
+              }}
+            >
+              Early HODLers are already celebrating 🚀 Don't be late to the moon!
+            </motion.p>
           </motion.div>
         </div>
+      </div>
+
+      {/* Mobile sticky CTA */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 to-transparent">
+        <Button
+          size="lg"
+          className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-6 rounded-full font-['Orbitron'] 
+                   shadow-[0_0_30px_rgba(255,126,51,0.5)] hover:shadow-[0_0_50px_rgba(255,126,51,0.7)]
+                   transition-all duration-300 text-xl animate-pulse"
+        >
+          <Rocket className="w-6 h-6" />
+          HODL Now!
+        </Button>
       </div>
     </div>
   );
