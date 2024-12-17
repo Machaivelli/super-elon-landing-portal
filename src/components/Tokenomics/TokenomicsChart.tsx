@@ -20,27 +20,6 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
     emoji: item.emoji
   }));
 
-  // Calculate positions for emojis based on the segment's angle
-  const getEmojiPosition = (index: number) => {
-    const total = chartData.length;
-    // Calculate the middle angle of the segment
-    let startAngle = 0;
-    for (let i = 0; i < index; i++) {
-      startAngle += (chartData[i].value / 100) * 360;
-    }
-    const segmentAngle = (chartData[index].value / 100) * 360;
-    const middleAngle = startAngle + (segmentAngle / 2);
-    
-    // Convert angle to radians and calculate position
-    const angleInRadians = ((middleAngle - 90) * Math.PI) / 180;
-    const radius = 100; // Adjusted radius for better positioning
-    
-    return {
-      x: Math.cos(angleInRadians) * radius,
-      y: Math.sin(angleInRadians) * radius
-    };
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -98,33 +77,6 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
           />
         </PieChart>
       </ResponsiveContainer>
-
-      {/* Emoji Overlays with Enhanced Animation and Positioning */}
-      {chartData.map((item, index) => {
-        const position = getEmojiPosition(index);
-        
-        return (
-          <motion.div
-            key={`emoji-${index}`}
-            className="absolute text-base transform -translate-x-1/2 -translate-y-1/2"
-            style={{
-              left: `calc(50% + ${position.x}px)`,
-              top: `calc(50% + ${position.y}px)`,
-            }}
-            whileHover={{ scale: 1.2 }}
-            animate={{
-              y: [0, -3, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }}
-          >
-            {item.emoji}
-          </motion.div>
-        );
-      })}
 
       {/* Orbiting Stars */}
       {[...Array(3)].map((_, i) => (
