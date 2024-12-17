@@ -24,12 +24,11 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
     background: linear-gradient(to bottom, #0f1729, #000000);
@@ -93,10 +92,4 @@
 
 .decor-image:hover {
   @apply shadow-neon-blue/40 scale-105;
-}
-
-@layer base {
-  @apply bg-background text-foreground;
-  background: linear-gradient(to bottom, #0f1729, #000000);
-  min-height: 100vh;
 }
