@@ -1,154 +1,133 @@
 import { Button } from "./ui/button";
-import { Rocket, Diamond, Flame } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Timer, Users, ArrowRight, Rocket, Flame } from "lucide-react";
+import CountdownTimer from "./CountdownTimer";
+import { motion } from "framer-motion";
+import { Progress } from "./ui/progress";
 
 export const Mission = () => {
   return (
-    <div className="relative min-h-screen py-16 overflow-hidden">
-      {/* Animated Background */}
+    <div className="relative py-8 overflow-hidden bg-gradient-to-b from-black/40 to-blue-900/20">
+      {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-900 to-gray-900" />
-        {/* Animated stars */}
         {[...Array(20)].map((_, i) => (
-          <div
+          <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+            initial={{ y: 0, opacity: 0.5 }}
+            animate={{ 
+              y: -100,
+              opacity: [0.2, 0.5, 0.2],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: i * 0.2,
+              ease: "easeInOut"
+            }}
+            className="absolute w-4 h-4 text-yellow-500"
             style={{
               left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
+              top: `${Math.random() * 100 + 50}%`,
             }}
-          />
+          >
+            {i % 2 === 0 ? "₿" : "🚀"}
+          </motion.div>
         ))}
       </div>
 
       {/* Main content container */}
-      <div className="relative container mx-auto px-4 z-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center max-w-6xl mx-auto">
-          {/* Left Column - Animated Visuals */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-8 max-w-6xl mx-auto">
+          {/* Left side - Image */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative h-[400px]"
+            className="lg:w-1/2"
           >
-            {/* Floating rockets and coins */}
-            <AnimatePresence>
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ y: 400, opacity: 0 }}
-                  animate={{ 
-                    y: -400,
-                    opacity: [0, 1, 1, 0],
-                    x: Math.sin(i) * 50
-                  }}
-                  transition={{
-                    duration: 4,
-                    delay: i * 0.8,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                  className="absolute left-1/2"
-                >
-                  <Rocket 
-                    className="w-8 h-8 text-neon-orange transform -rotate-45" 
-                    style={{
-                      filter: "drop-shadow(0 0 10px rgba(255,126,51,0.5))"
-                    }}
-                  />
-                </motion.div>
-              ))}
-            </AnimatePresence>
+            <img 
+              src="/lovable-uploads/d47edc89-95c8-4f95-99c5-5edfabb25743.png"
+              alt="Crypto Whale"
+              className="w-full h-auto rounded-lg shadow-2xl"
+            />
           </motion.div>
 
-          {/* Right Column - Content */}
+          {/* Right side - Content */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-center md:text-left space-y-6"
+            transition={{ duration: 0.6 }}
+            className="lg:w-1/2 space-y-6 text-center lg:text-left"
           >
-            {/* Main Headline */}
-            <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-neon-blue font-['Orbitron'] leading-tight"
-              animate={{
-                textShadow: [
-                  "0 0 20px rgba(0,243,255,0.5)",
-                  "0 0 40px rgba(0,243,255,0.8)",
-                  "0 0 20px rgba(0,243,255,0.5)"
-                ]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-              }}
-            >
-              HODL Super Elon Coin – Don't Miss the Next Crypto Revolution! 🚀
-            </motion.h2>
-
-            {/* Subheading */}
-            <motion.h3 
-              className="text-xl md:text-2xl text-neon-purple font-['Orbitron']"
-              animate={{ scale: [1, 1.02, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Diamond className="inline-block w-6 h-6 mr-2 text-neon-yellow" />
-              Turn Your Diamond Hands into Gold – The Future of Memecoins Is Here!
-            </motion.h3>
-
-            {/* Success Message */}
-            <p className="text-lg text-white/90 font-['Orbitron']">
-              HODLers are already seeing insane gains – Super Elon Coin is your chance to 1000x your investment. 
-              The moon is waiting! <Flame className="inline-block w-5 h-5 text-neon-orange" />
-            </p>
-
-            {/* CTA Button */}
+            {/* FOMO Badge */}
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="pt-4"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ 
+                repeat: Infinity, 
+                repeatType: "reverse", 
+                duration: 1.5 
+              }}
+              className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold"
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-6 rounded-full font-['Orbitron'] 
-                         shadow-[0_0_30px_rgba(255,126,51,0.5)] hover:shadow-[0_0_50px_rgba(255,126,51,0.7)]
-                         transition-all duration-300 text-xl group animate-pulse"
-              >
-                <Rocket className="w-6 h-6 group-hover:rotate-[-45deg] transition-transform duration-300" />
-                Join Now and HODL to the Moon!
-              </Button>
+              <Flame className="w-4 h-4 animate-pulse" />
+              The Next Big Crypto Surge Is Here!
             </motion.div>
 
-            {/* Urgency Message */}
-            <motion.p
-              className="text-neon-orange font-['Orbitron'] text-lg"
-              animate={{
-                opacity: [1, 0.5, 1],
-                scale: [1, 1.02, 1]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity
-              }}
-            >
-              Early HODLers are already celebrating 🚀 Don't be late to the moon!
-            </motion.p>
+            {/* Main Headline */}
+            <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-red-600 font-['Orbitron'] leading-tight">
+              HODL Now or Miss the Next x1000! 🚀
+            </h2>
+
+            {/* Subheading */}
+            <p className="text-xl text-white/90 font-['Orbitron']">
+              Super Elon Coin is Changing Lives – Early HODLers Are Already Winning Big!
+            </p>
+
+            {/* Progress and Stats */}
+            <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 space-y-3 border border-orange-500/20">
+              <div className="flex justify-between text-sm text-white/80 mb-1">
+                <span>HODLers Growing Fast</span>
+                <span className="text-orange-500">93% Filled</span>
+              </div>
+              <Progress value={93} className="h-2 bg-orange-950" />
+              <div className="flex items-center justify-center gap-6 text-sm">
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-orange-500" />
+                  <span className="text-white/80">2,500+ Joined Today</span>
+                </div>
+                <div className="text-red-400 font-semibold animate-pulse">
+                  Only 50 Spots Left!
+                </div>
+              </div>
+            </div>
+
+            {/* CTA Section */}
+            <div className="space-y-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-4 rounded-full font-['Orbitron'] 
+                         shadow-[0_0_20px_rgba(255,126,51,0.5)] hover:shadow-[0_0_30px_rgba(255,126,51,0.7)]
+                         transition-all duration-300 flex items-center gap-2 mx-auto lg:mx-0 text-lg group"
+              >
+                <Rocket className="w-5 h-5 group-hover:animate-bounce" />
+                HODL Now and Ride the Wave!
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+
+              {/* Social Proof */}
+              <motion.p
+                className="text-sm text-white/80 italic"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                "Already seen 10x returns in just one week! 🚀" - Early HODLer
+              </motion.p>
+            </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* Mobile sticky CTA */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-gray-900 to-transparent">
-        <Button
-          size="lg"
-          className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-6 rounded-full font-['Orbitron'] 
-                   shadow-[0_0_30px_rgba(255,126,51,0.5)] hover:shadow-[0_0_50px_rgba(255,126,51,0.7)]
-                   transition-all duration-300 text-xl animate-pulse"
-        >
-          <Rocket className="w-6 h-6" />
-          HODL Now!
-        </Button>
       </div>
     </div>
   );
