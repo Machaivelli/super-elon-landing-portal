@@ -64,6 +64,7 @@
   animation: floatUp 15s linear infinite;
   opacity: 0.4;
   transition: opacity 0.3s ease;
+  transform: rotate(-45deg);
 }
 
 .floating-decor:hover {
@@ -100,7 +101,7 @@
 
 @keyframes floatUp {
   0% {
-    transform: translateY(100vh) rotate(0deg);
+    transform: translateY(100vh) rotate(-45deg);
     opacity: 0;
   }
   10% {
@@ -110,7 +111,7 @@
     opacity: 0.4;
   }
   100% {
-    transform: translateY(-100vh) rotate(360deg);
+    transform: translateY(-100vh) rotate(-45deg);
     opacity: 0;
   }
 }
