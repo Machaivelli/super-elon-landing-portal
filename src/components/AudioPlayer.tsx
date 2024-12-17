@@ -110,11 +110,9 @@ export const AudioPlayer = () => {
           onClick={togglePlay}
           className={cn(
             "w-8 h-8 flex items-center justify-center rounded-full",
-            "bg-gradient-to-br from-yellow-500 via-yellow-400 to-yellow-600",
             "hover:scale-110 transition-all duration-200",
-            "text-black shadow-lg relative group-hover:shadow-yellow-500/50",
+            "text-yellow-400 relative",
             "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-gradient-to-r after:from-yellow-400/20 after:to-yellow-500/20",
             "after:animate-pulse-glow after:blur-md after:-z-10"
           )}
           aria-label={isPlaying ? "Pause" : "Play"}
@@ -122,7 +120,7 @@ export const AudioPlayer = () => {
           {isPlaying ? (
             <Pause className="w-4 h-4" />
           ) : (
-            <Rocket className="w-4 h-4 rotate-45" />
+            <Rocket className="w-4 h-4 rotate-45 -translate-y-[1px]" />
           )}
         </button>
 
