@@ -6,6 +6,7 @@ import { TokenomicsSection } from "@/components/Tokenomics/TokenomicsSection";
 import { TeamSection } from "@/components/Team/TeamSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
+import { AudioPlayer } from "@/components/AudioPlayer";
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <TokenomicsSection />
       <TeamSection />
       <Features />
+      <AudioPlayer />
     </main>
   );
 };
