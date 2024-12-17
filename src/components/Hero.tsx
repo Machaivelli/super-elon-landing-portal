@@ -1,54 +1,100 @@
-import { Rocket, DollarSign } from "lucide-react";
 import { Button } from "./ui/button";
+import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
-      {/* Decorative image */}
-      <div className="absolute right-0 top-20 w-64 h-64 opacity-40 rotate-12 hover:opacity-60 transition-opacity">
-        <img 
-          src="/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png" 
-          alt="Decorative Space" 
-          className="decor-image w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Floating elements with parallax */}
-      <div className="absolute inset-0">
-        <Rocket className="absolute w-12 h-12 text-neon-orange animate-float top-1/3 right-1/4" />
-        <DollarSign className="absolute w-10 h-10 text-neon-yellow animate-float delay-1000 bottom-1/3 left-1/3" />
-      </div>
-
-      {/* Main content */}
+      {/* Main content container */}
       <div className="container mx-auto px-4 z-10">
-        <div className="text-center glass-card p-8">
-          <img
-            src="/lovable-uploads/151bd015-eb26-4db6-82d4-4ec6741ed896.png"
-            alt="Super Elon Coin Logo"
-            className="w-48 h-48 mx-auto mb-8 animate-float rounded-full border-4 border-neon-blue shadow-lg shadow-neon-blue/50"
-          />
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-yellow to-neon-orange bg-clip-text text-transparent font-['Orbitron'] animate-pulse">
-            Super Elon Coin
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto font-['Orbitron']">
-            To the Moon with Super Elon Coin – The Future of Memecoins!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 text-white font-bold py-4 px-8 rounded-full neon-border font-['Orbitron'] group animate-pulse-glow hover:scale-105 transition-transform duration-300"
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          {/* Left side - Hero Image */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:w-1/2 w-full"
+          >
+            <img 
+              src="/lovable-uploads/180133a5-8c2f-415a-97f5-d3942ce3cfe6.png"
+              alt="Super Elon Warrior"
+              className="w-full h-auto rounded-2xl shadow-2xl shadow-neon-orange/20 hover:shadow-neon-orange/40 transition-shadow duration-300"
+            />
+          </motion.div>
+
+          {/* Right side - Text and CTAs */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:w-1/2 w-full text-center lg:text-left"
+          >
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-5xl md:text-6xl font-bold mb-6 text-white font-['Orbitron'] leading-tight"
             >
-              Buy Now
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-neon-blue text-neon-blue hover:bg-neon-blue/10 font-bold py-4 px-8 rounded-full font-['Orbitron'] hover:scale-105 transition-transform duration-300"
+              Super Elon Coin
+            </motion.h1>
+
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl font-['Orbitron']"
             >
-              Whitepaper
-            </Button>
-          </div>
+              To the Moon with Super Elon Coin – The Future of Memecoins!
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-full font-['Orbitron'] group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50"
+              >
+                Buy Now
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 font-bold py-4 px-8 rounded-full font-['Orbitron'] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50"
+              >
+                Whitepaper
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
+      </div>
+
+      {/* Background particles effect */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ 
+              opacity: [0.2, 0.5, 0.2],
+              scale: [1, 1.2, 1],
+              x: [0, Math.random() * 100 - 50, 0],
+              y: [0, Math.random() * 100 - 50, 0]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: i * 0.8,
+              ease: "easeInOut"
+            }}
+            className="absolute w-4 h-4 bg-orange-500 rounded-full blur-sm"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`
+            }}
+          />
+        ))}
       </div>
     </div>
   );
