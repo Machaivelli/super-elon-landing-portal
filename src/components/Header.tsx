@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Menu, X, Rocket } from "lucide-react";
+import { Menu, X, Rocket, Users, ListOrdered } from "lucide-react";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,6 +46,24 @@ export const Header = () => {
               </span>
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
             </a>
+            <a 
+              href="#phases" 
+              className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
+            >
+              <span className="flex items-center gap-1">
+                Phases <ListOrdered className="h-3 w-3" />
+              </span>
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
+            </a>
+            <a 
+              href="#team" 
+              className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
+            >
+              <span className="flex items-center gap-1">
+                Dream Team <Users className="h-3 w-3" />
+              </span>
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
+            </a>
             <Button
               variant="outline"
               size="sm"
@@ -81,6 +99,20 @@ export const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Tokenomics
+              </a>
+              <a 
+                href="#phases" 
+                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Phases
+              </a>
+              <a 
+                href="#team" 
+                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Dream Team
               </a>
               <Button
                 variant="outline"
