@@ -4,13 +4,13 @@ export const TokenomicsBackground = () => {
   return (
     <>
       {/* Parallax Background */}
-      <div 
-        className="absolute inset-0 bg-[url('/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png')] bg-cover bg-center bg-fixed"
-        style={{ 
-          transform: 'scale(1.1)',
-          willChange: 'transform'
-        }}
-      />
+      <div className="absolute right-0 top-20 w-64 h-64 opacity-20 rotate-12">
+        <img 
+          src="/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png"
+          alt="Decorative Tokenomics"
+          className="w-full h-full object-cover rounded-2xl"
+        />
+      </div>
       
       {/* Enhanced gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90 backdrop-blur-sm" />
