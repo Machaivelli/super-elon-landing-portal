@@ -1,12 +1,13 @@
 import { Button } from "./ui/button";
-import { Rocket } from "lucide-react";
+import { Rocket, Timer, Users, ArrowRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { motion } from "framer-motion";
+import { Progress } from "./ui/progress";
 
 export const Mission = () => {
   return (
-    <div className="relative py-8 flex items-center justify-center overflow-hidden">
-      {/* Starry background with parallax */}
+    <div className="relative py-6 flex items-center justify-center overflow-hidden">
+      {/* Background gradient and stars */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-900 to-gray-900" />
         {[...Array(20)].map((_, i) => (
@@ -24,69 +25,89 @@ export const Mission = () => {
 
       {/* Main content container */}
       <div className="relative container mx-auto px-4 z-10">
-        <div className="max-w-3xl mx-auto">
-          {/* Mission content */}
+        <div className="max-w-2xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center space-y-6"
+            className="text-center space-y-4"
           >
-            {/* Title */}
-            <h2 className="text-3xl md:text-4xl font-bold text-neon-blue font-['Orbitron'] drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
-              Join The Mission
-            </h2>
-
-            {/* Phase 2 Image */}
+            {/* Urgency Badge */}
             <motion.div
-              className="relative w-48 h-48 md:w-64 md:h-64 mx-auto transform hover:scale-105 transition-transform duration-500"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ 
+                repeat: Infinity, 
+                repeatType: "reverse", 
+                duration: 1.5 
+              }}
+              className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold mb-4"
             >
-              <img
-                src="/lovable-uploads/e562df77-0c3a-4788-a4fc-6ca16de09950.png"
-                alt="Phase 2"
-                className="w-full h-full object-contain rounded-lg"
-              />
+              <Timer className="w-4 h-4 animate-pulse" />
+              Limited Time Opportunity
             </motion.div>
 
-            {/* Description */}
-            <p className="text-lg text-white font-['Orbitron'] max-w-xl mx-auto">
-              Be part of the next generation of crypto pioneers and join the mission to the moon!
+            {/* Main Title */}
+            <h2 className="text-3xl md:text-4xl font-bold text-neon-blue font-['Orbitron'] drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+              Don't Miss Out – Join the Super Elon Revolution Now!
+            </h2>
+
+            {/* Subtitle */}
+            <p className="text-lg text-white/90 font-['Orbitron'] max-w-xl mx-auto">
+              Be Part of the Future of Memecoins – The Clock is Ticking!
             </p>
 
-            {/* CTA and Elon Badge */}
-            <div className="flex flex-col items-center gap-4">
+            {/* Progress and Stats */}
+            <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 space-y-3 border border-neon-blue/20">
+              <div className="flex justify-between text-sm text-white/80 mb-1">
+                <span>Spots Filled</span>
+                <span className="text-neon-blue">87% Complete</span>
+              </div>
+              <Progress value={87} className="h-2" />
+              <div className="flex items-center justify-center gap-6 text-sm">
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-neon-orange" />
+                  <span className="text-white/80">1,500+ Joined This Week</span>
+                </div>
+                <div className="text-red-400 font-semibold">
+                  Only 100 Spots Left!
+                </div>
+              </div>
+            </div>
+
+            {/* Countdown Timer */}
+            <div className="w-full">
+              <CountdownTimer />
+            </div>
+
+            {/* CTA Section */}
+            <div className="space-y-4 pt-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                className="bg-neon-blue text-white px-6 py-2 rounded-full font-['Orbitron'] 
-                         shadow-[0_0_20px_rgba(0,243,255,0.5)] hover:shadow-[0_0_30px_rgba(0,243,255,0.7)]
-                         transition-all duration-300 flex items-center gap-2 text-sm"
+                className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-full font-['Orbitron'] 
+                         shadow-[0_0_20px_rgba(255,126,51,0.5)] hover:shadow-[0_0_30px_rgba(255,126,51,0.7)]
+                         transition-all duration-300 flex items-center gap-2 mx-auto text-lg animate-pulse"
               >
-                <Rocket className="w-4 h-4" />
-                Join Now
+                <Rocket className="w-5 h-5" />
+                Secure Your Spot Now!
+                <ArrowRight className="w-5 h-5" />
               </motion.button>
 
-              {/* Elon Badge */}
+              {/* Social Proof */}
               <motion.div
-                className="flex items-center gap-2 bg-black/40 backdrop-blur-sm rounded-full p-2 border border-neon-blue/30"
-                whileHover={{ scale: 1.05, rotate: [-1, 1, -1, 0] }}
+                className="flex items-center gap-2 bg-black/40 backdrop-blur-sm rounded-full p-2 border border-neon-blue/30 max-w-fit mx-auto"
+                whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
                 <img
                   src="/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png"
-                  alt="Elon Musk"
+                  alt="Early Adopter"
                   className="w-6 h-6 rounded-full"
                 />
-                <span className="text-xs text-white font-['Orbitron']">
-                  Guided by Elon Musk | Chief Meme Officer 🚀
+                <span className="text-xs text-white/90 font-['Orbitron']">
+                  "Already 10x my investment!" - CryptoWhale
                 </span>
               </motion.div>
-
-              {/* Countdown Timer */}
-              <div className="w-full max-w-md">
-                <CountdownTimer />
-              </div>
             </div>
           </motion.div>
         </div>
