@@ -14,7 +14,7 @@ export const AudioPlayer = () => {
       if (isPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        audioRef.current.play().catch(e => console.error("Play error:", e));
       }
       setIsPlaying(!isPlaying);
     }
@@ -36,16 +36,31 @@ export const AudioPlayer = () => {
   };
 
   useEffect(() => {
-    // Create audio element with the correct path
-    audioRef.current = new Audio('/zo staat het bestand nu in de public file.mp3');
-    audioRef.current.loop = true;
-    audioRef.current.volume = volume;
+    console.log("Initializing audio player...");
+    const audio = new Audio('/zo staat het bestand nu in de public file.mp3');
+    audioRef.current = audio;
+    audio.loop = true;
+    audio.volume = volume;
     
-    // Auto-play
-    audioRef.current.play().catch(e => console.log("Auto-play prevented:", e));
+    audio.addEventListener('canplay', () => {
+      console.log("Audio can play now");
+      audio.play()
+        .then(() => {
+          console.log("Audio playing successfully");
+          setIsPlaying(true);
+        })
+        .catch(error => {
+          console.error("Error playing audio:", error);
+          setIsPlaying(false);
+        });
+    });
+
+    audio.addEventListener('error', (e) => {
+      console.error("Audio error:", e);
+    });
     
-    // Cleanup
     return () => {
+      console.log("Cleaning up audio player");
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = '';
