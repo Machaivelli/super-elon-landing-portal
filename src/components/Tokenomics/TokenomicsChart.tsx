@@ -20,13 +20,34 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
     emoji: item.emoji
   }));
 
+  // Calculate positions for emojis based on the segment's angle
+  const getEmojiPosition = (index: number) => {
+    const total = chartData.length;
+    // Calculate the middle angle of the segment
+    let startAngle = 0;
+    for (let i = 0; i < index; i++) {
+      startAngle += (chartData[i].value / 100) * 360;
+    }
+    const segmentAngle = (chartData[index].value / 100) * 360;
+    const middleAngle = startAngle + (segmentAngle / 2);
+    
+    // Convert angle to radians and calculate position
+    const angleInRadians = ((middleAngle - 90) * Math.PI) / 180;
+    const radius = 100; // Adjusted radius for better positioning
+    
+    return {
+      x: Math.cos(angleInRadians) * radius,
+      y: Math.sin(angleInRadians) * radius
+    };
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="w-full max-w-[240px] aspect-square relative mx-auto"
+      className="w-full max-w-[200px] aspect-square relative mx-auto"
     >
       {/* Enhanced glow effect background */}
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-purple-500/10 to-blue-500/10 rounded-full blur-xl animate-pulse-glow" />
@@ -78,20 +99,17 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
         </PieChart>
       </ResponsiveContainer>
 
-      {/* Emoji Overlays with Enhanced Animation */}
+      {/* Emoji Overlays with Enhanced Animation and Positioning */}
       {chartData.map((item, index) => {
-        const angle = (360 / chartData.length) * index;
-        const radius = 85; // Adjusted for smaller chart
-        const x = Math.cos((angle * Math.PI) / 180) * radius;
-        const y = Math.sin((angle * Math.PI) / 180) * radius;
-
+        const position = getEmojiPosition(index);
+        
         return (
           <motion.div
             key={`emoji-${index}`}
             className="absolute text-base transform -translate-x-1/2 -translate-y-1/2"
             style={{
-              left: `calc(50% + ${x}px)`,
-              top: `calc(50% + ${y}px)`,
+              left: `calc(50% + ${position.x}px)`,
+              top: `calc(50% + ${position.y}px)`,
             }}
             whileHover={{ scale: 1.2 }}
             animate={{
