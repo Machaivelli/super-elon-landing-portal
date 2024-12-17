@@ -13,7 +13,7 @@ const socialLinks = [
   },
   {
     name: "Dexscreener",
-    icon: "/lovable-uploads/d653c0e5-cc7e-45ff-b9c8-9971ab86acbe.png",
+    icon: "/lovable-uploads/99b5b7c5-4e15-4b33-a5c1-b9149b53c9db.png",
     href: "#", // Replace with actual Dexscreener link
   },
   {
@@ -25,8 +25,8 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="w-full py-6 px-4 md:px-8 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-sm border-t border-white/5">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer className="w-full py-4 px-4 md:px-6 bg-gradient-to-t from-black/80 to-transparent backdrop-blur-sm border-t border-white/5">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
         {/* Left side - Tagline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,13 +34,13 @@ export const Footer = () => {
           transition={{ duration: 0.6 }}
           className="text-center md:text-left"
         >
-          <p className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple animate-pulse-glow">
-            Join the Super Elon Revolution 🚀 – HODL to the Moon!
+          <p className="text-sm md:text-base font-bold bg-clip-text text-transparent bg-gradient-to-r from-neon-blue to-neon-purple animate-pulse-glow">
+            Join the Super Elon Revolution 🚀
           </p>
         </motion.div>
 
         {/* Right side - Social Links */}
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
+        <div className="flex items-center gap-4 md:gap-6">
           {socialLinks.map((link, index) => (
             <motion.a
               key={link.name}
@@ -54,7 +54,7 @@ export const Footer = () => {
               transition={{ delay: index * 0.1 }}
               title={link.name}
             >
-              <div className="relative w-8 h-8 md:w-10 md:h-10">
+              <div className="relative w-6 h-6 md:w-8 md:h-8">
                 <img
                   src={link.icon}
                   alt={link.name}
