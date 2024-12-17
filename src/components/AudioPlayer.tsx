@@ -37,7 +37,7 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     // Create audio element with the correct path
-    audioRef.current = new Audio('/lovable-uploads/your-audio-file.mp3');
+    audioRef.current = new Audio('/zo staat het bestand nu in de public file.mp3');
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
     
