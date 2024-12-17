@@ -2,7 +2,6 @@ import { Button } from "./ui/button";
 import { Rocket, Timer, Users, ArrowRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { motion } from "framer-motion";
-import { Progress } from "./ui/progress";
 
 export const Mission = () => {
   return (
@@ -56,24 +55,6 @@ export const Mission = () => {
             <p className="text-lg text-white/90 font-['Orbitron'] max-w-xl mx-auto">
               Be Part of the Future of Memecoins – The Clock is Ticking!
             </p>
-
-            {/* Progress and Stats */}
-            <div className="bg-black/40 backdrop-blur-sm rounded-xl p-4 space-y-3 border border-neon-blue/20">
-              <div className="flex justify-between text-sm text-white/80 mb-1">
-                <span>Spots Filled</span>
-                <span className="text-neon-blue">87% Complete</span>
-              </div>
-              <Progress value={87} className="h-2" />
-              <div className="flex items-center justify-center gap-6 text-sm">
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-neon-orange" />
-                  <span className="text-white/80">1,500+ Joined This Week</span>
-                </div>
-                <div className="text-red-400 font-semibold">
-                  Only 100 Spots Left!
-                </div>
-              </div>
-            </div>
 
             {/* Countdown Timer */}
             <div className="w-full">
