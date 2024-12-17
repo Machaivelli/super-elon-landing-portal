@@ -5,6 +5,7 @@ import { TokenomicsCard } from './TokenomicsCard';
 import { TokenomicsCTA } from './TokenomicsCTA';
 import { ElonBadge } from './ElonBadge';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { tokenomicsData } from './tokenomicsData';
 
 export const TokenomicsSection = () => {
   const isMobile = useIsMobile();
