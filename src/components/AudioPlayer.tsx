@@ -74,7 +74,7 @@ export const AudioPlayer = () => {
   }, [isPlaying]);
 
   return (
-    <div className="fixed top-4 left-4 z-50 flex items-center gap-3 bg-gradient-to-r from-black/80 to-black/60 backdrop-blur-md rounded-full p-2 border border-white/10 shadow-lg hover:shadow-neon-blue/20 transition-all duration-300">
+    <div className="fixed top-24 left-4 z-50 flex items-center gap-3 bg-gradient-to-r from-black/80 to-black/60 backdrop-blur-md rounded-full p-2 border border-white/10 shadow-lg hover:shadow-neon-blue/20 transition-all duration-300">
       <button
         onClick={togglePlay}
         className={cn(
