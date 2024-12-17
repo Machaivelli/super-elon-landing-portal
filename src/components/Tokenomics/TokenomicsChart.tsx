@@ -39,9 +39,6 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
             dataKey="value"
             animationBegin={0}
             animationDuration={1500}
-            onMouseEnter={(data, index) => {
-              // Handle hover animation if needed
-            }}
           >
             {chartData.map((entry, index) => (
               <Cell
@@ -61,7 +58,7 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="glass-card p-4 rounded-lg border border-white/10"
+                    className="glass-card p-3 rounded-lg border border-white/10"
                   >
                     <p className="text-white font-bold font-serif">{payload[0].name}</p>
                     <p className="text-yellow-400">{`${payload[0].value}%`}</p>

@@ -55,14 +55,14 @@ const tokenomicsData = [
 
 export const TokenomicsSection = () => {
   return (
-    <section className="relative min-h-screen py-20 overflow-hidden">
-      {/* Gradient transition overlay at the top */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0f1729] to-transparent z-10"></div>
-      
-      {/* Background Image with Overlay */}
+    <section className="relative min-h-screen py-12 overflow-hidden">
+      {/* Background Image with Parallax */}
       <div 
         className="absolute inset-0 bg-[url('/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png')] bg-cover bg-center bg-fixed"
-        style={{ willChange: 'transform' }}
+        style={{ 
+          transform: 'scale(1.1)',
+          willChange: 'transform'
+        }}
       />
       
       {/* Enhanced gradient overlay for better text contrast */}
@@ -76,7 +76,7 @@ export const TokenomicsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400 font-serif drop-shadow-[0_0_8px_rgba(255,215,0,0.3)]">
             Tokenomics – Engineered for Success & Stability
@@ -87,7 +87,7 @@ export const TokenomicsSection = () => {
         </motion.div>
 
         {/* Chart and Cards Layout */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 items-center mb-12">
           {/* Chart Section with enhanced animations */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
@@ -100,7 +100,7 @@ export const TokenomicsSection = () => {
           </motion.div>
 
           {/* Cards Grid with staggered animation */}
-          <div className="grid gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {tokenomicsData.map((item, index) => (
               <motion.div
                 key={index}
@@ -131,15 +131,15 @@ export const TokenomicsSection = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="mt-8 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full text-xl font-bold text-white shadow-lg hover:shadow-yellow-500/50 transition-all duration-300 animate-pulse-glow"
+            className="mt-6 px-8 py-3 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full text-lg font-bold text-white shadow-lg hover:shadow-yellow-500/50 transition-all duration-300 animate-pulse-glow"
           >
             Buy Now – Secure Your Spot in the Moon Mission!
           </motion.button>
         </motion.div>
       </div>
 
-      {/* Gradient transition overlay at the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0f1729] to-transparent z-10"></div>
+      {/* Wave transition at the bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0f1729] to-transparent z-10" />
     </section>
   );
 };
