@@ -61,7 +61,7 @@ const tokenomicsData = [
 
 const ElonBadge = () => (
   <motion.div 
-    className="absolute top-8 right-8 bg-black/40 backdrop-blur-sm rounded-xl p-3 border border-white/10 cursor-pointer z-30"
+    className="absolute top-24 right-8 bg-black/40 backdrop-blur-sm rounded-xl p-3 border border-white/10 cursor-pointer z-30"
     whileHover={{ scale: 1.05 }}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
