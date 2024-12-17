@@ -8,6 +8,7 @@ interface TokenomicsChartProps {
     percentage: number;
     color: string;
     glowColor: string;
+    emoji: string;
   }>;
 }
 
@@ -15,7 +16,8 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
   const chartData = data.map(item => ({
     name: item.title,
     value: item.percentage,
-    color: item.glowColor
+    color: item.glowColor,
+    emoji: item.emoji
   }));
 
   return (
@@ -24,7 +26,7 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="w-full max-w-md aspect-square relative"
+      className="w-full max-w-md aspect-square relative mx-auto"
     >
       {/* Enhanced glow effect background */}
       <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-purple-500/10 to-blue-500/10 rounded-full blur-xl animate-pulse-glow" />
@@ -45,7 +47,7 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
               <Cell
                 key={`cell-${index}`}
                 fill={entry.color}
-                className="hover:opacity-80 transition-opacity duration-300"
+                className="hover:opacity-80 transition-opacity duration-300 cursor-pointer"
                 style={{
                   filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))'
                 }}
@@ -59,10 +61,14 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="glass-card p-3 rounded-lg border border-white/10"
+                    className="bg-black/80 backdrop-blur-sm p-3 rounded-lg border border-white/10"
                   >
-                    <p className="text-white font-bold font-serif">{payload[0].name}</p>
-                    <p className="text-yellow-400">{`${payload[0].value}%`}</p>
+                    <p className="text-white font-bold flex items-center gap-2">
+                      {payload[0].payload.emoji} {payload[0].name}
+                    </p>
+                    <p className="text-yellow-400 font-mono">
+                      {payload[0].value}%
+                    </p>
                   </motion.div>
                 );
               }

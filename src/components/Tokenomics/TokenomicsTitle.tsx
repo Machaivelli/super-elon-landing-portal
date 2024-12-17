@@ -11,11 +11,11 @@ export const TokenomicsTitle = () => {
     >
       <h2 className="text-4xl md:text-5xl font-bold mb-4 font-serif drop-shadow-[0_2px_4px_rgba(255,215,0,0.3)]">
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-white to-yellow-400">
-          Tokenomics – Engineered for Success & Stability
+          Tokenomics – Engineered for Success & Laughs! 🚀
         </span>
       </h2>
       <p className="text-xl text-gray-300 font-light max-w-2xl mx-auto">
-        A fair and transparent distribution, designed to take us to the moon and beyond.
+        Because even rocket scientists need numbers... and memes. 🧮✨
       </p>
     </motion.div>
   );
