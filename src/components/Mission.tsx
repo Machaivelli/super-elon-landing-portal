@@ -8,7 +8,11 @@ export const Mission = () => {
   return (
     <div className="relative py-8 flex items-center justify-center overflow-hidden">
       {/* Wave Divider Top */}
-      <WaveDivider flip color="from-background/80 via-background/90 to-background" />
+      <WaveDivider 
+        flip 
+        className="text-background" 
+        color="from-background/80 via-background/90 to-background" 
+      />
 
       {/* Starry background with parallax */}
       <div className="absolute inset-0 overflow-hidden">
@@ -97,7 +101,10 @@ export const Mission = () => {
       </div>
 
       {/* Wave Divider Bottom */}
-      <WaveDivider color="from-background/80 via-background/90 to-background" />
+      <WaveDivider 
+        className="text-background" 
+        color="from-background/80 via-background/90 to-background" 
+      />
     </div>
   );
 };

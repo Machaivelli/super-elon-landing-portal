@@ -13,8 +13,8 @@ export const WaveDivider = ({
 }: WaveDividerProps) => {
   return (
     <div className={cn(
-      "absolute left-0 right-0 h-16 -mt-1",
-      flip ? "-top-16" : "-bottom-16",
+      "absolute left-0 right-0 h-32 w-full", // Increased height and added full width
+      flip ? "top-0" : "bottom-0", // Adjusted positioning
       className
     )}>
       <div className={cn(
@@ -22,11 +22,11 @@ export const WaveDivider = ({
         flip && "transform rotate-180"
       )}>
         <div className={cn(
-          "absolute w-full h-full bg-gradient-to-b",
+          "absolute w-full h-full bg-gradient-to-b z-10", // Added z-index
           color
         )} />
         <svg
-          className="absolute w-full h-full"
+          className="absolute w-full h-full z-20" // Added z-index
           viewBox="0 0 1440 320"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
