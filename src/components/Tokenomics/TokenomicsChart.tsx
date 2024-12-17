@@ -23,8 +23,11 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8 }}
-      className="w-full max-w-md aspect-square"
+      className="w-full max-w-md aspect-square relative"
     >
+      {/* Glow Effect Background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-purple-500/10 to-blue-500/10 rounded-full blur-xl" />
+      
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -41,7 +44,7 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
               <Cell
                 key={`cell-${index}`}
                 fill={entry.color}
-                className="hover:opacity-80 transition-opacity duration-300"
+                className="hover:opacity-80 transition-opacity duration-300 drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]"
                 style={{
                   filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))'
                 }}
@@ -52,8 +55,8 @@ export const TokenomicsChart: React.FC<TokenomicsChartProps> = ({ data }) => {
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 return (
-                  <div className="bg-black/80 backdrop-blur-sm p-4 rounded-lg border border-white/10">
-                    <p className="text-white font-bold">{payload[0].name}</p>
+                  <div className="glass-card p-4 rounded-lg border border-white/10">
+                    <p className="text-white font-bold font-serif">{payload[0].name}</p>
                     <p className="text-yellow-400">{`${payload[0].value}%`}</p>
                   </div>
                 );

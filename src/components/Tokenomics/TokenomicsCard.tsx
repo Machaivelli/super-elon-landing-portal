@@ -24,7 +24,11 @@ export const TokenomicsCard: React.FC<TokenomicsCardProps> = ({
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
-      className="glass-card p-6 relative overflow-hidden group"
+      className="glass-card p-6 relative overflow-hidden group border border-white/10"
+      style={{
+        background: 'rgba(255, 255, 255, 0.03)',
+        backdropFilter: 'blur(10px)',
+      }}
     >
       {/* Glow Effect */}
       <div
@@ -34,12 +38,12 @@ export const TokenomicsCard: React.FC<TokenomicsCardProps> = ({
 
       <div className="flex items-start gap-4">
         <div
-          className={`p-3 rounded-lg bg-gradient-to-br ${color} text-white`}
+          className={`p-3 rounded-lg bg-gradient-to-br ${color} text-white animate-pulse-glow`}
         >
           <Icon className="w-6 h-6" />
         </div>
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
+          <h3 className="text-xl font-bold text-white mb-1 font-serif">{title}</h3>
           <div className="flex items-center gap-2 mb-2">
             <span className="text-2xl font-bold text-yellow-400">{percentage}%</span>
             <span className="text-gray-400">({amount})</span>
