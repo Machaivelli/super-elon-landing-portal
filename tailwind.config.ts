@@ -60,7 +60,7 @@ export default {
         },
       },
       backgroundImage: {
-        "hero-pattern": "linear-gradient(to bottom, #0f1729, #1a237e)",
+        "hero-pattern": "linear-gradient(to bottom, #0f1729, #1a0f29, #0f1729)",
         "glow-conic": "conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)",
       },
       keyframes: {
@@ -72,10 +72,15 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.5" },
         },
+        "gradient-flow": {
+          "0%, 100%": { backgroundPosition: "0% 50%" },
+          "50%": { backgroundPosition: "100% 50%" },
+        },
       },
       animation: {
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        "gradient-flow": "gradient-flow 15s ease infinite",
       },
     },
   },

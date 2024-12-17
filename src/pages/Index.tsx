@@ -14,10 +14,20 @@ const Index = () => {
       <AnimatedBackground />
       <FloatingDecorations />
       <Header />
-      <Hero />
-      <Mission />
-      <TokenomicsSection />
-      <TeamSection />
+      <div className="space-y-0">
+        <section className="section-transition">
+          <Hero />
+        </section>
+        <section className="section-transition">
+          <Mission />
+        </section>
+        <section className="section-transition">
+          <TokenomicsSection />
+        </section>
+        <section className="section-transition">
+          <TeamSection />
+        </section>
+      </div>
       <Footer />
       <AudioPlayer />
     </main>

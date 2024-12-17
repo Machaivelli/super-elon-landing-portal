@@ -31,9 +31,14 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(to bottom, #0f1729, #000000);
+    background: linear-gradient(to bottom, #0f1729, #1a0f29, #0f1729);
     min-height: 100vh;
     overflow-x: hidden;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Orbitron'] font-bold;
   }
 }
 
@@ -85,6 +90,34 @@
   opacity: 0.8;
 }
 
+/* Section Transitions */
+.section-transition {
+  position: relative;
+  padding: 4rem 0;
+}
+
+.section-transition::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, rgba(15, 23, 41, 0.5));
+  pointer-events: none;
+}
+
+.section-transition::after {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, transparent, rgba(15, 23, 41, 0.5));
+  pointer-events: none;
+}
+
 @keyframes starFall {
   0% {
     transform: translateY(-100vh);
@@ -130,6 +163,12 @@
   }
 }
 
+/* Glass Card Effect */
+.glass-card {
+  @apply bg-black/20 backdrop-blur-md border border-white/10 rounded-xl;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
 /* Decorative Images */
 .decor-image {
   @apply rounded-2xl shadow-lg shadow-neon-blue/20 border border-white/10;
@@ -138,4 +177,15 @@
 
 .decor-image:hover {
   @apply shadow-neon-blue/40 scale-105;
+}
+
+/* Glow Effects */
+.text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.neon-glow {
+  box-shadow: 0 0 10px theme('colors.neon.blue'),
+              0 0 20px theme('colors.neon.blue'),
+              0 0 30px theme('colors.neon.blue');
 }
