@@ -61,7 +61,7 @@ const tokenomicsData = [
 
 const ElonBadge = () => (
   <motion.div 
-    className="absolute top-8 right-8 bg-black/40 backdrop-blur-sm rounded-xl p-3 border border-white/10 cursor-pointer z-30"
+    className="fixed top-4 right-4 bg-black/40 backdrop-blur-sm rounded-xl p-3 border border-white/10 cursor-pointer z-50"
     whileHover={{ scale: 1.05 }}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -69,7 +69,7 @@ const ElonBadge = () => (
     <div className="relative group">
       <img 
         src="/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png" 
-        alt="Elon Musk" 
+        alt="Chief Meme Officer" 
         className="w-16 h-16 rounded-lg object-cover"
       />
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -84,7 +84,7 @@ const ElonBadge = () => (
 
 export const TokenomicsSection = () => {
   return (
-    <section className="relative min-h-screen py-16 overflow-hidden">
+    <section className="relative min-h-screen py-16 overflow-hidden bg-gradient-to-b from-[#0f1729] via-[#1a0f29] to-[#0f1729]">
       <TokenomicsBackground />
       
       <div className="relative container mx-auto px-4 z-20">
