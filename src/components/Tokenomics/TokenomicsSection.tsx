@@ -3,7 +3,7 @@ import { TokenomicsTitle } from './TokenomicsTitle';
 import { TokenomicsChart } from './TokenomicsChart';
 import { TokenomicsCard } from './TokenomicsCard';
 import { TokenomicsCTA } from './TokenomicsCTA';
-import { Rocket, Wallet, Tool, Megaphone, Shield } from 'lucide-react';
+import { Rocket, Wallet, Shield, Megaphone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const tokenomicsData = [
@@ -32,7 +32,7 @@ const tokenomicsData = [
     percentage: 10,
     amount: "100,000,000 SEC",
     description: "Reserved for the team, with a 6-month lock and gradual monthly releases (10%). Ensuring long-term commitment.",
-    icon: Tool,
+    icon: Shield,
     color: "from-purple-400 to-purple-600",
     glowColor: "#8b5cf6",
     emoji: "🛠️"
