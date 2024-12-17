@@ -14,6 +14,7 @@ const Index = () => {
       <AnimatedBackground />
       <FloatingDecorations />
       <Header />
+      <AudioPlayer />
       <div className="space-y-0">
         <section className="section-transition">
           <Hero />
@@ -29,7 +30,6 @@ const Index = () => {
         </section>
       </div>
       <Footer />
-      <AudioPlayer />
     </main>
   );
 };

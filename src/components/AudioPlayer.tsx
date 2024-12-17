@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
-import { Volume2, VolumeX, Volume1, Volume } from 'lucide-react';
-import { Button } from './ui/button';
-import { Slider } from './ui/slider';
+import { Play, Pause } from 'lucide-react';
+import { Progress } from './ui/progress';
+import { cn } from '@/lib/utils';
 
 export const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [volume, setVolume] = useState(0.5);
-  const [showVolume, setShowVolume] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const progressInterval = useRef<number>();
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -20,49 +20,36 @@ export const AudioPlayer = () => {
     }
   };
 
-  const handleVolumeChange = (value: number[]) => {
-    const newVolume = value[0];
-    setVolume(newVolume);
+  const updateProgress = () => {
     if (audioRef.current) {
-      audioRef.current.volume = newVolume;
+      const percentage = (audioRef.current.currentTime / audioRef.current.duration) * 100;
+      setProgress(percentage || 0);
     }
-  };
-
-  const VolumeIcon = () => {
-    if (volume === 0) return <VolumeX className="h-5 w-5 text-white/70" />;
-    if (volume < 0.3) return <Volume className="h-5 w-5 text-neon-blue" />;
-    if (volume < 0.7) return <Volume1 className="h-5 w-5 text-neon-blue" />;
-    return <Volume2 className="h-5 w-5 text-neon-blue" />;
   };
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    // Use encodeURIComponent to handle spaces in the filename
-    const audioPath = encodeURIComponent('zo staat het bestand nu in de public file.mp3');
-    const audio = new Audio(`/${audioPath}`);
+    const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
     audioRef.current = audio;
     audio.loop = true;
-    audio.volume = volume;
     
     audio.addEventListener('canplay', () => {
       console.log("Audio can play now");
-      audio.play()
-        .then(() => {
-          console.log("Audio playing successfully");
-          setIsPlaying(true);
-        })
-        .catch(error => {
-          console.error("Error playing audio:", error);
-          setIsPlaying(false);
-        });
     });
 
     audio.addEventListener('error', (e) => {
       console.error("Audio error:", e);
     });
+
+    audio.addEventListener('ended', () => {
+      setIsPlaying(false);
+      setProgress(0);
+    });
     
     return () => {
-      console.log("Cleaning up audio player");
+      if (progressInterval.current) {
+        window.clearInterval(progressInterval.current);
+      }
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = '';
@@ -70,31 +57,48 @@ export const AudioPlayer = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (progressInterval.current) {
+      window.clearInterval(progressInterval.current);
+    }
+
+    if (isPlaying) {
+      progressInterval.current = window.setInterval(updateProgress, 100);
+    }
+
+    return () => {
+      if (progressInterval.current) {
+        window.clearInterval(progressInterval.current);
+      }
+    };
+  }, [isPlaying]);
+
   return (
-    <div 
-      className="fixed bottom-4 right-4 z-50 flex items-center gap-2"
-      onMouseEnter={() => setShowVolume(true)}
-      onMouseLeave={() => setShowVolume(false)}
-    >
-      {showVolume && (
-        <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-md p-2 w-32">
-          <Slider
-            value={[volume]}
-            max={1}
-            step={0.01}
-            onValueChange={handleVolumeChange}
-            className="w-full"
-          />
-        </div>
-      )}
-      <Button
-        variant="outline"
-        size="icon"
-        className="bg-black/20 backdrop-blur-sm border border-white/10 hover:bg-black/30"
+    <div className="fixed top-4 left-4 z-50 flex items-center gap-3 bg-gradient-to-r from-black/80 to-black/60 backdrop-blur-md rounded-full p-2 border border-white/10 shadow-lg hover:shadow-neon-blue/20 transition-all duration-300">
+      <button
         onClick={togglePlay}
+        className={cn(
+          "w-8 h-8 flex items-center justify-center rounded-full",
+          "bg-gradient-to-r from-neon-orange to-neon-yellow",
+          "hover:scale-110 transition-transform duration-200",
+          "text-black shadow-lg"
+        )}
+        aria-label={isPlaying ? "Pause" : "Play"}
       >
-        <VolumeIcon />
-      </Button>
+        {isPlaying ? (
+          <Pause className="w-4 h-4" />
+        ) : (
+          <Play className="w-4 h-4 ml-0.5" />
+        )}
+      </button>
+      
+      <div className="w-20 md:w-24">
+        <Progress 
+          value={progress} 
+          className="h-1.5 bg-white/10"
+          indicatorClassName="bg-gradient-to-r from-neon-orange to-neon-yellow"
+        />
+      </div>
     </div>
   );
 };
