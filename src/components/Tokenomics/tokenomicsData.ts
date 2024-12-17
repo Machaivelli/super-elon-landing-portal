@@ -1,4 +1,4 @@
-import { Rocket, Users, Lock, Gift, Coins, Fire } from 'lucide-react';
+import { Rocket, Users, Lock, Gift, Coins } from 'lucide-react';
 
 export const tokenomicsData = [
   {
@@ -36,7 +36,7 @@ export const tokenomicsData = [
     percentage: 10,
     amount: "70,000,000 SEC",
     description: "For promotional activities and expanding our reach",
-    icon: Fire,
+    icon: Rocket,
     color: "from-red-500 to-red-700",
     glowColor: "#ef4444",
     emoji: "🔥"
