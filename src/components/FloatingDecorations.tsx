@@ -44,5 +44,5 @@ export const FloatingDecorations = () => {
     };
   }, []);
 
-  return <div ref={containerRef} className="fixed inset-0 pointer-events-none z-0" />;
+  return <div ref={containerRef} className="fixed inset-0 w-full h-full pointer-events-none" style={{ zIndex: 50 }} />;
 };
