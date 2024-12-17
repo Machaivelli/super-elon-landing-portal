@@ -3,7 +3,7 @@ import { Rocket, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true); // Set initial state to true
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const togglePlay = () => {
@@ -23,8 +23,15 @@ export const AudioPlayer = () => {
     audioRef.current = audio;
     audio.loop = true;
     
+    // Try to autoplay when component mounts
+    audio.play().catch(e => {
+      console.warn("Autoplay failed:", e);
+      setIsPlaying(false);
+    });
+    
     audio.addEventListener('error', (e) => {
       console.error("Audio error:", e);
+      setIsPlaying(false);
     });
 
     audio.addEventListener('ended', () => {
