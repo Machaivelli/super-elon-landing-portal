@@ -13,30 +13,20 @@ export const FloatingDecorations = () => {
       '/lovable-uploads/da5f9243-b30b-49f0-bff2-c03a3f58edf0.png'
     ];
 
-    const handleClick = (element: HTMLImageElement) => {
-      element.classList.add('exploding');
-      setTimeout(() => {
-        element.remove();
-      }, 500);
-    };
-
     const createFloatingDecor = () => {
       const decor = document.createElement('img');
       decor.className = 'floating-decor';
       decor.src = decorImages[Math.floor(Math.random() * decorImages.length)];
       decor.style.left = `${Math.random() * 100}vw`;
       decor.style.animationDuration = `${Math.random() * 5 + 10}s`;
-      
-      decor.addEventListener('click', () => handleClick(decor));
       container.appendChild(decor);
 
       setTimeout(() => {
-        if (decor && decor.parentNode === container) {
-          decor.remove();
-        }
+        decor.remove();
       }, 15000);
     };
 
+    // Create floating decorations
     const decorInterval = setInterval(createFloatingDecor, 2000);
 
     return () => {
@@ -44,5 +34,5 @@ export const FloatingDecorations = () => {
     };
   }, []);
 
-  return <div ref={containerRef} className="fixed inset-0 w-full h-full pointer-events-none" style={{ zIndex: 50 }} />;
+  return <div ref={containerRef} className="fixed inset-0 pointer-events-none z-0" />;
 };
