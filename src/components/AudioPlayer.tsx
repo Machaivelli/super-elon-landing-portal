@@ -19,7 +19,7 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     // Create audio element
-    audioRef.current = new Audio('/your-audio-file.mp3'); // You'll need to replace this with your audio file path
+    audioRef.current = new Audio('/zo staat het bestand nu in de public file.mp3');
     audioRef.current.loop = true; // Makes the audio loop
 
     // Cleanup
