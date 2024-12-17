@@ -1,10 +1,10 @@
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
-import { WaveDivider } from "./WaveDivider";
 
 export const Hero = () => {
   return (
     <div className="relative py-12 flex items-center justify-center overflow-hidden">
+      {/* Main content container */}
       <div className="container mx-auto px-4 z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Left side - Hero Image */}
@@ -96,9 +96,6 @@ export const Hero = () => {
           />
         ))}
       </div>
-
-      {/* Wave Divider */}
-      <WaveDivider className="text-background" color="from-background/80 via-background/90 to-background" />
     </div>
   );
 };
