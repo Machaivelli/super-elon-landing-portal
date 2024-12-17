@@ -7,6 +7,7 @@ import { TeamSection } from "@/components/Team/TeamSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
 import { AudioPlayer } from "@/components/AudioPlayer";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -19,6 +20,7 @@ const Index = () => {
       <TokenomicsSection />
       <TeamSection />
       <Features />
+      <Footer />
       <AudioPlayer />
     </main>
   );
