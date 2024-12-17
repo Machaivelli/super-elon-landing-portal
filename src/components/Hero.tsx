@@ -9,10 +9,11 @@ export const Hero = () => {
         backgroundImage: "url('/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat"
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed" // Added parallax effect
       }}
     >
-      {/* Floating elements */}
+      {/* Floating elements with parallax */}
       <div className="absolute inset-0 bg-black/30">
         <Rocket className="absolute w-12 h-12 text-neon-orange animate-float top-1/3 right-1/4" />
         <DollarSign className="absolute w-10 h-10 text-neon-yellow animate-float delay-1000 bottom-1/3 left-1/3" />
@@ -20,7 +21,7 @@ export const Hero = () => {
 
       {/* Main content */}
       <div className="container mx-auto px-4 z-10">
-        <div className="text-center">
+        <div className="text-center glass-card p-8">
           <img
             src="/lovable-uploads/151bd015-eb26-4db6-82d4-4ec6741ed896.png"
             alt="Super Elon Coin Logo"
@@ -30,19 +31,19 @@ export const Hero = () => {
             Super Elon Coin
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-white max-w-2xl mx-auto font-['Orbitron']">
-            The ultimate memecoin inspired by the visionary tech titan
+            To the Moon with Super Elon Coin – The Future of Memecoins!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 text-white font-bold py-4 px-8 rounded-full neon-border font-['Orbitron']"
+              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:opacity-90 text-white font-bold py-4 px-8 rounded-full neon-border font-['Orbitron'] group animate-pulse-glow hover:scale-105 transition-transform duration-300"
             >
               Buy Now
             </Button>
             <Button
               variant="outline"
               size="lg"
-              className="border-neon-blue text-neon-blue hover:bg-neon-blue/10 font-bold py-4 px-8 rounded-full font-['Orbitron']"
+              className="border-neon-blue text-neon-blue hover:bg-neon-blue/10 font-bold py-4 px-8 rounded-full font-['Orbitron'] hover:scale-105 transition-transform duration-300"
             >
               Whitepaper
             </Button>

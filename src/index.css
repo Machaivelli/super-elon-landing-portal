@@ -48,10 +48,6 @@
   @apply absolute inset-0 rounded-xl bg-gradient-to-r from-neon-blue via-neon-purple to-neon-orange opacity-50 blur-sm -z-10;
 }
 
-.hero-coin {
-  animation: float 6s ease-in-out infinite;
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0);
@@ -59,4 +55,23 @@
   50% {
     transform: translateY(-20px);
   }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 15px theme('colors.neon.blue'),
+                0 0 30px theme('colors.neon.purple');
+  }
+  50% {
+    box-shadow: 0 0 25px theme('colors.neon.blue'),
+                0 0 50px theme('colors.neon.purple');
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
 }
