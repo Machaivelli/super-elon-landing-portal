@@ -4,20 +4,20 @@ import { Rocket } from "lucide-react";
 export const Mission = () => {
   return (
     <div className="relative">
+      {/* Decorative image */}
+      <div className="absolute left-0 bottom-20 w-72 h-72 opacity-40 -rotate-12 hover:opacity-60 transition-opacity">
+        <img 
+          src="/lovable-uploads/c4b71e3b-ca71-43ea-9c85-0a29e9603a9c.png"
+          alt="Decorative Mission"
+          className="decor-image w-full h-full object-cover"
+        />
+      </div>
+      
       {/* Gradient transition overlay */}
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0f1729] to-transparent z-10"></div>
       
       {/* Main content */}
       <div className="min-h-screen relative">
-        {/* Decorative image */}
-        <div className="absolute left-0 bottom-20 w-72 h-72 opacity-20 -rotate-12">
-          <img 
-            src="/lovable-uploads/c4b71e3b-ca71-43ea-9c85-0a29e9603a9c.png"
-            alt="Decorative Mission"
-            className="w-full h-full object-cover rounded-2xl"
-          />
-        </div>
-        
         <div className="container mx-auto px-4 pt-32 relative z-20">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-orange bg-clip-text text-transparent font-['Orbitron'] animate-pulse">

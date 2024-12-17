@@ -5,11 +5,11 @@ export const Hero = () => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Decorative image */}
-      <div className="absolute right-0 top-20 w-64 h-64 opacity-20 rotate-12">
+      <div className="absolute right-0 top-20 w-64 h-64 opacity-40 rotate-12 hover:opacity-60 transition-opacity">
         <img 
           src="/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png" 
           alt="Decorative Space" 
-          className="w-full h-full object-cover rounded-2xl"
+          className="decor-image w-full h-full object-cover"
         />
       </div>
 
