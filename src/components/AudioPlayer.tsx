@@ -98,31 +98,31 @@ export const AudioPlayer = () => {
   }, [isPlaying]);
 
   return (
-    <div className="fixed top-24 left-4 z-50 flex flex-col gap-2 bg-gradient-to-r from-black/90 via-black/80 to-black/90 backdrop-blur-lg rounded-xl p-4 border border-neon-orange/20 shadow-lg hover:shadow-neon-orange/30 transition-all duration-300 min-w-[240px] group">
+    <div className="fixed top-24 left-4 z-50 flex flex-col gap-1 bg-gradient-to-r from-black/80 via-black/70 to-black/80 backdrop-blur-lg rounded-lg p-3 border border-purple-500/20 shadow-lg hover:shadow-purple-500/30 transition-all duration-300 min-w-[200px] group">
       {/* Title */}
-      <div className="text-xs font-mono text-neon-orange/70 text-center mb-1">
+      <div className="text-[10px] font-mono text-white/70 text-center">
         Super Elon Theme
       </div>
       
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         {/* Play/Pause Button */}
         <button
           onClick={togglePlay}
           className={cn(
-            "w-10 h-10 flex items-center justify-center rounded-full",
-            "bg-gradient-to-br from-neon-orange via-neon-yellow to-neon-orange",
+            "w-8 h-8 flex items-center justify-center rounded-full",
+            "bg-gradient-to-br from-yellow-500 via-yellow-400 to-yellow-600",
             "hover:scale-110 transition-all duration-200",
-            "text-black shadow-lg relative group-hover:shadow-neon-orange",
+            "text-black shadow-lg relative group-hover:shadow-yellow-500/50",
             "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-gradient-to-r after:from-neon-orange/20 after:to-neon-yellow/20",
+            "after:bg-gradient-to-r after:from-yellow-400/20 after:to-yellow-500/20",
             "after:animate-pulse-glow after:blur-md after:-z-10"
           )}
           aria-label={isPlaying ? "Pause" : "Play"}
         >
           {isPlaying ? (
-            <Pause className="w-5 h-5" />
+            <Pause className="w-4 h-4" />
           ) : (
-            <Rocket className="w-5 h-5 rotate-45" />
+            <Rocket className="w-4 h-4 rotate-45" />
           )}
         </button>
 
@@ -135,19 +135,19 @@ export const AudioPlayer = () => {
           >
             <Progress 
               value={progress} 
-              className="h-1.5 bg-white/5"
-              indicatorClassName="bg-gradient-to-r from-neon-orange via-neon-yellow to-neon-orange relative"
+              className="h-1 bg-purple-900/20"
+              indicatorClassName="bg-gradient-to-r from-yellow-400 to-yellow-600 relative"
             />
             <div 
               className="absolute top-1/2 -translate-y-1/2"
               style={{ left: `${progress}%` }}
             >
-              <div className="w-3 h-3 rounded-full bg-gradient-to-r from-neon-orange to-neon-yellow opacity-0 group-hover:opacity-100 transition-opacity duration-200 -translate-x-1/2 shadow-lg shadow-neon-orange/50" />
+              <div className="w-2 h-2 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200 -translate-x-1/2 shadow-lg shadow-yellow-500/50" />
             </div>
           </div>
 
           {/* Time Display */}
-          <div className="flex justify-between text-[10px] font-mono text-neon-orange/50">
+          <div className="flex justify-between text-[8px] font-mono text-purple-300/70">
             <span>{currentTime}</span>
             <span>{duration}</span>
           </div>
