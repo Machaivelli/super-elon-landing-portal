@@ -27,10 +27,10 @@ export const TokenomicsCard: React.FC<TokenomicsCardProps> = ({
     <motion.div
       whileHover={{ 
         scale: 1.02,
-        y: -5,
+        y: -2,
         transition: { duration: 0.2 }
       }}
-      className="glass-card p-4 relative overflow-hidden group rounded-xl border border-white/10"
+      className="glass-card p-3 relative overflow-hidden group rounded-lg border border-white/10"
       style={{
         background: 'rgba(255, 255, 255, 0.03)',
         backdropFilter: 'blur(10px)',
@@ -42,22 +42,22 @@ export const TokenomicsCard: React.FC<TokenomicsCardProps> = ({
         style={{ background: `linear-gradient(45deg, ${glowColor}, transparent)` }}
       />
 
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-2">
         <div
-          className={`p-2 rounded-lg bg-gradient-to-br ${color} text-white animate-pulse-glow relative group`}
+          className={`p-1.5 rounded-lg bg-gradient-to-br ${color} text-white animate-pulse-glow relative group`}
         >
-          <Icon className="w-5 h-5" />
-          <span className="absolute -top-2 -right-2 text-lg transform group-hover:scale-125 transition-transform">
+          <Icon className="w-4 h-4" />
+          <span className="absolute -top-1 -right-1 text-sm transform group-hover:scale-125 transition-transform">
             {emoji}
           </span>
         </div>
         <div className="flex-1">
-          <h3 className="text-lg font-bold text-white mb-1 font-serif">{title}</h3>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xl font-bold text-yellow-400">{percentage}%</span>
-            <span className="text-sm text-gray-400">({amount})</span>
+          <h3 className="text-base font-bold text-white mb-0.5 font-serif">{title}</h3>
+          <div className="flex items-center gap-1 mb-0.5">
+            <span className="text-lg font-bold text-yellow-400">{percentage}%</span>
+            <span className="text-xs text-gray-400">({amount})</span>
           </div>
-          <p className="text-sm text-gray-300">{description}</p>
+          <p className="text-xs text-gray-300">{description}</p>
         </div>
       </div>
 
