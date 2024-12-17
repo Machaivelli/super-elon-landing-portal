@@ -37,7 +37,9 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    const audio = new Audio('/zo staat het bestand nu in de public file.mp3');
+    // Use encodeURIComponent to handle spaces in the filename
+    const audioPath = encodeURIComponent('zo staat het bestand nu in de public file.mp3');
+    const audio = new Audio(`/${audioPath}`);
     audioRef.current = audio;
     audio.loop = true;
     audio.volume = volume;
