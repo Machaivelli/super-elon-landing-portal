@@ -3,16 +3,13 @@ import { Button } from "./ui/button";
 
 export const Hero = () => {
   return (
-    <div 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
-      style={{
-        backgroundImage: "url('/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed" // Added parallax effect
-      }}
-    >
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <img 
+        src="/lovable-uploads/1f26cd96-5271-4dae-95c6-7a0e045b6dea.png" 
+        alt="Hero Background" 
+        className="absolute inset-0 w-full h-full object-cover opacity-70"
+      />
+
       {/* Floating elements with parallax */}
       <div className="absolute inset-0 bg-black/30">
         <Rocket className="absolute w-12 h-12 text-neon-orange animate-float top-1/3 right-1/4" />

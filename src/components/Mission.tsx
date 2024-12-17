@@ -8,15 +8,12 @@ export const Mission = () => {
       <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0f1729] to-transparent z-10"></div>
       
       {/* Main content */}
-      <div 
-        className="min-h-screen relative"
-        style={{
-          backgroundImage: "url('/lovable-uploads/c4b71e3b-ca71-43ea-9c85-0a29e9603a9c.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed"
-        }}
-      >
+      <div className="min-h-screen relative">
+        <img 
+          src="/lovable-uploads/c4b71e3b-ca71-43ea-9c85-0a29e9603a9c.png"
+          alt="Mission Background"
+          className="absolute inset-0 w-full h-full object-cover opacity-90"
+        />
         <div className="absolute inset-0 bg-black/10" />
         
         <div className="container mx-auto px-4 pt-32 relative z-20">
