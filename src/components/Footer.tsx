@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const socialLinks = [
   {
@@ -56,12 +55,10 @@ export const Footer = () => {
               title={link.name}
             >
               <div className="relative w-8 h-8 md:w-10 md:h-10">
-                <Image
+                <img
                   src={link.icon}
                   alt={link.name}
-                  width={40}
-                  height={40}
-                  className="transition-all duration-300 group-hover:brightness-125"
+                  className="w-full h-full object-contain transition-all duration-300 group-hover:brightness-125"
                 />
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-neon-blue/20 blur-xl" />
               </div>
