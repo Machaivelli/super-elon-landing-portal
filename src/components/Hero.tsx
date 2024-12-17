@@ -1,5 +1,6 @@
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
+import { WaveDivider } from "./WaveDivider";
 
 export const Hero = () => {
   return (
@@ -96,6 +97,9 @@ export const Hero = () => {
           />
         ))}
       </div>
+
+      {/* Wave Divider */}
+      <WaveDivider color="from-background via-background/90 to-background/80" />
     </div>
   );
 };

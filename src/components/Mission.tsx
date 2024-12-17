@@ -2,10 +2,14 @@ import { Button } from "./ui/button";
 import { Rocket } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { motion } from "framer-motion";
+import { WaveDivider } from "./WaveDivider";
 
 export const Mission = () => {
   return (
     <div className="relative py-8 flex items-center justify-center overflow-hidden">
+      {/* Wave Divider Top */}
+      <WaveDivider flip color="from-background/80 via-background/90 to-background" />
+
       {/* Starry background with parallax */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-900 to-gray-900" />
@@ -91,6 +95,9 @@ export const Mission = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Wave Divider Bottom */}
+      <WaveDivider color="from-background/80 via-background/90 to-background" />
     </div>
   );
 };
