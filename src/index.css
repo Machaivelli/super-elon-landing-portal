@@ -56,6 +56,20 @@
   color: theme('colors.neon.orange');
 }
 
+.floating-decor {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  animation: floatUp 15s linear infinite;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.floating-decor:hover {
+  opacity: 0.8;
+}
+
 @keyframes starFall {
   0% {
     transform: translateY(-100vh);
@@ -80,6 +94,23 @@
   }
   100% {
     transform: translateY(-100vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
     opacity: 0;
   }
 }
