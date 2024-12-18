@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { Rocket, Timer, Users, ArrowRight } from "lucide-react";
+import { Timer, Rocket, ArrowRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import { motion } from "framer-motion";
 
@@ -8,11 +8,11 @@ export const Mission = () => {
     <div className="relative py-6 flex items-center justify-center overflow-hidden">
       {/* Background gradient and stars */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-900 to-gray-900" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-theme-primary/20 via-theme-dark to-theme-dark" />
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+            className="absolute w-1 h-1 bg-theme-light rounded-full animate-twinkle"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -40,19 +40,19 @@ export const Mission = () => {
                 repeatType: "reverse", 
                 duration: 1.5 
               }}
-              className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold mb-4"
+              className="inline-flex items-center gap-2 bg-theme-primary/20 text-theme-light px-4 py-1 rounded-full text-sm font-semibold mb-4"
             >
               <Timer className="w-4 h-4 animate-pulse" />
               Limited Time Opportunity
             </motion.div>
 
             {/* Main Title */}
-            <h2 className="text-3xl md:text-4xl font-bold text-neon-blue font-['Orbitron'] drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]">
+            <h2 className="text-3xl md:text-4xl font-bold text-theme-primary font-['Orbitron'] drop-shadow-[0_0_10px_rgba(155,135,245,0.5)]">
               Don't Miss Out – Join the Super Elon Revolution Now!
             </h2>
 
             {/* Subtitle */}
-            <p className="text-lg text-white/90 font-['Orbitron'] max-w-xl mx-auto">
+            <p className="text-lg text-theme-light/90 font-['Orbitron'] max-w-xl mx-auto">
               Be Part of the Future of Memecoins – The Clock is Ticking!
             </p>
 
@@ -65,9 +65,7 @@ export const Mission = () => {
             <div className="space-y-4 pt-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                className="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-full font-['Orbitron'] 
-                         shadow-[0_0_20px_rgba(255,126,51,0.5)] hover:shadow-[0_0_30px_rgba(255,126,51,0.7)]
-                         transition-all duration-300 flex items-center gap-2 mx-auto text-lg animate-pulse"
+                className="theme-button flex items-center gap-2 mx-auto text-lg animate-pulse"
               >
                 <Rocket className="w-5 h-5" />
                 Secure Your Spot Now!
@@ -76,7 +74,7 @@ export const Mission = () => {
 
               {/* Social Proof */}
               <motion.div
-                className="flex items-center gap-2 bg-black/40 backdrop-blur-sm rounded-full p-2 border border-neon-blue/30 max-w-fit mx-auto"
+                className="flex items-center gap-2 glass-card p-2 max-w-fit mx-auto"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -85,7 +83,7 @@ export const Mission = () => {
                   alt="Early Adopter"
                   className="w-6 h-6 rounded-full"
                 />
-                <span className="text-xs text-white/90 font-['Orbitron']">
+                <span className="text-xs text-theme-light/90 font-['Orbitron']">
                   "Already 10x my investment!" - CryptoWhale
                 </span>
               </motion.div>
