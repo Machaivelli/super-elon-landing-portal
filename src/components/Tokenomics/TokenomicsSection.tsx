@@ -64,17 +64,20 @@ const ElonBadge = () => {
   
   return (
     <motion.div 
-      className="fixed top-20 right-4 group cursor-pointer z-50"
+      className="fixed top-20 right-4 group cursor-pointer z-50 
+                 md:scale-75 lg:scale-100 
+                 md:opacity-70 lg:opacity-100
+                 md:hover:opacity-100"
       whileHover={{ scale: 1.15 }}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      {/* Particle effects */}
+      {/* Particle effects - only show on desktop */}
       <AnimatePresence>
         {particles.map((i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-neon-blue rounded-full opacity-0 group-hover:opacity-100"
+            className="absolute w-2 h-2 bg-neon-blue rounded-full opacity-0 group-hover:opacity-100 hidden lg:block"
             initial={{ x: 0, y: 0, scale: 0 }}
             animate={{
               x: Math.cos(i * (Math.PI / 4)) * 50,
@@ -95,15 +98,16 @@ const ElonBadge = () => {
       <motion.div 
         className="relative bg-black/40 backdrop-blur-sm rounded-xl p-3 border border-white/10 overflow-hidden
                    group-hover:shadow-[0_0_30px_5px_rgba(0,243,255,0.5)]
-                   transition-all duration-500"
+                   transition-all duration-500
+                   md:scale-90 lg:scale-100"
         whileHover={{
           rotateZ: [0, -5, 5, -5, 5, 0],
           transition: { duration: 0.5 }
         }}
       >
-        {/* Rainbow border effect */}
+        {/* Rainbow border effect - only show on desktop */}
         <motion.div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100"
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 hidden lg:block"
           animate={{
             background: [
               'linear-gradient(0deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)',
@@ -125,7 +129,7 @@ const ElonBadge = () => {
           <motion.img 
             src="/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png" 
             alt="Chief Meme Officer" 
-            className="w-16 h-16 rounded-lg object-cover group-hover:shadow-lg transition-all duration-300"
+            className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-lg object-cover group-hover:shadow-lg transition-all duration-300"
             whileHover={{ scale: 1.1 }}
           />
           <motion.div 
@@ -134,7 +138,7 @@ const ElonBadge = () => {
             whileHover={{ opacity: 1 }}
           >
             <motion.span 
-              className="text-sm font-bold text-white bg-black/60 px-2 py-1 rounded"
+              className="text-xs lg:text-sm font-bold text-white bg-black/60 px-2 py-1 rounded"
               animate={{
                 y: [0, -5, 0],
                 scale: [1, 1.1, 1],
@@ -151,7 +155,7 @@ const ElonBadge = () => {
 
         {/* Text with glow effect */}
         <motion.p 
-          className="text-xs text-white/80 mt-2 font-bold relative z-10
+          className="text-[10px] md:text-xs lg:text-sm text-white/80 mt-2 font-bold relative z-10
                      group-hover:text-neon-blue group-hover:font-extrabold
                      transition-all duration-300"
           animate={{
