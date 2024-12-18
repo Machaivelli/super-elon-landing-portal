@@ -58,10 +58,21 @@ export default {
           orange: "#ff7e33",
           yellow: "#ffd700",
         },
+        theme: {
+          primary: "#9b87f5",
+          secondary: "#7E69AB",
+          tertiary: "#6E59A5",
+          dark: "#1A1F2C",
+          light: "#D6BCFA",
+          neutral: "#8E9196",
+          soft: "#E5DEFF",
+        }
       },
       backgroundImage: {
         "hero-pattern": "linear-gradient(to bottom, #0f1729, #1a0f29, #0f1729)",
         "glow-conic": "conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)",
+        "theme-gradient": "linear-gradient(102.3deg, rgba(147,39,143,1) 5.9%, rgba(234,172,232,1) 64%, rgba(246,219,245,1) 89%)",
+        "card-gradient": "linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(255,255,255,0.02))",
       },
       keyframes: {
         "float": {
@@ -76,11 +87,20 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        "glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 15px rgba(139, 92, 246, 0.5)",
+          },
+          "50%": {
+            boxShadow: "0 0 30px rgba(139, 92, 246, 0.8)",
+          },
+        },
       },
       animation: {
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "gradient-flow": "gradient-flow 15s ease infinite",
+        "glow": "glow 2s ease-in-out infinite",
       },
     },
   },
