@@ -32,7 +32,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-4xl md:text-5xl font-bold mb-4 text-neon-blue font-['Orbitron'] leading-tight drop-shadow-[0_0_10px_rgba(0,243,255,0.5)]"
+              className="text-4xl md:text-5xl font-bold mb-4 text-theme-primary font-['Orbitron'] leading-tight drop-shadow-[0_0_10px_rgba(155,135,245,0.5)]"
             >
               Super Elon Coin
             </motion.h1>
@@ -41,7 +41,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg md:text-xl mb-8 text-white font-['Orbitron'] max-w-2xl mx-auto"
+              className="text-lg md:text-xl mb-8 text-theme-light font-['Orbitron'] max-w-2xl mx-auto"
             >
               To the Moon with Super Elon Coin – The Future of Memecoins!
             </motion.p>
@@ -54,14 +54,14 @@ export const Hero = () => {
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-3 px-6 rounded-full font-['Orbitron'] group transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50"
+                className="theme-button"
               >
                 Buy Now
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 font-bold py-3 px-6 rounded-full font-['Orbitron'] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/50"
+                className="border-2 border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-bold py-3 px-6 rounded-full font-['Orbitron'] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-theme-primary/50"
               >
                 Whitepaper
               </Button>
@@ -88,7 +88,7 @@ export const Hero = () => {
               delay: i * 0.8,
               ease: "easeInOut"
             }}
-            className="absolute w-3 h-3 bg-orange-500 rounded-full blur-sm"
+            className="absolute w-3 h-3 bg-theme-primary rounded-full blur-sm"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`

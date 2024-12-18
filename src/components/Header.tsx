@@ -14,10 +14,10 @@ export const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-sm border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-theme-dark/20 backdrop-blur-sm border-b border-theme-primary/10">
       {/* Optional Ticker Banner */}
-      <div className="hidden md:block bg-gradient-to-r from-neon-purple/20 via-neon-blue/20 to-neon-purple/20 text-center py-1 text-sm animate-gradient-flow">
-        <span className="text-white/90">
+      <div className="hidden md:block bg-gradient-to-r from-theme-primary/20 via-theme-secondary/20 to-theme-primary/20 text-center py-1 text-sm animate-gradient-flow">
+        <span className="text-theme-light">
           Super Elon Coin | The Next x1000 Opportunity Awaits! 🚀
         </span>
       </div>
@@ -31,7 +31,7 @@ export const Header = () => {
               alt="Super Elon Coin"
               className="h-8 w-8 rounded-full animate-pulse-glow"
             />
-            <span className="text-white font-bold text-lg font-['Orbitron']">
+            <span className="text-theme-light font-bold text-lg font-['Orbitron']">
               Super Elon Coin
             </span>
           </div>
@@ -40,42 +40,42 @@ export const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <button 
               onClick={() => scrollToSection('home')}
-              className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               Home
-              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
             <button 
               onClick={() => scrollToSection('mission')}
-              className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               <span className="flex items-center gap-1">
                 Mission <ListOrdered className="h-3 w-3" />
               </span>
-              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
             <button 
               onClick={() => scrollToSection('tokenomics')}
-              className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               <span className="flex items-center gap-1">
                 Tokenomics <Rocket className="h-3 w-3" />
               </span>
-              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
             <button 
               onClick={() => scrollToSection('team')}
-              className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               <span className="flex items-center gap-1">
                 Dream Team <Users className="h-3 w-3" />
               </span>
-              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
             <Button
               variant="outline"
               size="sm"
-              className="border-neon-orange text-neon-orange hover:bg-neon-orange/10 font-['Orbitron'] animate-pulse-glow"
+              className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] animate-pulse-glow"
             >
               Buy Now
             </Button>
@@ -83,7 +83,7 @@ export const Header = () => {
 
           {/* Mobile Menu Button */}
           <button 
-            className="md:hidden text-white hover:text-neon-blue transition-colors"
+            className="md:hidden text-theme-light hover:text-theme-primary transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -93,35 +93,35 @@ export const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <nav className="flex flex-col space-y-4 py-4 px-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 mb-4">
+            <nav className="flex flex-col space-y-4 py-4 px-2 bg-theme-dark/40 backdrop-blur-md rounded-lg border border-theme-primary/10 mb-4">
               <button 
                 onClick={() => scrollToSection('home')}
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
+                className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection('mission')}
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
+                className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
               >
                 Mission
               </button>
               <button 
                 onClick={() => scrollToSection('tokenomics')}
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
+                className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
               >
                 Tokenomics
               </button>
               <button 
                 onClick={() => scrollToSection('team')}
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
+                className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
               >
                 Dream Team
               </button>
               <Button
                 variant="outline"
                 size="sm"
-                className="border-neon-orange text-neon-orange hover:bg-neon-orange/10 font-['Orbitron'] w-full"
+                className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] w-full"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Buy Now
