@@ -3,7 +3,7 @@ import { Rocket, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true); // Set initial state to true
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const togglePlay = () => {
@@ -21,13 +21,20 @@ export const AudioPlayer = () => {
     console.log("Initializing audio player...");
     const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
     audioRef.current = audio;
-    audio.loop = true;
+    audio.loop = true; // Enable looping
     
     // Try to autoplay when component mounts
-    audio.play().catch(e => {
-      console.warn("Autoplay failed:", e);
-      setIsPlaying(false);
-    });
+    const attemptAutoplay = async () => {
+      try {
+        await audio.play();
+        console.log("Autoplay successful");
+      } catch (e) {
+        console.warn("Autoplay failed:", e);
+        setIsPlaying(false);
+      }
+    };
+
+    attemptAutoplay();
     
     audio.addEventListener('error', (e) => {
       console.error("Audio error:", e);
@@ -35,7 +42,10 @@ export const AudioPlayer = () => {
     });
 
     audio.addEventListener('ended', () => {
-      setIsPlaying(false);
+      // This shouldn't trigger due to loop=true, but just in case
+      if (isPlaying) {
+        audio.play().catch(console.error);
+      }
     });
     
     return () => {
@@ -51,18 +61,20 @@ export const AudioPlayer = () => {
       <button
         onClick={togglePlay}
         className={cn(
-          "w-8 h-8 flex items-center justify-center rounded-full",
+          "w-12 h-12 flex items-center justify-center rounded-full",
+          "bg-black/20 backdrop-blur-sm border border-white/10",
           "hover:scale-110 transition-all duration-200",
           "text-yellow-400 relative",
           "after:absolute after:inset-0 after:rounded-full",
-          "after:animate-pulse-glow after:blur-md after:-z-10"
+          "after:animate-pulse-glow after:blur-md after:-z-10",
+          "shadow-lg hover:shadow-yellow-400/20"
         )}
         aria-label={isPlaying ? "Pause" : "Play"}
       >
         {isPlaying ? (
-          <Pause className="w-4 h-4" />
+          <Pause className="w-6 h-6" />
         ) : (
-          <Rocket className="w-4 h-4 rotate-45 -translate-y-[1px]" />
+          <Rocket className="w-6 h-6 rotate-45 -translate-y-[1px]" />
         )}
       </button>
     </div>
