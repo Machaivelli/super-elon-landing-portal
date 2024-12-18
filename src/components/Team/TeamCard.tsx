@@ -33,8 +33,12 @@ export const TeamCard = ({ name, role, image, bio, stats, isMain = false }: Team
           </div>
           
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold text-yellow-400 mb-2">{name}</h3>
-            <p className="text-gray-300 mb-4">{role}</p>
+            <h3 className={`text-2xl font-bold mb-2 ${name === "Elon Musk" ? "bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-clip-text text-transparent animate-gradient-flow" : "text-yellow-400"}`}>
+              {name}
+            </h3>
+            <p className={`mb-4 ${name === "Elon Musk" ? "bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-gradient-flow" : "text-gray-300"}`}>
+              {role}
+            </p>
             <p className="text-gray-400">{bio}</p>
           </div>
         </div>
