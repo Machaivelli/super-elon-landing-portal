@@ -75,7 +75,7 @@ export const Header = () => {
             <Button
               variant="outline"
               size="sm"
-              className="theme-button"
+              className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] animate-pulse-glow"
             >
               Buy Now
             </Button>
@@ -93,7 +93,7 @@ export const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden">
-            <nav className="flex flex-col space-y-4 py-4 px-2 glass-card mb-4">
+            <nav className="flex flex-col space-y-4 py-4 px-2 bg-theme-dark/40 backdrop-blur-md rounded-lg border border-theme-primary/10 mb-4">
               <button 
                 onClick={() => scrollToSection('home')}
                 className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
@@ -121,7 +121,7 @@ export const Header = () => {
               <Button
                 variant="outline"
                 size="sm"
-                className="theme-button w-full"
+                className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] w-full"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Buy Now

@@ -17,7 +17,7 @@ export const Hero = () => {
             <img 
               src="/lovable-uploads/0458ba9b-f073-4372-9947-e2c688fcbd13.png"
               alt="Super Elon Coin"
-              className="w-full h-auto animate-float"
+              className="w-full h-auto"
             />
           </motion.div>
 
@@ -41,7 +41,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg md:text-xl mb-8 text-theme-light/80 font-['Orbitron'] max-w-2xl mx-auto"
+              className="text-lg md:text-xl mb-8 text-theme-light font-['Orbitron'] max-w-2xl mx-auto"
             >
               To the Moon with Super Elon Coin – The Future of Memecoins!
             </motion.p>

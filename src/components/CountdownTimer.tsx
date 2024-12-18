@@ -33,18 +33,18 @@ const CountdownTimer = () => {
 
   return (
     <div className="flex flex-col items-center space-y-8 w-full max-w-4xl mx-auto px-4">
-      <div className="w-full glass-card p-8 md:p-12 animate-float">
-        <h3 className="text-3xl md:text-5xl font-bold mb-8 text-theme-primary font-['Orbitron'] animate-pulse-glow">
+      <div className="w-full rounded-xl p-8 md:p-12 bg-black/40 backdrop-blur-sm animate-float shadow-2xl border border-white/5">
+        <h3 className="text-3xl md:text-5xl font-bold mb-8 text-white font-['Orbitron'] animate-pulse-glow">
           Phase 2 Begins In
         </h3>
         
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
           {Object.entries(timeLeft).map(([unit, value]) => (
-            <div key={unit} className="flex flex-col space-y-4 p-4 rounded-lg bg-theme-dark/20">
-              <span className="text-4xl md:text-6xl lg:text-7xl font-bold text-theme-primary animate-pulse-glow">
+            <div key={unit} className="flex flex-col space-y-4 p-4 rounded-lg bg-black/20">
+              <span className="text-4xl md:text-6xl lg:text-7xl font-bold text-white animate-pulse-glow">
                 {value.toString().padStart(2, '0')}
               </span>
-              <span className="text-base md:text-xl text-theme-light/80 capitalize font-['Orbitron']">
+              <span className="text-base md:text-xl text-gray-300 capitalize font-['Orbitron']">
                 {unit}
               </span>
             </div>
