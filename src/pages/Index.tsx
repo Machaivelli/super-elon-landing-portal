@@ -15,17 +15,17 @@ const Index = () => {
       <FloatingDecorations />
       <Header />
       <AudioPlayer />
-      <div className="space-y-0">
-        <section className="section-transition">
+      <div className="space-y-0 scroll-smooth">
+        <section id="home" className="section-transition pt-16">
           <Hero />
         </section>
-        <section className="section-transition">
+        <section id="mission" className="section-transition">
           <Mission />
         </section>
-        <section className="section-transition">
+        <section id="tokenomics" className="section-transition">
           <TokenomicsSection />
         </section>
-        <section className="section-transition">
+        <section id="team" className="section-transition">
           <TeamSection />
         </section>
       </div>

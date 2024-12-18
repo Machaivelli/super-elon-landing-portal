@@ -5,6 +5,14 @@ import { Menu, X, Rocket, Users, ListOrdered } from "lucide-react";
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-sm border-b border-white/10">
       {/* Optional Ticker Banner */}
@@ -30,40 +38,40 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a 
-              href="#home" 
+            <button 
+              onClick={() => scrollToSection('home')}
               className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               Home
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
-            </a>
-            <a 
-              href="#tokenomics" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('tokenomics')}
               className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               <span className="flex items-center gap-1">
                 Tokenomics <Rocket className="h-3 w-3" />
               </span>
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
-            </a>
-            <a 
-              href="#phases" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('mission')}
               className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               <span className="flex items-center gap-1">
-                Phases <ListOrdered className="h-3 w-3" />
+                Mission <ListOrdered className="h-3 w-3" />
               </span>
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
-            </a>
-            <a 
-              href="#team" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('team')}
               className="text-white hover:text-neon-blue transition-colors duration-200 font-['Orbitron'] text-sm group"
             >
               <span className="flex items-center gap-1">
                 Dream Team <Users className="h-3 w-3" />
               </span>
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-neon-blue"/>
-            </a>
+            </button>
             <Button
               variant="outline"
               size="sm"
@@ -86,34 +94,30 @@ export const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <nav className="flex flex-col space-y-4 py-4 px-2 bg-black/40 backdrop-blur-md rounded-lg border border-white/10 mb-4">
-              <a 
-                href="#home" 
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                onClick={() => scrollToSection('home')}
+                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
               >
                 Home
-              </a>
-              <a 
-                href="#tokenomics" 
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('tokenomics')}
+                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
               >
                 Tokenomics
-              </a>
-              <a 
-                href="#phases" 
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
-                onClick={() => setIsMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('mission')}
+                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
               >
-                Phases
-              </a>
-              <a 
-                href="#team" 
-                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5"
-                onClick={() => setIsMenuOpen(false)}
+                Mission
+              </button>
+              <button 
+                onClick={() => scrollToSection('team')}
+                className="text-white hover:text-neon-blue transition-colors px-4 py-2 rounded-lg hover:bg-white/5 text-left"
               >
                 Dream Team
-              </a>
+              </button>
               <Button
                 variant="outline"
                 size="sm"
