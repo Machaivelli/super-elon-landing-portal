@@ -19,7 +19,8 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
+    // Fixed the audio path by removing the leading slash
+    const audio = new Audio('lovable-uploads/zo staat het bestand nu in de public file.mp3');
     audioRef.current = audio;
     audio.loop = true; // Enable looping
     
