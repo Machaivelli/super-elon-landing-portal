@@ -99,7 +99,7 @@ export default {
       animation: {
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
-        "gradient-flow": "gradient-flow 3s ease infinite",
+        "gradient-flow": "gradient-flow 15s ease infinite",
         "glow": "glow 2s ease-in-out infinite",
       },
     },

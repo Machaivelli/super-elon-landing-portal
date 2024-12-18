@@ -11,29 +11,6 @@ interface TeamCardProps {
 }
 
 export const TeamCard = ({ name, role, image, bio, stats, isMain = false }: TeamCardProps) => {
-  // Function to render role text with emoji preserved
-  const renderRole = (roleText: string) => {
-    // Split the role text to separate emoji
-    const [text, emoji] = roleText.split('🐶');
-    if (emoji) {
-      // If there's an emoji, render it separately
-      return (
-        <>
-          <span className="bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-gradient-flow">
-            {text}
-          </span>
-          <span className="ml-1">🐶</span>
-        </>
-      );
-    }
-    // If no emoji, render the whole text with gradient
-    return (
-      <span className="bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-gradient-flow">
-        {roleText}
-      </span>
-    );
-  };
-
   return (
     <motion.div
       whileHover={{ scale: 1.02 }}
@@ -56,12 +33,8 @@ export const TeamCard = ({ name, role, image, bio, stats, isMain = false }: Team
           </div>
           
           <div className="flex-1 text-center md:text-left">
-            <h3 className="text-2xl font-bold mb-2 bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 bg-clip-text text-transparent animate-gradient-flow">
-              {name}
-            </h3>
-            <p className="mb-4">
-              {renderRole(role)}
-            </p>
+            <h3 className="text-2xl font-bold text-yellow-400 mb-2">{name}</h3>
+            <p className="text-gray-300 mb-4">{role}</p>
             <p className="text-gray-400">{bio}</p>
           </div>
         </div>

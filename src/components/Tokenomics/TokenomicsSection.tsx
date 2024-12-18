@@ -153,17 +153,25 @@ const ElonBadge = () => {
           </motion.div>
         </div>
 
-        {/* Text with gold gradient and rainbow hover effect */}
+        {/* Text with glow effect */}
         <motion.p 
-          className="text-[10px] md:text-xs lg:text-sm mt-2 font-bold relative z-10
-                     bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400 
-                     bg-clip-text text-transparent group-hover:animate-gradient-flow
+          className="text-[10px] md:text-xs lg:text-sm text-white/80 mt-2 font-bold relative z-10
+                     group-hover:text-neon-blue group-hover:font-extrabold
                      transition-all duration-300"
+          animate={{
+            textShadow: [
+              "0 0 4px rgba(0,243,255,0)",
+              "0 0 8px rgba(0,243,255,0.8)",
+              "0 0 4px rgba(0,243,255,0)"
+            ]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+          }}
         >
           Elon Musk<br/>
-          <span className="group-hover:bg-gradient-to-r group-hover:from-red-500 group-hover:via-yellow-500 group-hover:via-green-500 group-hover:via-blue-500 group-hover:to-purple-500 group-hover:bg-clip-text group-hover:text-transparent">
-            Chief Meme Officer 🚀
-          </span>
+          <span className="group-hover:animate-pulse">Chief Meme Officer 🚀</span>
         </motion.p>
       </motion.div>
     </motion.div>
