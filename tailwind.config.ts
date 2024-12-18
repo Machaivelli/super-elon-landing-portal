@@ -58,10 +58,18 @@ export default {
           orange: "#ff7e33",
           yellow: "#ffd700",
         },
+        spaceship: {
+          dark: "#1A1F2C",
+          metal: "#403E43",
+          accent: "#0EA5E9",
+          warning: "#FFA500",
+          danger: "#FF4444",
+        }
       },
       backgroundImage: {
         "hero-pattern": "linear-gradient(to bottom, #0f1729, #1a0f29, #0f1729)",
         "glow-conic": "conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)",
+        "space-window": "linear-gradient(180deg, rgba(26,31,44,0.9) 0%, rgba(64,62,67,0.9) 100%)",
       },
       keyframes: {
         "float": {
@@ -76,11 +84,34 @@ export default {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
+        "shake": {
+          "0%, 100%": { transform: "translateX(0)" },
+          "25%": { transform: "translateX(-5px) rotate(-1deg)" },
+          "75%": { transform: "translateX(5px) rotate(1deg)" }
+        },
+        "glitch": {
+          "0%": { transform: "translate(0)" },
+          "20%": { transform: "translate(-2px, 2px)" },
+          "40%": { transform: "translate(-2px, -2px)" },
+          "60%": { transform: "translate(2px, 2px)" },
+          "80%": { transform: "translate(2px, -2px)" },
+          "100%": { transform: "translate(0)" }
+        },
+        "break-apart": {
+          "0%": { transform: "translate(0) rotate(0)" },
+          "100%": { 
+            transform: "translate(var(--translate-x, 20px), var(--translate-y, 20px)) rotate(var(--rotate, 20deg))",
+            opacity: "0"
+          }
+        }
       },
       animation: {
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "gradient-flow": "gradient-flow 15s ease infinite",
+        "shake": "shake 0.5s cubic-bezier(.36,.07,.19,.97) infinite",
+        "glitch": "glitch 0.3s ease-in-out infinite",
+        "break-apart": "break-apart 2s ease-in-out forwards",
       },
     },
   },

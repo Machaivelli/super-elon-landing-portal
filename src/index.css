@@ -35,10 +35,94 @@
     min-height: 100vh;
     overflow-x: hidden;
     font-family: 'Orbitron', sans-serif;
+    perspective: 1000px;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-['Orbitron'] font-bold;
+  }
+
+  .spaceship-window {
+    @apply relative overflow-hidden rounded-lg border border-spaceship-accent/30 bg-space-window;
+    box-shadow: 
+      inset 0 0 20px rgba(14, 165, 233, 0.2),
+      0 0 30px rgba(14, 165, 233, 0.1);
+  }
+
+  .spaceship-panel {
+    @apply relative bg-spaceship-dark/80 backdrop-blur-sm border border-spaceship-accent/20 rounded-lg p-4;
+    box-shadow: 
+      inset 0 0 10px rgba(14, 165, 233, 0.1),
+      0 0 20px rgba(14, 165, 233, 0.05);
+  }
+
+  .warning-light {
+    @apply absolute w-2 h-2 rounded-full bg-spaceship-warning animate-pulse;
+    box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
+  }
+
+  .danger-light {
+    @apply absolute w-2 h-2 rounded-full bg-spaceship-danger animate-pulse;
+    box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+  }
+
+  .spaceship-text {
+    @apply font-mono text-sm text-spaceship-accent/80;
+    text-shadow: 0 0 5px rgba(14, 165, 233, 0.5);
+  }
+
+  .breaking-apart {
+    animation: break-apart 2s ease-in-out forwards;
+    --translate-x: random(-100px, 100px);
+    --translate-y: random(-100px, 100px);
+    --rotate: random(-180deg, 180deg);
+  }
+
+  .spaceship-screen {
+    @apply relative overflow-hidden rounded-lg border border-spaceship-accent/30;
+    background: 
+      linear-gradient(45deg, rgba(14, 165, 233, 0.1) 25%, transparent 25%) -20px 0,
+      linear-gradient(-45deg, rgba(14, 165, 233, 0.1) 25%, transparent 25%) -20px 0,
+      linear-gradient(45deg, transparent 75%, rgba(14, 165, 233, 0.1) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(14, 165, 233, 0.1) 75%);
+    background-size: 40px 40px;
+    background-color: rgba(26, 31, 44, 0.9);
+  }
+
+  .glitch-text {
+    @apply relative inline-block;
+    text-shadow: 
+      0.05em 0 0 rgba(255, 0, 0, 0.75),
+      -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+      0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+    animation: glitch 500ms infinite;
+  }
+
+  .spaceship-button {
+    @apply relative overflow-hidden rounded-lg border border-spaceship-accent 
+           bg-gradient-to-r from-spaceship-dark to-spaceship-metal
+           px-4 py-2 text-spaceship-accent hover:text-white
+           transition-all duration-300 ease-in-out;
+    box-shadow: 
+      inset 0 0 10px rgba(14, 165, 233, 0.2),
+      0 0 20px rgba(14, 165, 233, 0.1);
+  }
+
+  .spaceship-button:hover {
+    box-shadow: 
+      inset 0 0 20px rgba(14, 165, 233, 0.4),
+      0 0 30px rgba(14, 165, 233, 0.2);
+  }
+
+  .spaceship-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-spaceship-accent/20 to-transparent;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .spaceship-button:hover::before {
+    transform: translateX(100%);
   }
 }
 
