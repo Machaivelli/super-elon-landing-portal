@@ -62,7 +62,7 @@ export const TeamSection = () => {
         >
           <Button
             size="lg"
-            className="w-full md:w-auto bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-black font-bold px-4 md:px-8 py-4 md:py-6 text-sm md:text-lg rounded-xl shadow-[0_0_15px_rgba(255,215,0,0.5)] hover:shadow-[0_0_25px_rgba(255,215,0,0.7)] transition-all duration-300 animate-bounce whitespace-normal md:whitespace-nowrap"
+            className="w-full md:w-auto bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-white font-bold px-4 md:px-8 py-4 md:py-6 text-sm md:text-lg rounded-xl shadow-[0_0_15px_rgba(255,215,0,0.5)] hover:shadow-[0_0_25px_rgba(255,215,0,0.7)] transition-all duration-300 animate-bounce whitespace-normal md:whitespace-nowrap"
           >
             <Rocket className="hidden md:inline-block mr-2" />
             Join Now – Relax Like Elon While We Go to the Moon!
