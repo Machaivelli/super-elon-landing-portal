@@ -50,13 +50,24 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
+    // Fix: Use the correct path format without a colon
+    const audio = new Audio('lovable-uploads/zo staat het bestand nu in de public file.mp3');
     audioRef.current = audio;
     audio.loop = true;
     
     audio.addEventListener('canplay', () => {
       console.log("Audio can play now");
       setDuration(formatTime(audio.duration));
+      // Attempt to autoplay
+      audio.play()
+        .then(() => {
+          console.log("Autoplay successful");
+          setIsPlaying(true);
+        })
+        .catch(e => {
+          console.error("Autoplay failed:", e);
+          setIsPlaying(false);
+        });
     });
 
     audio.addEventListener('error', (e) => {
