@@ -7,10 +7,12 @@ import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { Footer } from "@/components/Footer";
+import { SplineBackground } from "@/components/SplineBackground";
 
 const Index = () => {
   return (
     <main className="bg-background min-h-screen relative">
+      <SplineBackground />
       <AnimatedBackground />
       <FloatingDecorations />
       <Header />
