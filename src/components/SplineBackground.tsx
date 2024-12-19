@@ -8,6 +8,7 @@ export const SplineBackground = () => {
         className="w-full h-full"
         style={{ border: 'none' }}
         title="Rocket 3D Animation"
+        loading="lazy"
       />
     </div>
   );

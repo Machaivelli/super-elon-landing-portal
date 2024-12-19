@@ -11,7 +11,7 @@ import { SplineBackground } from "@/components/SplineBackground";
 
 const Index = () => {
   return (
-    <main className="bg-background min-h-screen relative">
+    <main className="bg-transparent min-h-screen relative">
       <SplineBackground />
       <AnimatedBackground />
       <FloatingDecorations />
