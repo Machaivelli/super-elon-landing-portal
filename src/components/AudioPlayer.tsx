@@ -1,54 +1,47 @@
 import { useState, useRef, useEffect } from 'react';
 import { Rocket, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 
 export const AudioPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play().catch(e => console.error("Play error:", e));
+      try {
+        if (isPlaying) {
+          audioRef.current.pause();
+          setIsPlaying(false);
+          toast.info('Music paused');
+        } else {
+          await audioRef.current.play();
+          setIsPlaying(true);
+          toast.success('Playing music');
+        }
+      } catch (error) {
+        console.error('Playback error:', error);
+        toast.error('Could not play audio. Please try again.');
+        setIsPlaying(false);
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    // Fixed the audio path by removing the leading slash
     const audio = new Audio('lovable-uploads/zo staat het bestand nu in de public file.mp3');
     audioRef.current = audio;
-    audio.loop = true; // Enable looping
+    audio.loop = true;
     
-    // Try to autoplay when component mounts
-    const attemptAutoplay = async () => {
-      try {
-        await audio.play();
-        console.log("Autoplay successful");
-      } catch (e) {
-        console.warn("Autoplay failed:", e);
-        setIsPlaying(false);
-      }
-    };
-
-    attemptAutoplay();
+    // Don't try to autoplay initially, wait for user interaction
+    setIsPlaying(false);
     
     audio.addEventListener('error', (e) => {
       console.error("Audio error:", e);
+      toast.error('Error loading audio file');
       setIsPlaying(false);
     });
 
-    audio.addEventListener('ended', () => {
-      // This shouldn't trigger due to loop=true, but just in case
-      if (isPlaying) {
-        audio.play().catch(console.error);
-      }
-    });
-    
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
