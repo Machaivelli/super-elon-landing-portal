@@ -4,10 +4,10 @@ export const SplineBackground = () => {
   return (
     <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none">
       <iframe 
-        src='https://my.spline.design/cubic-76ef6408f55630487e0b06633beb4c89/' 
+        src='https://my.spline.design/rocket-07177cc99841504934e7c640f257a32e/' 
         className="w-full h-full"
         style={{ border: 'none' }}
-        title="Cubic 3D Animation"
+        title="Rocket 3D Animation"
         loading="lazy"
       />
     </div>
