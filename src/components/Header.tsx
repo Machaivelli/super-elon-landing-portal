@@ -37,17 +37,17 @@ export const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center gap-6">
             <button 
               onClick={() => scrollToSection('home')}
-              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
             >
               Home
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
             <button 
               onClick={() => scrollToSection('mission')}
-              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
             >
               <span className="flex items-center gap-1">
                 Mission <ListOrdered className="h-3 w-3" />
@@ -56,7 +56,7 @@ export const Header = () => {
             </button>
             <button 
               onClick={() => scrollToSection('tokenomics')}
-              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
             >
               <span className="flex items-center gap-1">
                 Tokenomics <Rocket className="h-3 w-3" />
@@ -65,7 +65,7 @@ export const Header = () => {
             </button>
             <button 
               onClick={() => scrollToSection('team')}
-              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group"
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
             >
               <span className="flex items-center gap-1">
                 Dream Team <Users className="h-3 w-3" />
@@ -75,7 +75,7 @@ export const Header = () => {
             <Button
               variant="outline"
               size="sm"
-              className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] animate-pulse-glow"
+              className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] animate-pulse-glow ml-2"
             >
               Buy Now
             </Button>
