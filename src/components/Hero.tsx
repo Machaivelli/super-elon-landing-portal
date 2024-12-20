@@ -14,7 +14,7 @@ export const Hero = () => {
             transition={{ duration: 0.6 }}
             className="relative group w-full max-w-[420px]"
           >
-            <div className="absolute -inset-3 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
             <div className="absolute inset-0 rounded-full animate-pulse-glow"></div>
             <img 
               src="/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png"
@@ -69,10 +69,8 @@ export const Hero = () => {
               </Button>
             </motion.div>
           </motion.div>
-        </div>
-      </div>
 
-      {/* Background particles effect */}
+          {/* Background particles effect */}
       <div className="absolute inset-0 pointer-events-none">
         {[...Array(3)].map((_, i) => (
           <motion.div
@@ -97,6 +95,8 @@ export const Hero = () => {
             }}
           />
         ))}
+      </div>
+        </div>
       </div>
     </div>
   );
