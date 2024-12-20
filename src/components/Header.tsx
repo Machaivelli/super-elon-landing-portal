@@ -27,9 +27,9 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img
-              src="/lovable-uploads/151bd015-eb26-4db6-82d4-4ec6741ed896.png"
+              src="/lovable-uploads/073ba7c8-0232-4abf-82bf-9f76ed703a48.png"
               alt="Super Elon Coin"
-              className="h-8 w-8 rounded-full animate-pulse-glow"
+              className="h-12 w-12 rounded-full animate-pulse-glow"
             />
             <span className="text-theme-light font-bold text-lg font-['Orbitron']">
               Super Elon Coin
