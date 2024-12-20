@@ -34,7 +34,7 @@ export const Header = () => {
                 className="relative h-24 w-24 object-contain transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]"
               />
             </div>
-            <span className="text-theme-light font-bold text-2xl tracking-wide font-['Orbitron'] drop-shadow-[0_2px_4px_rgba(139,92,246,0.3)]">
+            <span className="text-theme-light font-bold text-sm tracking-wide font-['Orbitron'] drop-shadow-[0_2px_4px_rgba(139,92,246,0.3)]">
               Super Elon Coin
             </span>
           </div>
