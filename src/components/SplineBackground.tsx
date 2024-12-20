@@ -6,7 +6,11 @@ export const SplineBackground = () => {
       <iframe 
         src='https://my.spline.design/rocket-07177cc99841504934e7c640f257a32e/' 
         className="w-full h-full"
-        style={{ border: 'none' }}
+        style={{ 
+          border: 'none',
+          background: 'transparent',
+          pointerEvents: 'none'
+        }}
         title="Rocket 3D Animation"
         loading="lazy"
       />
