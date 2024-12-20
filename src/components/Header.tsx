@@ -27,11 +27,11 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <div className="relative group">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-theme-primary to-theme-secondary rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
               <img
-                src="/lovable-uploads/073ba7c8-0232-4abf-82bf-9f76ed703a48.png"
+                src="/lovable-uploads/5ca8ed85-98b2-416e-8b27-ff98c484ca7f.png"
                 alt="Super Elon Coin"
-                className="relative h-12 w-12 rounded-full shadow-lg shadow-theme-primary/20 hover:shadow-theme-primary/40 transition-all duration-300 transform hover:scale-105"
+                className="relative h-12 w-12 rounded-full shadow-xl shadow-theme-primary/30 hover:shadow-theme-primary/50 transition-all duration-300 transform hover:scale-105"
               />
             </div>
             <span className="text-theme-light font-bold text-lg font-['Orbitron']">
