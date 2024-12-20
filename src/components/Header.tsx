@@ -29,9 +29,9 @@ export const Header = () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
               <img
-                src="/lovable-uploads/5ca8ed85-98b2-416e-8b27-ff98c484ca7f.png"
+                src="/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png"
                 alt="Super Elon Coin"
-                className="relative h-12 w-12 rounded-full shadow-xl shadow-theme-primary/30 hover:shadow-theme-primary/50 transition-all duration-300 transform hover:scale-105"
+                className="relative h-14 w-14 object-contain transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]"
               />
             </div>
             <span className="text-theme-light font-bold text-lg font-['Orbitron']">

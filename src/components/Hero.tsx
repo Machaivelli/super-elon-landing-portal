@@ -12,14 +12,14 @@ export const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative group w-full max-w-[280px]"
+            className="relative group w-full max-w-[320px]"
           >
             <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-theme-primary/10 to-theme-secondary/10 rounded-full animate-pulse-glow"></div>
+            <div className="absolute inset-0 rounded-full animate-pulse-glow"></div>
             <img 
-              src="/lovable-uploads/5ca8ed85-98b2-416e-8b27-ff98c484ca7f.png"
+              src="/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png"
               alt="Super Elon Coin"
-              className="relative w-full h-auto rounded-full shadow-2xl shadow-theme-primary/40 hover:shadow-theme-primary/60 transition-all duration-300 transform hover:scale-105"
+              className="relative w-full h-auto object-contain drop-shadow-[0_0_15px_rgba(139,92,246,0.4)] group-hover:drop-shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-300 transform hover:scale-105"
             />
           </motion.div>
 
