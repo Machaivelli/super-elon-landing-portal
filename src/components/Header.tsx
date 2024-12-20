@@ -25,12 +25,15 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <img
-              src="/lovable-uploads/073ba7c8-0232-4abf-82bf-9f76ed703a48.png"
-              alt="Super Elon Coin"
-              className="h-12 w-12 rounded-full animate-pulse-glow"
-            />
+          <div className="flex items-center space-x-3">
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-theme-primary to-theme-secondary rounded-full blur opacity-50 group-hover:opacity-75 transition duration-300"></div>
+              <img
+                src="/lovable-uploads/073ba7c8-0232-4abf-82bf-9f76ed703a48.png"
+                alt="Super Elon Coin"
+                className="relative h-12 w-12 rounded-full shadow-lg shadow-theme-primary/20 hover:shadow-theme-primary/40 transition-all duration-300 transform hover:scale-105"
+              />
+            </div>
             <span className="text-theme-light font-bold text-lg font-['Orbitron']">
               Super Elon Coin
             </span>

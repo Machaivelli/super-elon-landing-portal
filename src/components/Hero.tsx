@@ -12,12 +12,13 @@ export const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="w-full max-w-[400px]"
+            className="relative group w-full max-w-[300px]"
           >
+            <div className="absolute -inset-1 bg-gradient-to-r from-theme-primary via-theme-secondary to-theme-primary rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
             <img 
-              src="/lovable-uploads/0458ba9b-f073-4372-9947-e2c688fcbd13.png"
+              src="/lovable-uploads/073ba7c8-0232-4abf-82bf-9f76ed703a48.png"
               alt="Super Elon Coin"
-              className="w-full h-auto"
+              className="relative w-full h-auto rounded-full shadow-xl shadow-theme-primary/30 hover:shadow-theme-primary/50 transition-all duration-300 transform hover:scale-105"
             />
           </motion.div>
 
