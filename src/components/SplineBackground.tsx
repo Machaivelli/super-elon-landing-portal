@@ -17,17 +17,6 @@ export const SplineBackground = () => {
         title="Rocket 3D Animation"
         loading="lazy"
       />
-      <div 
-        style={{
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '50px',
-          background: '#000',
-          zIndex: 1
-        }}
-      />
     </div>
   );
 };
