@@ -18,14 +18,14 @@ export const Header = () => {
       {/* Optional Ticker Banner */}
       <div className="hidden md:block bg-gradient-to-r from-theme-primary/20 via-theme-secondary/20 to-theme-primary/20 text-center py-1 text-sm animate-gradient-flow">
         <span className="text-theme-light">
-          Super Elon Coin | The Next x1000 Opportunity Awaits! 🚀
+          The Next x1000 Opportunity Awaits! 🚀
         </span>
       </div>
 
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center">
             <div className="relative group">
               <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
               <img
@@ -34,9 +34,6 @@ export const Header = () => {
                 className="relative h-24 w-24 object-contain transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]"
               />
             </div>
-            <span className="text-theme-light font-bold text-sm tracking-wide font-['Orbitron'] drop-shadow-[0_2px_4px_rgba(139,92,246,0.3)]">
-              Super Elon Coin
-            </span>
           </div>
 
           {/* Desktop Navigation */}
