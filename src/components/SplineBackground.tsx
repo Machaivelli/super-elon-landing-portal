@@ -13,7 +13,7 @@ export const SplineBackground = () => {
           position: 'relative',
           zIndex: -1,
           overflow: 'hidden',
-          clipPath: 'inset(0 0 30px 0)'  // This clips the bottom part where the watermark appears
+          clipPath: 'inset(0 0 40px 0)'  // Increased the bottom clip to ensure watermark is hidden
         }}
         title="Rocket 3D Animation"
         loading="lazy"
