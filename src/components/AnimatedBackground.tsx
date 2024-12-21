@@ -24,15 +24,16 @@ export const AnimatedBackground = () => {
     // Create rockets
     const createRocket = () => {
       const rocketDiv = document.createElement('div');
-      rocketDiv.className = 'rocket';
+      rocketDiv.className = 'rocket flex items-center justify-center';
       rocketDiv.style.left = `${Math.random() * 100}vw`;
       rocketDiv.style.animationDuration = `${Math.random() * 4 + 3}s`;
       
-      const rocketSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      rocketSvg.setAttribute("viewBox", "0 0 24 24");
-      rocketSvg.innerHTML = `<path d="M12 2L8 6H11V13H13V6H16L12 2Z" fill="currentColor"/>`;
+      const rocketIcon = document.createElement('div');
+      rocketIcon.innerHTML = '🚀';
+      rocketIcon.style.fontSize = '24px';
+      rocketIcon.style.transform = 'rotate(-45deg)';
       
-      rocketDiv.appendChild(rocketSvg);
+      rocketDiv.appendChild(rocketIcon);
       container.appendChild(rocketDiv);
 
       setTimeout(() => {
