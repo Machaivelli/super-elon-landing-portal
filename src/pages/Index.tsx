@@ -7,27 +7,25 @@ import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
 import { AudioPlayer } from "@/components/AudioPlayer";
 import { Footer } from "@/components/Footer";
-import { SplineBackground } from "@/components/SplineBackground";
 
 const Index = () => {
   return (
-    <main className="bg-transparent min-h-screen relative">
-      <SplineBackground />
+    <main className="bg-transparent min-h-screen relative flex flex-col items-center">
       <AnimatedBackground />
       <FloatingDecorations />
       <Header />
       <AudioPlayer />
-      <div className="space-y-0 scroll-smooth">
-        <section id="home" className="section-transition pt-16">
+      <div className="w-full space-y-0 scroll-smooth">
+        <section id="home" className="section-transition pt-16 flex justify-center items-center">
           <Hero />
         </section>
-        <section id="mission" className="section-transition">
+        <section id="mission" className="section-transition flex justify-center items-center">
           <Mission />
         </section>
-        <section id="tokenomics" className="section-transition">
+        <section id="tokenomics" className="section-transition flex justify-center items-center">
           <TokenomicsSection />
         </section>
-        <section id="team" className="section-transition">
+        <section id="team" className="section-transition flex justify-center items-center">
           <TeamSection />
         </section>
       </div>
