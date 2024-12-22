@@ -97,20 +97,6 @@
   color: theme('colors.neon.orange');
 }
 
-.floating-decor {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  pointer-events: none;
-  animation: floatUp 15s linear infinite;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.floating-decor:hover {
-  opacity: 0.8;
-}
-
 /* Section Transitions */
 .section-transition {
   position: relative;
@@ -152,7 +138,7 @@
 
 @keyframes rocketFly {
   0% {
-    transform: translateY(100vh) rotate(-45deg);
+    transform: translateX(-50%) translateY(100vh) rotate(-45deg);
     opacity: 0;
   }
   10% {
@@ -162,7 +148,7 @@
     opacity: 1;
   }
   100% {
-    transform: translateY(-100vh) rotate(-45deg);
+    transform: translateX(-50%) translateY(-100vh) rotate(-45deg);
     opacity: 0;
   }
 }
