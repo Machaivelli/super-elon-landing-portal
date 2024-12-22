@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { PlayButton } from './PlayButton';
 import { ProgressBar } from './ProgressBar';
+import { toast } from 'sonner';
 
 export const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,10 +21,20 @@ export const AudioPlayer = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
+        toast.info('Music paused');
       } else {
-        audioRef.current.play().catch(e => console.error("Play error:", e));
+        audioRef.current.play()
+          .then(() => {
+            setIsPlaying(true);
+            toast.success('Playing music');
+          })
+          .catch(e => {
+            console.error("Play error:", e);
+            toast.error('Could not play audio. Please try again.');
+            setIsPlaying(false);
+          });
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -50,28 +61,22 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    // Use the correct URL format for the audio file
-    const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
+    const audioPath = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
+    console.log("Loading audio from:", audioPath);
+    
+    const audio = new Audio(audioPath);
     audioRef.current = audio;
     audio.loop = true;
     
     audio.addEventListener('canplay', () => {
       console.log("Audio can play now");
       setDuration(formatTime(audio.duration));
-      // Attempt to autoplay
-      audio.play()
-        .then(() => {
-          console.log("Autoplay successful");
-          setIsPlaying(true);
-        })
-        .catch(e => {
-          console.error("Autoplay failed:", e);
-          setIsPlaying(false);
-        });
     });
 
     audio.addEventListener('error', (e) => {
       console.error("Audio error:", e);
+      toast.error('Error loading audio file');
+      setIsPlaying(false);
     });
 
     audio.addEventListener('ended', () => {
