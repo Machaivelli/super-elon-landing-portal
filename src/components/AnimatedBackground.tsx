@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Rocket } from 'lucide-react';
 
 export const AnimatedBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,7 +24,8 @@ export const AnimatedBackground = () => {
     const createRocket = () => {
       const rocketDiv = document.createElement('div');
       rocketDiv.className = 'rocket flex items-center justify-center';
-      rocketDiv.style.left = `${Math.random() * 100}vw`;
+      rocketDiv.style.left = '50%'; // Center horizontally
+      rocketDiv.style.transform = 'translateX(-50%)'; // Adjust for center alignment
       rocketDiv.style.animationDuration = `${Math.random() * 4 + 3}s`;
       
       const rocketIcon = document.createElement('div');
