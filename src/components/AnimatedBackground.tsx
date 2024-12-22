@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Rocket } from 'lucide-react';
 
 export const AnimatedBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,17 +21,16 @@ export const AnimatedBackground = () => {
       }, 5000);
     };
 
-    // Create small background rockets
-    const createSmallRocket = () => {
+    // Create rockets
+    const createRocket = () => {
       const rocketDiv = document.createElement('div');
-      rocketDiv.className = 'small-rocket flex items-center justify-center';
-      // Random position across the entire width
+      rocketDiv.className = 'rocket flex items-center justify-center';
       rocketDiv.style.left = `${Math.random() * 100}vw`;
       rocketDiv.style.animationDuration = `${Math.random() * 4 + 3}s`;
       
       const rocketIcon = document.createElement('div');
       rocketIcon.innerHTML = '🚀';
-      rocketIcon.style.fontSize = '16px';
+      rocketIcon.style.fontSize = '24px';
       rocketIcon.style.transform = 'rotate(-45deg)';
       
       rocketDiv.appendChild(rocketIcon);
@@ -41,35 +41,13 @@ export const AnimatedBackground = () => {
       }, 7000);
     };
 
-    // Create the large centered rocket
-    const createLargeRocket = () => {
-      const largeRocketDiv = document.createElement('div');
-      largeRocketDiv.className = 'large-rocket flex items-center justify-center';
-      largeRocketDiv.style.left = '50%';
-      largeRocketDiv.style.transform = 'translateX(-50%)';
-      
-      const largeRocketIcon = document.createElement('div');
-      largeRocketIcon.innerHTML = '🚀';
-      largeRocketIcon.style.fontSize = '48px';
-      largeRocketIcon.style.transform = 'rotate(-45deg)';
-      
-      largeRocketDiv.appendChild(largeRocketIcon);
-      container.appendChild(largeRocketDiv);
-
-      setTimeout(() => {
-        largeRocketDiv.remove();
-      }, 10000);
-    };
-
     // Initialize animations
     const starInterval = setInterval(createStar, 200);
-    const smallRocketInterval = setInterval(createSmallRocket, 3000);
-    const largeRocketInterval = setInterval(createLargeRocket, 10000);
+    const rocketInterval = setInterval(createRocket, 2000);
 
     return () => {
       clearInterval(starInterval);
-      clearInterval(smallRocketInterval);
-      clearInterval(largeRocketInterval);
+      clearInterval(rocketInterval);
     };
   }, []);
 
