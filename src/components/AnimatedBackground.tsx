@@ -25,9 +25,7 @@ export const AnimatedBackground = () => {
     const createRocket = () => {
       const rocketDiv = document.createElement('div');
       rocketDiv.className = 'rocket flex items-center justify-center';
-      // Center the rocket by positioning it in the middle of the screen
-      rocketDiv.style.left = '50%';
-      rocketDiv.style.transform = 'translateX(-50%)';
+      rocketDiv.style.left = `${Math.random() * 100}vw`;
       rocketDiv.style.animationDuration = `${Math.random() * 4 + 3}s`;
       
       const rocketIcon = document.createElement('div');
