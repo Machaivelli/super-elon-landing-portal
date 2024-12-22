@@ -29,8 +29,10 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    // Fix: Use the correct path format without a colon
-    const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
+    const audioPath = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
+    console.log("Loading audio from:", audioPath);
+    
+    const audio = new Audio(audioPath);
     audioRef.current = audio;
     audio.loop = true;
     
