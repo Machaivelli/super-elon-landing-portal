@@ -2,10 +2,10 @@ import React from 'react';
 
 export const SplineBackground = () => {
   return (
-    <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none">
+    <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none flex items-center justify-center">
       <iframe 
         src="https://my.spline.design/rocket-07177cc99841504934e7c640f257a32e/"
-        className="w-full h-full"
+        className="w-full h-full scale-125 translate-y-[-5%]"
         style={{ 
           border: 'none',
           background: 'transparent',
@@ -13,7 +13,7 @@ export const SplineBackground = () => {
           position: 'relative',
           zIndex: -1,
           overflow: 'hidden',
-          clipPath: 'inset(0 0 60px 0)'  // Increased the bottom clip even more to ensure watermark is completely hidden
+          clipPath: 'inset(0 0 60px 0)'
         }}
         title="Rocket 3D Animation"
         loading="lazy"
