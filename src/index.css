@@ -88,27 +88,24 @@
   animation: starFall linear infinite;
 }
 
-.rocket {
+.small-rocket {
   position: fixed;
   width: 20px;
   height: 20px;
   pointer-events: none;
-  animation: rocketFly linear infinite;
+  animation: smallRocketFly linear infinite;
   color: theme('colors.neon.orange');
 }
 
-.floating-decor {
-  position: absolute;
-  width: 40px;
-  height: 40px;
+.large-rocket {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: -60px;
   pointer-events: none;
-  animation: floatUp 15s linear infinite;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-}
-
-.floating-decor:hover {
-  opacity: 0.8;
+  animation: largeRocketFly 10s linear infinite;
+  color: theme('colors.neon.orange');
+  z-index: -1;
 }
 
 /* Section Transitions */
@@ -150,7 +147,7 @@
   }
 }
 
-@keyframes rocketFly {
+@keyframes smallRocketFly {
   0% {
     transform: translateY(100vh) rotate(-45deg);
     opacity: 0;
@@ -167,37 +164,37 @@
   }
 }
 
-@keyframes floatUp {
+@keyframes largeRocketFly {
   0% {
-    transform: translateY(100vh) rotate(0deg);
+    transform: translateY(100vh) translateX(-50%) rotate(-45deg);
     opacity: 0;
   }
   10% {
-    opacity: 0.4;
+    opacity: 1;
   }
   90% {
-    opacity: 0.4;
+    opacity: 1;
+    transform: translateY(-20vh) translateX(-50%) rotate(-45deg);
   }
   100% {
-    transform: translateY(-100vh) rotate(360deg);
+    transform: translateY(-100vh) translateX(-50%) rotate(-45deg);
     opacity: 0;
   }
 }
 
-/* Glass Card Effect */
-.glass-card {
-  @apply bg-black/20 backdrop-blur-md border border-white/10 rounded-xl;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+/* Floating Decorations */
+.floating-decor {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  animation: floatUp 15s linear infinite;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
 }
 
-/* Decorative Images */
-.decor-image {
-  @apply rounded-2xl shadow-lg shadow-theme-primary/20 border border-white/10;
-  transition: all 0.3s ease;
-}
-
-.decor-image:hover {
-  @apply shadow-theme-primary/40 scale-105;
+.floating-decor:hover {
+  opacity: 0.8;
 }
 
 /* Glow Effects */
