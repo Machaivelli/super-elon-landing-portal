@@ -1,53 +1,40 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
-import { useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Info } from "lucide-react";
 
 export const RoadmapVideo = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="max-w-4xl mx-auto my-16"
+      className="max-w-lg mx-auto my-8"
     >
-      <div 
-        className="relative aspect-video rounded-xl overflow-hidden cursor-pointer group"
-        onClick={() => setIsOpen(true)}
-      >
-        <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors duration-300" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center"
-          >
-            <Play className="w-8 h-8 text-white fill-white" />
-          </motion.div>
-        </div>
-        <img 
-          src="/lovable-uploads/d653c0e5-cc7e-45ff-b9c8-9971ab86acbe.png"
-          alt="Roadmap Video Thumbnail"
-          className="w-full h-full object-cover"
+      <HoverCard>
+        <HoverCardTrigger asChild>
+          <div className="flex items-center gap-2 text-yellow-400/60 hover:text-yellow-400/80 transition-colors cursor-pointer mb-2">
+            <Info className="w-4 h-4" />
+            <span className="text-sm font-['Orbitron']">View Project Overview</span>
+          </div>
+        </HoverCardTrigger>
+        <HoverCardContent className="w-80 bg-black/80 backdrop-blur-lg border-yellow-400/10">
+          <p className="text-sm text-yellow-400/80 font-['Orbitron']">
+            A brief overview of our project's vision and goals
+          </p>
+        </HoverCardContent>
+      </HoverCard>
+
+      <div className="relative w-full max-w-md mx-auto aspect-video rounded-lg overflow-hidden">
+        <iframe
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=0&showinfo=0&rel=0"
+          title="Project Vision"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="rounded-lg border border-yellow-400/20 hover:border-yellow-400/40 transition-colors duration-300"
         />
       </div>
-
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="max-w-4xl p-0 bg-transparent border-none">
-          <div className="aspect-video">
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              title="Super Elon Coin Roadmap"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="rounded-xl"
-            />
-          </div>
-        </DialogContent>
-      </Dialog>
     </motion.div>
   );
 };

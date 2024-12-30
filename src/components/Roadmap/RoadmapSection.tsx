@@ -3,6 +3,7 @@ import { RoadmapTitle } from "./RoadmapTitle";
 import { RoadmapTimeline } from "./RoadmapTimeline";
 import { RoadmapCTA } from "./RoadmapCTA";
 import { RoadmapProgress } from "./RoadmapProgress";
+import { RoadmapVideo } from "./RoadmapVideo";
 
 export const RoadmapSection = () => {
   return (
@@ -12,6 +13,7 @@ export const RoadmapSection = () => {
       
       <div className="relative container mx-auto px-4 z-20">
         <RoadmapTitle />
+        <RoadmapVideo />
         <RoadmapProgress />
         <RoadmapTimeline />
         <RoadmapCTA />
