@@ -6,34 +6,84 @@ import { Rocket, Wallet, Shield, Megaphone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const tokenDistribution = [
-  { name: 'Liquidity', value: 40 },
-  { name: 'Development', value: 20 },
-  { name: 'Marketing', value: 15 },
-  { name: 'Team', value: 10 },
-  { name: 'Reserve', value: 15 },
+  {
+    title: 'Liquidity Pool',
+    percentage: 40,
+    color: 'from-yellow-500 to-yellow-600',
+    glowColor: '#FFD700',
+    emoji: '💧'
+  },
+  {
+    title: 'Development',
+    percentage: 20,
+    color: 'from-blue-500 to-blue-600',
+    glowColor: '#4169E1',
+    emoji: '🚀'
+  },
+  {
+    title: 'Marketing',
+    percentage: 15,
+    color: 'from-purple-500 to-purple-600',
+    glowColor: '#8A2BE2',
+    emoji: '📢'
+  },
+  {
+    title: 'Team',
+    percentage: 10,
+    color: 'from-green-500 to-green-600',
+    glowColor: '#32CD32',
+    emoji: '👥'
+  },
+  {
+    title: 'Reserve',
+    percentage: 15,
+    color: 'from-red-500 to-red-600',
+    glowColor: '#DC143C',
+    emoji: '🏦'
+  }
 ];
 
 const cardData = [
   {
-    title: 'Liquidity',
-    description: 'Ensuring stability and growth through liquidity.',
+    title: 'Liquidity Pool',
+    percentage: 40,
+    amount: '400,000,000 SEC',
+    description: 'Ensuring stable trading and price discovery through deep liquidity.',
     icon: Wallet,
+    color: 'from-yellow-500 to-yellow-600',
+    glowColor: '#FFD700',
+    emoji: '💧'
   },
   {
     title: 'Development',
-    description: 'Continuous improvement and feature additions.',
+    percentage: 20,
+    amount: '200,000,000 SEC',
+    description: 'Funding continuous platform improvements and new features.',
     icon: Rocket,
+    color: 'from-blue-500 to-blue-600',
+    glowColor: '#4169E1',
+    emoji: '🚀'
   },
   {
     title: 'Marketing',
-    description: 'Expanding our reach and community engagement.',
+    percentage: 15,
+    amount: '150,000,000 SEC',
+    description: 'Growing our community and expanding market presence.',
     icon: Megaphone,
+    color: 'from-purple-500 to-purple-600',
+    glowColor: '#8A2BE2',
+    emoji: '📢'
   },
   {
     title: 'Security',
-    description: 'Prioritizing user safety and smart contract audits.',
+    percentage: 10,
+    amount: '100,000,000 SEC',
+    description: 'Maintaining robust security measures and regular audits.',
     icon: Shield,
-  },
+    color: 'from-green-500 to-green-600',
+    glowColor: '#32CD32',
+    emoji: '🛡️'
+  }
 ];
 
 export const TokenomicsSection = () => {
