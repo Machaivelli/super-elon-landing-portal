@@ -16,7 +16,8 @@ const phases = [
       "Initial Exchange Listings"
     ],
     icon: Rocket,
-    progress: 100
+    progress: 100,
+    color: "yellow-400" // Added color property
   },
   {
     phase: 2,
@@ -29,7 +30,8 @@ const phases = [
       "Community Events"
     ],
     icon: Target,
-    progress: 65
+    progress: 65,
+    color: "yellow-400" // Added color property
   },
   {
     phase: 3,
@@ -42,7 +44,8 @@ const phases = [
       "Innovation Fund Creation"
     ],
     icon: Lightbulb,
-    progress: 30
+    progress: 30,
+    color: "yellow-400" // Added color property
   },
   {
     phase: 4,
@@ -55,7 +58,8 @@ const phases = [
       "Community Governance"
     ],
     icon: Handshake,
-    progress: 10
+    progress: 10,
+    color: "yellow-400" // Added color property
   }
 ];
 
