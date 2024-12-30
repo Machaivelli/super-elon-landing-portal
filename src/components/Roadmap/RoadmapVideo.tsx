@@ -14,26 +14,28 @@ export const RoadmapVideo = () => {
         <HoverCardTrigger asChild>
           <div className="flex items-center gap-2 text-yellow-400/60 hover:text-yellow-400/80 transition-colors cursor-pointer mb-2">
             <Info className="w-4 h-4" />
-            <span className="text-sm font-['Orbitron']">View Project Overview</span>
+            <span className="text-sm font-['Orbitron']">Watch Project Vision & Technical Analysis</span>
           </div>
         </HoverCardTrigger>
         <HoverCardContent className="w-80 bg-black/80 backdrop-blur-lg border-yellow-400/10">
           <p className="text-sm text-yellow-400/80 font-['Orbitron']">
-            A brief overview of our project's vision and goals
+            Detailed technical analysis and future projections for Super Elon Coin
           </p>
         </HoverCardContent>
       </HoverCard>
 
-      <div className="relative w-full max-w-md mx-auto aspect-video rounded-lg overflow-hidden">
+      <div className="relative w-full max-w-md mx-auto aspect-video rounded-lg overflow-hidden glass-card">
+        <div className="absolute inset-0 bg-gradient-to-b from-yellow-400/5 to-transparent pointer-events-none" />
         <iframe
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=0&showinfo=0&rel=0"
-          title="Project Vision"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+          title="Super Elon Coin Technical Analysis & Future Projections"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
           className="rounded-lg border border-yellow-400/20 hover:border-yellow-400/40 transition-colors duration-300"
         />
+        <div className="absolute inset-0 ring-1 ring-yellow-400/10 rounded-lg pointer-events-none" />
       </div>
     </motion.div>
   );
