@@ -14,6 +14,7 @@ interface RoadmapPhaseProps {
   icon: LucideIcon;
   color: string;
   isLeft?: boolean;
+  progress: number;
 }
 
 export const RoadmapPhase = ({
@@ -23,7 +24,8 @@ export const RoadmapPhase = ({
   milestones,
   icon: Icon,
   color,
-  isLeft = true
+  isLeft = true,
+  progress
 }: RoadmapPhaseProps) => {
   return (
     <motion.div
@@ -36,49 +38,85 @@ export const RoadmapPhase = ({
         <HoverCardTrigger asChild>
           <motion.div 
             whileHover={{ scale: 1.1 }}
-            className={`hidden md:flex items-center justify-center w-24 h-24 rounded-full 
-                       ${color} bg-opacity-20 border-2 border-opacity-50 
-                       cursor-pointer transition-all duration-300
-                       hover:bg-opacity-30 hover:border-opacity-70
-                       group relative font-['Orbitron']`}
+            className={`relative group cursor-pointer`}
           >
-            <Icon className="w-12 h-12 text-yellow-400 group-hover:scale-110 transition-transform duration-300" />
-            <div className="absolute inset-0 rounded-full animate-pulse-glow opacity-50" />
+            {/* Progress circle */}
+            <svg className="w-24 h-24">
+              <circle
+                className="text-gray-800"
+                strokeWidth="4"
+                stroke="currentColor"
+                fill="transparent"
+                r="38"
+                cx="48"
+                cy="48"
+              />
+              <circle
+                className={`text-yellow-400 transition-all duration-1000 ease-out`}
+                strokeWidth="4"
+                strokeDasharray={240}
+                strokeDashoffset={240 - (240 * progress) / 100}
+                strokeLinecap="round"
+                stroke="currentColor"
+                fill="transparent"
+                r="38"
+                cx="48"
+                cy="48"
+              />
+            </svg>
+            
+            {/* Icon container */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <motion.div
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 360]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+                className="relative"
+              >
+                <Icon className="w-8 h-8 text-yellow-400" />
+                <div className="absolute inset-0 bg-yellow-400/20 blur-xl rounded-full" />
+              </motion.div>
+            </div>
           </motion.div>
         </HoverCardTrigger>
         <HoverCardContent 
-          className="w-80 bg-black/80 backdrop-blur-lg border-yellow-400/10 font-['Orbitron']"
+          className="w-80 bg-black/90 backdrop-blur-lg border-yellow-400/10"
           side={isLeft ? "right" : "left"}
         >
           <div className="space-y-2">
-            <h4 className="text-lg font-semibold text-yellow-400">Phase {phase} Details</h4>
-            <p className="text-sm text-yellow-400/80">{description}</p>
+            <h4 className="text-lg font-semibold text-yellow-400">Phase {phase} Milestones</h4>
+            <ul className="space-y-2">
+              {milestones.map((milestone, index) => (
+                <motion.li 
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-center gap-2 text-white/80"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+                  {milestone}
+                </motion.li>
+              ))}
+            </ul>
           </div>
         </HoverCardContent>
       </HoverCard>
 
-      <div className={`flex-1 ${isLeft ? 'text-left' : 'text-right'} font-['Orbitron']`}>
+      <div className={`flex-1 ${isLeft ? 'text-left' : 'text-right'}`}>
         <motion.h3 
-          className="text-2xl font-bold mb-2 text-yellow-400"
+          className="text-2xl font-bold mb-2 text-yellow-400 font-['Orbitron']"
           whileHover={{ scale: 1.05 }}
         >
           Phase {phase}: {title}
         </motion.h3>
-        <p className="text-yellow-400/80 mb-4">{description}</p>
-        <ul className={`space-y-2 ${isLeft ? 'pl-6' : 'pr-6'}`}>
-          {milestones.map((milestone, index) => (
-            <motion.li 
-              key={index} 
-              className="text-yellow-400/60 flex items-center gap-2"
-              initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <span className={`w-2 h-2 rounded-full ${color} flex-shrink-0`} />
-              {milestone}
-            </motion.li>
-          ))}
-        </ul>
+        <p className="text-white/80 mb-4">{description}</p>
       </div>
     </motion.div>
   );
