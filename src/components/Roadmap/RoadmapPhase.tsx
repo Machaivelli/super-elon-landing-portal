@@ -27,12 +27,20 @@ export const RoadmapPhase = ({
   isLeft = true,
   progress
 }: RoadmapPhaseProps) => {
+  // Define icon colors based on phase
+  const iconColors = {
+    1: "text-neon-yellow",
+    2: "text-neon-purple",
+    3: "text-neon-blue",
+    4: "text-neon-orange"
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className={`flex items-center gap-4 ${isLeft ? 'flex-row' : 'flex-row-reverse'} mb-6`}
+      className={`flex items-center gap-4 ${isLeft ? 'flex-row' : 'flex-row-reverse'} mb-4`}
     >
       <HoverCard>
         <HoverCardTrigger asChild>
@@ -41,27 +49,27 @@ export const RoadmapPhase = ({
             className="relative group cursor-pointer"
           >
             {/* Progress circle */}
-            <svg className="w-12 h-12">
+            <svg className="w-10 h-10">
               <circle
                 className="text-gray-800"
-                strokeWidth="3"
+                strokeWidth="2"
                 stroke="currentColor"
                 fill="transparent"
-                r="20"
-                cx="24"
-                cy="24"
+                r="16"
+                cx="20"
+                cy="20"
               />
               <circle
                 className={`text-theme-primary transition-all duration-1000 ease-out`}
-                strokeWidth="3"
-                strokeDasharray={125}
-                strokeDashoffset={125 - (125 * progress) / 100}
+                strokeWidth="2"
+                strokeDasharray={100}
+                strokeDashoffset={100 - (100 * progress) / 100}
                 strokeLinecap="round"
                 stroke="currentColor"
                 fill="transparent"
-                r="20"
-                cx="24"
-                cy="24"
+                r="16"
+                cx="20"
+                cy="20"
               />
             </svg>
             
@@ -79,7 +87,7 @@ export const RoadmapPhase = ({
                 }}
                 className="relative"
               >
-                <Icon className={`w-5 h-5 text-theme-primary`} />
+                <Icon className={`w-4 h-4 ${iconColors[phase as keyof typeof iconColors]}`} />
               </motion.div>
             </div>
           </motion.div>
@@ -99,7 +107,7 @@ export const RoadmapPhase = ({
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-2 text-xs text-white/80"
                 >
-                  <span className="w-1 h-1 rounded-full bg-theme-primary" />
+                  <span className={`w-1 h-1 rounded-full ${iconColors[phase as keyof typeof iconColors]}`} />
                   {milestone}
                 </motion.li>
               ))}
@@ -110,7 +118,7 @@ export const RoadmapPhase = ({
 
       <div className={`flex-1 ${isLeft ? 'text-left' : 'text-right'}`}>
         <motion.h3 
-          className="text-base font-bold mb-1 text-theme-primary font-['Orbitron']"
+          className={`text-sm font-bold mb-1 ${iconColors[phase as keyof typeof iconColors]} font-['Orbitron']`}
           whileHover={{ scale: 1.02 }}
         >
           Phase {phase}: {title}
