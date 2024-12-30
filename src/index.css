@@ -210,3 +210,13 @@
               0 0 20px theme('colors.theme.primary'),
               0 0 30px theme('colors.theme.primary');
 }
+
+@layer utilities {
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}

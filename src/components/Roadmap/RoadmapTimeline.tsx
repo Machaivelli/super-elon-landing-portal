@@ -1,71 +1,110 @@
 import { Rocket, ArrowUp, Lightbulb, Globe } from "lucide-react";
-import { RoadmapPhase } from "./RoadmapPhase";
+import { motion } from "framer-motion";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+
+const phases = [
+  {
+    phase: 1,
+    title: "Launch",
+    description: "Initiating our journey with strong foundations",
+    milestones: [
+      "Token creation and smart contract deployment",
+      "Official whitepaper publication",
+      "Core community establishment",
+      "Exchange listings"
+    ],
+    icon: Rocket,
+    color: "bg-purple-500"
+  },
+  {
+    phase: 2,
+    title: "Growth",
+    description: "Expanding through strategic partnerships",
+    milestones: [
+      "Blockchain project partnerships",
+      "Strategic marketing campaigns",
+      "Cross-chain integration",
+      "Conference participation"
+    ],
+    icon: ArrowUp,
+    color: "bg-blue-500"
+  },
+  {
+    phase: 3,
+    title: "Innovation",
+    description: "Introducing advanced DeFi capabilities",
+    milestones: [
+      "Staking mechanisms launch",
+      "NFT marketplace development",
+      "Advanced smart contracts",
+      "Real-world use cases"
+    ],
+    icon: Lightbulb,
+    color: "bg-yellow-500"
+  },
+  {
+    phase: 4,
+    title: "Global Impact",
+    description: "Making worldwide difference through blockchain",
+    milestones: [
+      "Sustainability projects",
+      "Financial inclusion initiatives",
+      "DAO establishment",
+      "Global education programs"
+    ],
+    icon: Globe,
+    color: "bg-green-500"
+  }
+];
 
 export const RoadmapTimeline = () => {
-  const phases = [
-    {
-      phase: 1,
-      title: "Launch",
-      description: "Initiating our journey with strong foundations and community building.",
-      milestones: [
-        "Creation of Super Elon Coin token and smart contract deployment",
-        "Publication of the official whitepaper",
-        "Establishment of core community through social media",
-        "Listing on centralized and decentralized exchanges"
-      ],
-      icon: Rocket,
-      color: "bg-purple-500"
-    },
-    {
-      phase: 2,
-      title: "Growth",
-      description: "Expanding our ecosystem through strategic partnerships and marketing.",
-      milestones: [
-        "Building partnerships with blockchain projects",
-        "Strategic marketing campaigns and influencer collaborations",
-        "Cross-chain integration solutions",
-        "Participation in blockchain conferences"
-      ],
-      icon: ArrowUp,
-      color: "bg-blue-500"
-    },
-    {
-      phase: 3,
-      title: "Innovation",
-      description: "Introducing advanced features and DeFi capabilities.",
-      milestones: [
-        "Launch of staking mechanisms",
-        "NFT marketplace development",
-        "Advanced DeFi smart contracts",
-        "Real-world use case pilot projects"
-      ],
-      icon: Lightbulb,
-      color: "bg-yellow-500"
-    },
-    {
-      phase: 4,
-      title: "Global Impact",
-      description: "Making a difference worldwide through blockchain innovation.",
-      milestones: [
-        "Sustainability-focused blockchain projects",
-        "Financial inclusion initiatives",
-        "DAO establishment for community governance",
-        "Global education and partnership programs"
-      ],
-      icon: Globe,
-      color: "bg-green-500"
-    }
-  ];
-
   return (
-    <div className="max-w-4xl mx-auto">
-      {phases.map((phase, index) => (
-        <RoadmapPhase
-          key={index}
-          {...phase}
-          isLeft={index % 2 === 0}
-        />
-      ))}
+    <div className="max-w-6xl mx-auto my-12">
+      <div className="flex flex-nowrap overflow-x-auto gap-4 pb-6 px-4 hide-scrollbar">
+        {phases.map((phase, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="flex-none w-[280px] glass-card p-4 relative group"
+          >
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <div className={`${phase.color} bg-opacity-20 p-3 rounded-lg mb-4 
+                                transition-all duration-300 cursor-pointer
+                                group-hover:bg-opacity-30`}>
+                  <phase.icon className="w-6 h-6 text-white" />
+                </div>
+              </HoverCardTrigger>
+              <HoverCardContent 
+                className="w-80 bg-black/80 backdrop-blur-lg border-white/10"
+                side="top"
+              >
+                <ul className="space-y-2">
+                  {phase.milestones.map((milestone, idx) => (
+                    <li key={idx} className="text-sm text-gray-300 flex items-center gap-2">
+                      <span className={`w-1.5 h-1.5 rounded-full ${phase.color}`} />
+                      {milestone}
+                    </li>
+                  ))}
+                </ul>
+              </HoverCardContent>
+            </HoverCard>
+
+            <h3 className="text-xl font-bold mb-2 bg-clip-text text-transparent 
+                         bg-gradient-to-r from-theme-primary to-theme-light">
+              Phase {phase.phase}: {phase.title}
+            </h3>
+            <p className="text-sm text-gray-300">{phase.description}</p>
+
+            {/* Connecting line */}
+            {index < phases.length - 1 && (
+              <div className="absolute top-1/2 -right-4 w-8 h-0.5 bg-theme-primary/30" />
+            )}
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
