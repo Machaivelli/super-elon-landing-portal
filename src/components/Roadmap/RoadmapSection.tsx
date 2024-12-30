@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { RoadmapTitle } from "./RoadmapTitle";
 import { RoadmapPhase } from "./RoadmapPhase";
 import { RoadmapCTA } from "./RoadmapCTA";
+import { RoadmapVideo } from "./RoadmapVideo";
 import { Rocket, Target, Lightbulb, Handshake } from "lucide-react";
 
 const phases = [
@@ -17,7 +18,7 @@ const phases = [
     ],
     icon: Rocket,
     progress: 100,
-    color: "yellow-400" // Added color property
+    color: "yellow-400"
   },
   {
     phase: 2,
@@ -31,7 +32,7 @@ const phases = [
     ],
     icon: Target,
     progress: 65,
-    color: "yellow-400" // Added color property
+    color: "yellow-400"
   },
   {
     phase: 3,
@@ -45,7 +46,7 @@ const phases = [
     ],
     icon: Lightbulb,
     progress: 30,
-    color: "yellow-400" // Added color property
+    color: "yellow-400"
   },
   {
     phase: 4,
@@ -59,17 +60,17 @@ const phases = [
     ],
     icon: Handshake,
     progress: 10,
-    color: "yellow-400" // Added color property
+    color: "yellow-400"
   }
 ];
 
 export const RoadmapSection = () => {
   return (
-    <section className="relative py-16 overflow-hidden">
+    <section className="relative py-8 overflow-hidden">
       {/* Dynamic background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90">
         <div className="absolute inset-0">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(30)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-yellow-400/20 rounded-full"
@@ -92,10 +93,11 @@ export const RoadmapSection = () => {
         </div>
       </div>
       
-      <div className="relative container mx-auto px-4 z-20">
+      <div className="relative container mx-auto px-4 z-20 max-w-5xl">
         <RoadmapTitle />
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <RoadmapVideo />
           {phases.map((phase, index) => (
             <RoadmapPhase
               key={index}

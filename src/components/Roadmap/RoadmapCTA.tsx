@@ -8,9 +8,9 @@ export const RoadmapCTA = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
       viewport={{ once: true }}
-      className="text-center mt-16 mb-8"
+      className="text-center mt-8 mb-4"
     >
-      <h3 className="text-3xl font-bold text-yellow-400 mb-6 font-['Orbitron']">
+      <h3 className="text-xl font-bold text-yellow-400 mb-4 font-['Orbitron']">
         Be Part of the Revolution
       </h3>
       
@@ -20,7 +20,7 @@ export const RoadmapCTA = () => {
           boxShadow: "0 0 20px rgba(250, 204, 21, 0.4)"
         }}
         whileTap={{ scale: 0.95 }}
-        className="group relative px-8 py-4 text-lg bg-gradient-to-r from-yellow-400 to-yellow-500 
+        className="group relative px-6 py-2 text-sm bg-gradient-to-r from-yellow-400 to-yellow-500 
                  rounded-full font-bold text-black shadow-lg hover:shadow-yellow-500/50 
                  transition-all duration-300"
       >
@@ -38,14 +38,9 @@ export const RoadmapCTA = () => {
               repeatType: "reverse"
             }}
           >
-            <Rocket className="w-5 h-5" />
+            <Rocket className="w-4 h-4" />
           </motion.div>
         </span>
-        
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 
-                      transition-opacity duration-300 bg-gradient-to-r 
-                      from-yellow-300 to-yellow-400" />
       </motion.button>
     </motion.div>
   );
