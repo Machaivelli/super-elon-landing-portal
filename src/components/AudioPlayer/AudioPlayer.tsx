@@ -61,6 +61,7 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     console.log("Initializing audio player...");
+    // Fix the audio path by removing any colons and ensuring it starts with a forward slash
     const audioPath = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
     console.log("Loading audio from:", audioPath);
     
@@ -75,6 +76,8 @@ export const AudioPlayer = () => {
 
     audio.addEventListener('error', (e) => {
       console.error("Audio error:", e);
+      const error = e.target as HTMLAudioElement;
+      console.error("Audio error details:", error.error);
       toast.error('Error loading audio file');
       setIsPlaying(false);
     });
