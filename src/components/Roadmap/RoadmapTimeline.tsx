@@ -1,4 +1,4 @@
-import { Rocket, ArrowUp, Bulb, Globe } from "lucide-react";
+import { Rocket, ArrowUp, Lightbulb, Globe } from "lucide-react";
 import { RoadmapPhase } from "./RoadmapPhase";
 
 export const RoadmapTimeline = () => {
@@ -39,7 +39,7 @@ export const RoadmapTimeline = () => {
         "Advanced DeFi smart contracts",
         "Real-world use case pilot projects"
       ],
-      icon: Bulb,
+      icon: Lightbulb,
       color: "bg-yellow-500"
     },
     {
