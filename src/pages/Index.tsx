@@ -2,6 +2,7 @@ import { Hero } from "@/components/Hero";
 import { Header } from "@/components/Header";
 import { Mission } from "@/components/Mission";
 import { TokenomicsSection } from "@/components/Tokenomics/TokenomicsSection";
+import { RoadmapSection } from "@/components/Roadmap/RoadmapSection";
 import { TeamSection } from "@/components/Team/TeamSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { FloatingDecorations } from "@/components/FloatingDecorations";
@@ -26,6 +27,9 @@ const Index = () => {
         </section>
         <section id="tokenomics" className="section-transition">
           <TokenomicsSection />
+        </section>
+        <section id="roadmap" className="section-transition">
+          <RoadmapSection />
         </section>
         <section id="team" className="section-transition">
           <TeamSection />
