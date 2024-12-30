@@ -3,6 +3,7 @@ import { TokenomicsTitle } from './TokenomicsTitle';
 import { TokenomicsChart } from './TokenomicsChart';
 import { TokenomicsCard } from './TokenomicsCard';
 import { TokenomicsCTA } from './TokenomicsCTA';
+import { TokenomicsVideo } from './TokenomicsVideo'; // Add video component
 import { Rocket, Wallet, Shield, Megaphone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -198,6 +199,7 @@ export const TokenomicsSection = () => {
           </div>
         </div>
 
+        <TokenomicsVideo /> {/* Add video component here */}
         <TokenomicsCTA />
         <ElonBadge />
       </div>

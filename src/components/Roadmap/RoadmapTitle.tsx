@@ -11,10 +11,10 @@ export const RoadmapTitle = () => {
     >
       <h2 className="text-3xl md:text-4xl font-bold mb-4 font-['Orbitron'] 
                      bg-clip-text text-transparent bg-gradient-to-r 
-                     from-theme-primary to-theme-light">
+                     from-yellow-400 via-white to-yellow-400">
         Super Elon Coin Roadmap
       </h2>
-      <p className="text-lg text-gray-300 font-light max-w-2xl mx-auto font-['Orbitron']">
+      <p className="text-lg text-yellow-400/80 font-light max-w-2xl mx-auto font-['Orbitron']">
         Join us on our journey to revolutionize the crypto space 🚀
       </p>
     </motion.div>
