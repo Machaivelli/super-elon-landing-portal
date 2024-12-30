@@ -3,7 +3,7 @@ import { TokenomicsTitle } from './TokenomicsTitle';
 import { TokenomicsChart } from './TokenomicsChart';
 import { TokenomicsCard } from './TokenomicsCard';
 import { TokenomicsCTA } from './TokenomicsCTA';
-import { TokenomicsVideo } from './TokenomicsVideo'; // Add video component
+import { TokenomicsVideo } from './TokenomicsVideo';
 import { Rocket, Wallet, Shield, Megaphone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -186,6 +186,7 @@ export const TokenomicsSection = () => {
       
       <div className="relative container mx-auto px-4 z-20">
         <TokenomicsTitle />
+        <TokenomicsVideo /> {/* Moved video up, right after the title */}
 
         <div className="grid lg:grid-cols-3 gap-8 items-start mt-12">
           <div className="lg:col-span-1">
@@ -199,7 +200,6 @@ export const TokenomicsSection = () => {
           </div>
         </div>
 
-        <TokenomicsVideo /> {/* Add video component here */}
         <TokenomicsCTA />
         <ElonBadge />
       </div>
