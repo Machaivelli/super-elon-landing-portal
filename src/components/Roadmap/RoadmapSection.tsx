@@ -18,7 +18,7 @@ const phases = [
     ],
     icon: Rocket,
     progress: 100,
-    color: "yellow-400"
+    color: "theme-primary"
   },
   {
     phase: 2,
@@ -32,7 +32,7 @@ const phases = [
     ],
     icon: Target,
     progress: 65,
-    color: "yellow-400"
+    color: "theme-primary"
   },
   {
     phase: 3,
@@ -46,7 +46,7 @@ const phases = [
     ],
     icon: Lightbulb,
     progress: 30,
-    color: "yellow-400"
+    color: "theme-primary"
   },
   {
     phase: 4,
@@ -60,20 +60,20 @@ const phases = [
     ],
     icon: Handshake,
     progress: 10,
-    color: "yellow-400"
+    color: "theme-primary"
   }
 ];
 
 export const RoadmapSection = () => {
   return (
-    <section className="relative py-8 overflow-hidden">
+    <section className="relative py-12 overflow-hidden">
       {/* Dynamic background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90">
         <div className="absolute inset-0">
-          {[...Array(30)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-yellow-400/20 rounded-full"
+              className="absolute w-1 h-1 bg-theme-primary/20 rounded-full"
               initial={{ opacity: 0.2 }}
               animate={{
                 opacity: [0.2, 0.5, 0.2],
@@ -93,10 +93,10 @@ export const RoadmapSection = () => {
         </div>
       </div>
       
-      <div className="relative container mx-auto px-4 z-20 max-w-5xl">
+      <div className="relative container mx-auto px-4 z-20 max-w-4xl">
         <RoadmapTitle />
         
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className="max-w-3xl mx-auto space-y-6">
           <RoadmapVideo />
           {phases.map((phase, index) => (
             <RoadmapPhase

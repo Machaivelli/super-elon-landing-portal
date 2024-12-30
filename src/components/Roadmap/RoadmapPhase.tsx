@@ -32,7 +32,7 @@ export const RoadmapPhase = ({
       initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6 }}
-      className={`flex items-center gap-4 ${isLeft ? 'flex-row' : 'flex-row-reverse'} mb-8`}
+      className={`flex items-center gap-4 ${isLeft ? 'flex-row' : 'flex-row-reverse'} mb-6`}
     >
       <HoverCard>
         <HoverCardTrigger asChild>
@@ -41,27 +41,27 @@ export const RoadmapPhase = ({
             className="relative group cursor-pointer"
           >
             {/* Progress circle */}
-            <svg className="w-16 h-16">
+            <svg className="w-12 h-12">
               <circle
                 className="text-gray-800"
-                strokeWidth="4"
+                strokeWidth="3"
                 stroke="currentColor"
                 fill="transparent"
-                r="28"
-                cx="32"
-                cy="32"
+                r="20"
+                cx="24"
+                cy="24"
               />
               <circle
-                className={`text-${color} transition-all duration-1000 ease-out`}
-                strokeWidth="4"
-                strokeDasharray={175}
-                strokeDashoffset={175 - (175 * progress) / 100}
+                className={`text-theme-primary transition-all duration-1000 ease-out`}
+                strokeWidth="3"
+                strokeDasharray={125}
+                strokeDashoffset={125 - (125 * progress) / 100}
                 strokeLinecap="round"
                 stroke="currentColor"
                 fill="transparent"
-                r="28"
-                cx="32"
-                cy="32"
+                r="20"
+                cx="24"
+                cy="24"
               />
             </svg>
             
@@ -79,17 +79,17 @@ export const RoadmapPhase = ({
                 }}
                 className="relative"
               >
-                <Icon className={`w-6 h-6 text-${color}`} />
+                <Icon className={`w-5 h-5 text-theme-primary`} />
               </motion.div>
             </div>
           </motion.div>
         </HoverCardTrigger>
         <HoverCardContent 
-          className="w-64 bg-black/90 backdrop-blur-lg border-yellow-400/10"
+          className="w-64 bg-black/90 backdrop-blur-lg border-theme-primary/10"
           side={isLeft ? "right" : "left"}
         >
           <div className="space-y-2">
-            <h4 className="text-sm font-semibold text-yellow-400">Phase {phase} Milestones</h4>
+            <h4 className="text-sm font-semibold text-theme-primary">Phase {phase} Milestones</h4>
             <ul className="space-y-1">
               {milestones.map((milestone, index) => (
                 <motion.li 
@@ -99,7 +99,7 @@ export const RoadmapPhase = ({
                   transition={{ delay: index * 0.1 }}
                   className="flex items-center gap-2 text-xs text-white/80"
                 >
-                  <span className="w-1 h-1 rounded-full bg-yellow-400" />
+                  <span className="w-1 h-1 rounded-full bg-theme-primary" />
                   {milestone}
                 </motion.li>
               ))}
@@ -110,12 +110,12 @@ export const RoadmapPhase = ({
 
       <div className={`flex-1 ${isLeft ? 'text-left' : 'text-right'}`}>
         <motion.h3 
-          className="text-lg font-bold mb-1 text-yellow-400 font-['Orbitron']"
+          className="text-base font-bold mb-1 text-theme-primary font-['Orbitron']"
           whileHover={{ scale: 1.02 }}
         >
           Phase {phase}: {title}
         </motion.h3>
-        <p className="text-sm text-white/80">{description}</p>
+        <p className="text-xs text-white/80">{description}</p>
       </div>
     </motion.div>
   );
