@@ -8,8 +8,8 @@ export const RoadmapCTA = () => {
 
   const handleClick = () => {
     toast({
-      title: "Welcome aboard! 🚀",
-      description: "You're now part of the Super Elon Coin journey. Check your email for next steps.",
+      title: "Never gonna give you up! 🎵",
+      description: "Never gonna let you down! Check your email for next steps.",
     });
   };
 
@@ -24,7 +24,7 @@ export const RoadmapCTA = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={handleClick}
-        className="theme-button group relative overflow-hidden"
+        className="theme-button group relative overflow-hidden font-['Orbitron']"
       >
         <motion.div
           className="absolute inset-0 bg-white/20"
