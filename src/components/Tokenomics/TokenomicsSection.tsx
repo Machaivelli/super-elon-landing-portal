@@ -1,6 +1,7 @@
 import { TokenomicsChart } from './TokenomicsChart';
 import { TokenomicsCard } from './TokenomicsCard';
 import { TokenomicsCTA } from './TokenomicsCTA';
+import { TokenomicsTitle } from './TokenomicsTitle';
 import { Rocket, Wallet, Shield, Megaphone, Users, Vault } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -101,8 +102,8 @@ export const TokenomicsSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90 backdrop-blur-sm" />
       
       <div className="relative container mx-auto px-4 z-20">
-        <TokenomicsChart data={tokenDistribution} />
-
+        <TokenomicsTitle />
+        
         <div className="grid lg:grid-cols-3 gap-8 items-start mt-12">
           <div className="lg:col-span-1">
             <TokenomicsChart data={tokenDistribution} />
