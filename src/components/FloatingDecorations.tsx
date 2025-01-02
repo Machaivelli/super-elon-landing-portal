@@ -9,8 +9,7 @@ export const FloatingDecorations = () => {
 
     const decorImages = [
       '/lovable-uploads/ce08a1af-6701-484f-bb2a-d03f8b2115fd.png',
-      '/lovable-uploads/f1eec065-7456-4d86-8ae2-349f57fdb23d.png',
-      '/lovable-uploads/da5f9243-b30b-49f0-bff2-c03a3f58edf0.png'
+      '/lovable-uploads/f1eec065-7456-4d86-8ae2-349f57fdb23d.png'
     ];
 
     const createFloatingDecor = () => {
@@ -26,8 +25,8 @@ export const FloatingDecorations = () => {
       }, 15000);
     };
 
-    // Create floating decorations
-    const decorInterval = setInterval(createFloatingDecor, 2000);
+    // Reduce decoration frequency
+    const decorInterval = setInterval(createFloatingDecor, 4000); // Increased interval from 2000ms to 4000ms
 
     return () => {
       clearInterval(decorInterval);

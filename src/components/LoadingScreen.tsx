@@ -7,12 +7,10 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   useEffect(() => {
-    // Preload critical assets
+    // Preload only essential assets
     const preloadAssets = async () => {
       const imageUrls = [
-        '/lovable-uploads/a32878b2-036b-4b6d-8f77-b383e4508ba2.png',
-        '/lovable-uploads/e342d9f7-711a-418c-9864-4f639ba1f221.png',
-        '/lovable-uploads/f1eec065-7456-4d86-8ae2-349f57fdb23d.png'
+        '/lovable-uploads/a32878b2-036b-4b6d-8f77-b383e4508ba2.png'
       ];
 
       try {
@@ -29,7 +27,7 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
         setAssetsLoaded(true);
       } catch (error) {
         console.error('Error preloading assets:', error);
-        setAssetsLoaded(true); // Continue anyway
+        setAssetsLoaded(true);
       }
     };
 
@@ -37,18 +35,18 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
 
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
-        const increment = assetsLoaded ? 4 : 2; // Faster increment when assets are loaded
+        const increment = assetsLoaded ? 8 : 4; // Faster increment
         const newProgress = oldProgress + increment;
         
         if (newProgress >= 100) {
           clearInterval(timer);
           setTimeout(() => {
             onLoadingComplete();
-          }, 500);
+          }, 300); // Reduced from 500ms to 300ms
         }
         return Math.min(newProgress, 100);
       });
-    }, 50);
+    }, 30); // Reduced from 50ms to 30ms
 
     return () => clearInterval(timer);
   }, [onLoadingComplete, assetsLoaded]);

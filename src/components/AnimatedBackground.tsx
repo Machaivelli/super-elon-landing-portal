@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Rocket } from 'lucide-react';
 
 export const AnimatedBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -8,7 +7,7 @@ export const AnimatedBackground = () => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Create stars
+    // Create fewer stars
     const createStar = () => {
       const star = document.createElement('div');
       star.className = 'star';
@@ -21,7 +20,7 @@ export const AnimatedBackground = () => {
       }, 5000);
     };
 
-    // Create rockets
+    // Create rockets less frequently
     const createRocket = () => {
       const rocketDiv = document.createElement('div');
       rocketDiv.className = 'rocket flex items-center justify-center';
@@ -41,9 +40,9 @@ export const AnimatedBackground = () => {
       }, 7000);
     };
 
-    // Initialize animations
-    const starInterval = setInterval(createStar, 200);
-    const rocketInterval = setInterval(createRocket, 2000);
+    // Reduce animation frequency
+    const starInterval = setInterval(createStar, 500); // Increased interval from 200ms to 500ms
+    const rocketInterval = setInterval(createRocket, 4000); // Increased interval from 2000ms to 4000ms
 
     return () => {
       clearInterval(starInterval);
