@@ -46,20 +46,20 @@ export const Header = () => {
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
             <button 
-              onClick={() => scrollToSection('mission')}
-              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
-            >
-              <span className="flex items-center gap-1">
-                Mission <ListOrdered className="h-3 w-3" />
-              </span>
-              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
-            </button>
-            <button 
               onClick={() => scrollToSection('tokenomics')}
               className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
             >
               <span className="flex items-center gap-1">
-                Tokenomics <Rocket className="h-3 w-3" />
+                Tokenomics <ListOrdered className="h-3 w-3" />
+              </span>
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
+            </button>
+            <button 
+              onClick={() => scrollToSection('mission')}
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
+            >
+              <span className="flex items-center gap-1">
+                Mission <Rocket className="h-3 w-3" />
               </span>
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
@@ -101,16 +101,16 @@ export const Header = () => {
                 Home
               </button>
               <button 
-                onClick={() => scrollToSection('mission')}
-                className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
-              >
-                Mission
-              </button>
-              <button 
                 onClick={() => scrollToSection('tokenomics')}
                 className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
               >
                 Tokenomics
+              </button>
+              <button 
+                onClick={() => scrollToSection('mission')}
+                className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
+              >
+                Mission
               </button>
               <button 
                 onClick={() => scrollToSection('team')}

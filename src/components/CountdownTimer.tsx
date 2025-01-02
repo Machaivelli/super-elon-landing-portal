@@ -9,8 +9,8 @@ const CountdownTimer = () => {
   });
 
   useEffect(() => {
-    // Add 7 days to the target date
-    const targetDate = new Date("December 27, 2024 20:00:00 GMT+0100").getTime();
+    // Add 19 days to the target date (7 original + 12 new)
+    const targetDate = new Date("January 8, 2025 20:00:00 GMT+0100").getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
