@@ -10,7 +10,7 @@ export const ScrollingStats = () => {
     >
       <p className="text-yellow-400 font-bold flex items-center gap-2 drop-shadow-[0_0_10px_rgba(255,215,0,0.5)]">
         <span className="animate-pulse">🔥</span>
-        700,000,000 SEC Already Locked – Don't Miss Out!
+        700,000,000 SEC Locked in Liquidity – Don't Miss Out!
       </p>
     </motion.div>
   );

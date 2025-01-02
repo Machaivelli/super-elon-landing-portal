@@ -2,41 +2,41 @@ import { TokenomicsTitle } from './TokenomicsTitle';
 import { TokenomicsChart } from './TokenomicsChart';
 import { TokenomicsCard } from './TokenomicsCard';
 import { TokenomicsCTA } from './TokenomicsCTA';
-import { Rocket, Wallet, Shield, Megaphone } from 'lucide-react';
+import { Rocket, Wallet, Shield, Megaphone, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const tokenDistribution = [
   {
     title: 'Liquidity Pool',
-    percentage: 40,
+    percentage: 70,
     color: 'from-yellow-500 to-yellow-600',
     glowColor: '#FFD700',
     emoji: '💧'
   },
   {
-    title: 'Development',
-    percentage: 20,
-    color: 'from-blue-500 to-blue-600',
-    glowColor: '#4169E1',
-    emoji: '🚀'
-  },
-  {
-    title: 'Marketing',
+    title: 'Community & Airdrops',
     percentage: 15,
     color: 'from-purple-500 to-purple-600',
     glowColor: '#8A2BE2',
-    emoji: '📢'
+    emoji: '🎁'
   },
   {
-    title: 'Team',
+    title: 'Team & Development',
     percentage: 10,
-    color: 'from-green-500 to-green-600',
-    glowColor: '#32CD32',
+    color: 'from-blue-500 to-blue-600',
+    glowColor: '#4169E1',
     emoji: '👥'
   },
   {
+    title: 'Marketing',
+    percentage: 3,
+    color: 'from-green-500 to-green-600',
+    glowColor: '#32CD32',
+    emoji: '📢'
+  },
+  {
     title: 'Reserve',
-    percentage: 15,
+    percentage: 2,
     color: 'from-red-500 to-red-600',
     glowColor: '#DC143C',
     emoji: '🏦'
@@ -46,43 +46,43 @@ const tokenDistribution = [
 const cardData = [
   {
     title: 'Liquidity Pool',
-    percentage: 40,
-    amount: '400,000,000 SEC',
-    description: 'Ensuring stable trading and price discovery through deep liquidity.',
+    percentage: 70,
+    amount: '700,000,000 SEC',
+    description: 'Added to DEX liquidity pool at launch, locked for 12 months via smart contract for stability and trust.',
     icon: Wallet,
     color: 'from-yellow-500 to-yellow-600',
     glowColor: '#FFD700',
     emoji: '💧'
   },
   {
-    title: 'Development',
-    percentage: 20,
-    amount: '200,000,000 SEC',
-    description: 'Funding continuous platform improvements and new features.',
+    title: 'Community & Airdrops',
+    percentage: 15,
+    amount: '150,000,000 SEC',
+    description: 'Allocated for airdrops and staking rewards to encourage holding and ecosystem growth.',
+    icon: Users,
+    color: 'from-purple-500 to-purple-600',
+    glowColor: '#8A2BE2',
+    emoji: '🎁'
+  },
+  {
+    title: 'Team & Development',
+    percentage: 10,
+    amount: '100,000,000 SEC',
+    description: '6-month lock with 10% monthly release, ensuring long-term commitment to success.',
     icon: Rocket,
     color: 'from-blue-500 to-blue-600',
     glowColor: '#4169E1',
-    emoji: '🚀'
+    emoji: '👥'
   },
   {
-    title: 'Marketing',
-    percentage: 15,
-    amount: '150,000,000 SEC',
-    description: 'Growing our community and expanding market presence.',
+    title: 'Marketing & Partnerships',
+    percentage: 3,
+    amount: '30,000,000 SEC',
+    description: 'Strategic partnerships and community-building with transparent expenditure reporting.',
     icon: Megaphone,
-    color: 'from-purple-500 to-purple-600',
-    glowColor: '#8A2BE2',
-    emoji: '📢'
-  },
-  {
-    title: 'Security',
-    percentage: 10,
-    amount: '100,000,000 SEC',
-    description: 'Maintaining robust security measures and regular audits.',
-    icon: Shield,
     color: 'from-green-500 to-green-600',
     glowColor: '#32CD32',
-    emoji: '🛡️'
+    emoji: '📢'
   }
 ];
 
