@@ -1,8 +1,7 @@
-import { TokenomicsTitle } from './TokenomicsTitle';
 import { TokenomicsChart } from './TokenomicsChart';
 import { TokenomicsCard } from './TokenomicsCard';
 import { TokenomicsCTA } from './TokenomicsCTA';
-import { Rocket, Wallet, Shield, Megaphone, Users } from 'lucide-react';
+import { Rocket, Wallet, Shield, Megaphone, Users, Vault } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const tokenDistribution = [
@@ -83,6 +82,16 @@ const cardData = [
     color: 'from-green-500 to-green-600',
     glowColor: '#32CD32',
     emoji: '📢'
+  },
+  {
+    title: 'Reserve / Buffer',
+    percentage: 2,
+    amount: '20,000,000 SEC',
+    description: 'Held in reserve for emergencies, future listings (CEX or additional DEX), and technological upgrades.',
+    icon: Vault,
+    color: 'from-red-500 to-red-600',
+    glowColor: '#DC143C',
+    emoji: '🏦'
   }
 ];
 
@@ -92,7 +101,7 @@ export const TokenomicsSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-black/90 backdrop-blur-sm" />
       
       <div className="relative container mx-auto px-4 z-20">
-        <TokenomicsTitle />
+        <TokenomicsChart data={tokenDistribution} />
 
         <div className="grid lg:grid-cols-3 gap-8 items-start mt-12">
           <div className="lg:col-span-1">
