@@ -5,7 +5,7 @@ export const SplineBackground = () => {
     <div className="fixed inset-0 w-full h-full -z-10 pointer-events-none flex items-center justify-center overflow-hidden">
       <iframe 
         src="https://my.spline.design/rocket-07177cc99841504934e7c640f257a32e/"
-        className="w-full h-full scale-[1.25] translate-y-[-10%] translate-x-[5%] md:scale-150 lg:scale-[1.75]"
+        className="w-full h-full scale-[1.25] translate-y-[-10%] translate-x-[4%] md:scale-150 lg:scale-[1.75]"
         style={{ 
           border: 'none',
           background: 'transparent',
@@ -14,7 +14,7 @@ export const SplineBackground = () => {
           zIndex: -1,
           overflow: 'hidden',
           clipPath: 'inset(0 0 60px 0)',
-          transform: 'translate3d(5%, -10%, 0) scale(1.25)',
+          transform: 'translate3d(4%, -10%, 0) scale(1.25)',
         }}
         title="Rocket 3D Animation"
         loading="lazy"
