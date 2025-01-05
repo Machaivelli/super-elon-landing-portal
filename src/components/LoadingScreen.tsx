@@ -7,10 +7,13 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   useEffect(() => {
-    // Preload only essential assets
+    // Preload all essential assets
     const preloadAssets = async () => {
       const imageUrls = [
-        '/lovable-uploads/a32878b2-036b-4b6d-8f77-b383e4508ba2.png'
+        '/lovable-uploads/a32878b2-036b-4b6d-8f77-b383e4508ba2.png',
+        '/lovable-uploads/e342d9f7-711a-418c-9864-4f639ba1f221.png',
+        '/lovable-uploads/d4ee9306-300a-4ace-bf6a-5db6a2d0663c.png',
+        '/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png'
       ];
 
       try {
@@ -23,7 +26,10 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
           });
         });
 
-        await Promise.all(imagePromises);
+        // Add a minimum loading time to ensure smooth transition
+        const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
+
+        await Promise.all([...imagePromises, minimumLoadingTime]);
         setAssetsLoaded(true);
       } catch (error) {
         console.error('Error preloading assets:', error);
@@ -35,18 +41,24 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
 
     const timer = setInterval(() => {
       setProgress((oldProgress) => {
-        const increment = assetsLoaded ? 8 : 4; // Faster increment
-        const newProgress = oldProgress + increment;
-        
-        if (newProgress >= 100) {
+        if (oldProgress >= 100) {
           clearInterval(timer);
+          return 100;
+        }
+
+        // Slower progress until assets are loaded
+        const increment = assetsLoaded ? 10 : 2;
+        const newProgress = Math.min(oldProgress + increment, assetsLoaded ? 100 : 70);
+
+        if (newProgress >= 100) {
           setTimeout(() => {
             onLoadingComplete();
-          }, 300); // Reduced from 500ms to 300ms
+          }, 500);
         }
-        return Math.min(newProgress, 100);
+
+        return newProgress;
       });
-    }, 30); // Reduced from 50ms to 30ms
+    }, 50);
 
     return () => clearInterval(timer);
   }, [onLoadingComplete, assetsLoaded]);
@@ -113,10 +125,10 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
             className="flex flex-col items-center"
           >
             <p className="text-sm text-gray-400 text-center animate-pulse">
-              {progress < 30 ? "Initializing..." :
+              {progress < 30 ? "Initializing Super Elon..." :
                progress < 60 ? "Loading assets..." :
-               progress < 90 ? "Preparing launch..." :
-               "Ready for takeoff!"}
+               progress < 90 ? "Preparing for launch..." :
+               "Ready for takeoff! 🚀"}
             </p>
             {assetsLoaded && (
               <p className="text-xs text-neon-blue mt-1">Assets loaded successfully</p>
