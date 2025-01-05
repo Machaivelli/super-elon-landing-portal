@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Menu, X, Rocket, Users, ListOrdered } from "lucide-react";
+import { Menu, X, Rocket, Users, ListOrdered, Clock } from "lucide-react";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,6 +43,15 @@ export const Header = () => {
               className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
             >
               Home
+              <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
+            </button>
+            <button 
+              onClick={() => scrollToSection('phases')}
+              className="text-theme-light hover:text-theme-primary transition-colors duration-200 font-['Orbitron'] text-sm group px-2"
+            >
+              <span className="flex items-center gap-1">
+                Phases <Clock className="h-3 w-3" />
+              </span>
               <div className="h-0.5 w-0 group-hover:w-full transition-all duration-200 bg-theme-primary"/>
             </button>
             <button 
@@ -99,6 +108,12 @@ export const Header = () => {
                 className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
               >
                 Home
+              </button>
+              <button 
+                onClick={() => scrollToSection('phases')}
+                className="text-theme-light hover:text-theme-primary transition-colors px-4 py-2 rounded-lg hover:bg-theme-primary/5 text-left"
+              >
+                Phases
               </button>
               <button 
                 onClick={() => scrollToSection('tokenomics')}
