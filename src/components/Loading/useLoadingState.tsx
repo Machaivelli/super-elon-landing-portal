@@ -29,7 +29,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
 
       try {
         const imagePromises = imageUrls.map(url => {
-          return new Promise((resolve, reject) => {
+          return new Promise<void>((resolve) => {
             const img = new Image();
             img.src = url;
             img.onload = resolve;
@@ -41,7 +41,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
         });
 
         // Add audio preloading with proper error handling
-        const audioPromise = new Promise((resolve) => {
+        const audioPromise = new Promise<void>((resolve) => {
           const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
           audio.addEventListener('canplaythrough', resolve, { once: true });
           audio.addEventListener('error', () => {
@@ -52,7 +52,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
         });
 
         // Minimum loading time of 4 seconds for smooth experience
-        const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 4000));
+        const minimumLoadingTime = new Promise<void>(resolve => setTimeout(resolve, 4000));
 
         // Wait for all assets and minimum time
         await Promise.all([...imagePromises, audioPromise, minimumLoadingTime]);
