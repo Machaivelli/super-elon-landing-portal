@@ -9,7 +9,7 @@ interface LoadingProgressProps {
 export const LoadingProgress = ({ progress, assetsLoaded }: LoadingProgressProps) => {
   return (
     <motion.div 
-      className="w-full max-w-md px-4 space-y-4"
+      className="fixed bottom-8 left-1/2 transform -translate-x-1/2 w-full max-w-md px-4 space-y-4 z-50"
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.2 }}

@@ -33,19 +33,25 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
             const img = new Image();
             img.src = url;
             img.onload = resolve;
-            img.onerror = reject;
+            img.onerror = () => {
+              console.error(`Failed to load image: ${url}`);
+              resolve(); // Resolve anyway to prevent blocking
+            };
           });
         });
 
         // Add audio preloading with proper error handling
-        const audioPromise = new Promise((resolve, reject) => {
+        const audioPromise = new Promise((resolve) => {
           const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
           audio.addEventListener('canplaythrough', resolve, { once: true });
-          audio.addEventListener('error', reject, { once: true });
+          audio.addEventListener('error', () => {
+            console.error('Audio failed to load');
+            resolve(); // Resolve anyway to prevent blocking
+          }, { once: true });
           audio.load();
         });
 
-        // Minimum loading time of 4 seconds for game enjoyment
+        // Minimum loading time of 4 seconds for smooth experience
         const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 4000));
 
         // Wait for all assets and minimum time
@@ -61,18 +67,16 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
 
     preloadAssets();
 
-    const timer = setInterval(() => {
+    // Separate timer for progress updates
+    const progressTimer = setInterval(() => {
       setProgress((oldProgress) => {
-        if (oldProgress >= 100) {
-          clearInterval(timer);
-          return 100;
-        }
-
-        // Smoother progress that reaches 100%
+        // If assets are loaded, move faster to 100%
         const increment = assetsLoaded ? 5 : 2;
         const newProgress = Math.min(oldProgress + increment, assetsLoaded ? 100 : 90);
 
+        // When we reach 100%, trigger completion
         if (newProgress >= 100) {
+          clearInterval(progressTimer);
           setTimeout(() => {
             onLoadingComplete();
           }, 500);
@@ -82,7 +86,9 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
       });
     }, 100);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(progressTimer);
+    };
   }, [onLoadingComplete, assetsLoaded]);
 
   return { progress, assetsLoaded, handleSkip };
