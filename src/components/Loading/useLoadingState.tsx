@@ -8,6 +8,15 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
   const [progress, setProgress] = useState(0);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
+  const handleSkip = () => {
+    if (assetsLoaded) {
+      setProgress(100);
+      setTimeout(() => {
+        onLoadingComplete();
+      }, 500);
+    }
+  };
+
   useEffect(() => {
     const preloadAssets = async () => {
       const imageUrls = [
@@ -15,9 +24,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
         '/lovable-uploads/e342d9f7-711a-418c-9864-4f639ba1f221.png',
         '/lovable-uploads/d4ee9306-300a-4ace-bf6a-5db6a2d0663c.png',
         '/lovable-uploads/e7edd27b-c9ce-47b8-8894-c588138f8495.png',
-        '/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png', // Logo
-        '/lovable-uploads/1579688f-26be-4125-8ccb-379b008563a4.png', // Telegram
-        '/lovable-uploads/3ff0e98c-3fd3-45f4-9e15-4dfc38624c96.png', // X
+        '/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png',
       ];
 
       try {
@@ -30,22 +37,25 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
           });
         });
 
-        // Add audio preloading
-        const audioPromise = new Promise((resolve) => {
+        // Add audio preloading with proper error handling
+        const audioPromise = new Promise((resolve, reject) => {
           const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
           audio.addEventListener('canplaythrough', resolve, { once: true });
+          audio.addEventListener('error', reject, { once: true });
           audio.load();
         });
 
-        // Minimum loading time of 3.5 seconds for visual appeal
-        const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 3500));
+        // Minimum loading time of 4 seconds for game enjoyment
+        const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 4000));
 
         // Wait for all assets and minimum time
         await Promise.all([...imagePromises, audioPromise, minimumLoadingTime]);
+        console.log('All assets loaded successfully');
         setAssetsLoaded(true);
       } catch (error) {
         console.error('Error preloading assets:', error);
-        setAssetsLoaded(true); // Continue even if some assets fail to load
+        // Even if some assets fail, we should still allow the site to load
+        setAssetsLoaded(true);
       }
     };
 
@@ -58,14 +68,14 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
           return 100;
         }
 
-        // Slower progress if assets aren't loaded
-        const increment = assetsLoaded ? 10 : 2;
-        const newProgress = Math.min(oldProgress + increment, assetsLoaded ? 100 : 70);
+        // Smoother progress that reaches 100%
+        const increment = assetsLoaded ? 5 : 2;
+        const newProgress = Math.min(oldProgress + increment, assetsLoaded ? 100 : 90);
 
         if (newProgress >= 100) {
           setTimeout(() => {
             onLoadingComplete();
-          }, 800); // Delay before completing
+          }, 500);
         }
 
         return newProgress;
@@ -75,5 +85,5 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
     return () => clearInterval(timer);
   }, [onLoadingComplete, assetsLoaded]);
 
-  return { progress, assetsLoaded };
+  return { progress, assetsLoaded, handleSkip };
 };

@@ -24,16 +24,19 @@ export const AudioPlayer = () => {
         setIsPlaying(false);
         toast.info('Music paused');
       } else {
-        audioRef.current.play()
-          .then(() => {
-            setIsPlaying(true);
-            toast.success('Playing music');
-          })
-          .catch(e => {
-            console.error("Play error:", e);
-            toast.error('Could not play audio. Please try again.');
-            setIsPlaying(false);
-          });
+        const playPromise = audioRef.current.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              setIsPlaying(true);
+              toast.success('Playing music');
+            })
+            .catch(e => {
+              console.error("Play error:", e);
+              toast.error('Could not play audio. Please try again.');
+              setIsPlaying(false);
+            });
+        }
       }
     }
   };
@@ -61,7 +64,6 @@ export const AudioPlayer = () => {
 
   useEffect(() => {
     console.log("Initializing audio player...");
-    // Fix the audio path by removing any colons and ensuring it starts with a forward slash
     const audioPath = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
     console.log("Loading audio from:", audioPath);
     
@@ -69,33 +71,36 @@ export const AudioPlayer = () => {
     audioRef.current = audio;
     audio.loop = true;
     
-    audio.addEventListener('canplay', () => {
+    const handleCanPlay = () => {
       console.log("Audio can play now");
       setDuration(formatTime(audio.duration));
-    });
+    };
 
-    audio.addEventListener('error', (e) => {
+    const handleError = (e: ErrorEvent) => {
       console.error("Audio error:", e);
-      const error = e.target as HTMLAudioElement;
-      console.error("Audio error details:", error.error);
       toast.error('Error loading audio file');
       setIsPlaying(false);
-    });
+    };
 
-    audio.addEventListener('ended', () => {
+    const handleEnded = () => {
       setIsPlaying(false);
       setProgress(0);
       setCurrentTime("0:00");
-    });
+    };
+
+    audio.addEventListener('canplay', handleCanPlay);
+    audio.addEventListener('error', handleError);
+    audio.addEventListener('ended', handleEnded);
     
     return () => {
       if (progressInterval.current) {
         window.clearInterval(progressInterval.current);
       }
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.src = '';
-      }
+      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('error', handleError);
+      audio.removeEventListener('ended', handleEnded);
+      audio.pause();
+      audio.src = '';
     };
   }, []);
 
