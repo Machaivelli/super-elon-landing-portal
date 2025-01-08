@@ -1,7 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Header } from "@/components/Header";
 import { Mission } from "@/components/Mission";
-import { TokenomicsSection } from "@/components/Tokenomics/TokenomicsSection";
 import { RoadmapSection } from "@/components/Roadmap/RoadmapSection";
 import { TeamSection } from "@/components/Team/TeamSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
@@ -37,9 +36,6 @@ const Index = () => {
       <div className="space-y-0 scroll-smooth">
         <section id="home" className="section-transition pt-16">
           <Hero />
-        </section>
-        <section id="tokenomics" className="section-transition">
-          <TokenomicsSection />
         </section>
         <section id="mission" className="section-transition">
           <Mission />

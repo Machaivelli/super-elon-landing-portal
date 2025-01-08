@@ -1,25 +1,15 @@
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 const socialLinks = [
   {
     name: "Telegram",
     icon: "/lovable-uploads/1579688f-26be-4125-8ccb-379b008563a4.png",
-    href: "#", // Replace with actual Telegram link
+    href: "https://t.me/+MjfoIgQq6bhkZDc0",
   },
   {
     name: "X",
     icon: "/lovable-uploads/3ff0e98c-3fd3-45f4-9e15-4dfc38624c96.png",
-    href: "#", // Replace with actual X/Twitter link
-  },
-  {
-    name: "Dexscreener",
-    icon: "/lovable-uploads/99b5b7c5-4e15-4b33-a5c1-b9149b53c9db.png",
-    href: "#", // Replace with actual Dexscreener link
-  },
-  {
-    name: "Orca",
-    icon: "/lovable-uploads/f58d3370-55d7-4456-92af-3a5e1b1ebeeb.png",
-    href: "#", // Replace with actual Orca link
+    href: "https://x.com/SuperElonCoin",
   },
 ];
 
