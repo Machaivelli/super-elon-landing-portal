@@ -27,7 +27,7 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
         });
 
         // Add a minimum loading time to ensure smooth transition
-        const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 2000));
+        const minimumLoadingTime = new Promise(resolve => setTimeout(resolve, 3500));
 
         await Promise.all([...imagePromises, minimumLoadingTime]);
         setAssetsLoaded(true);
@@ -53,12 +53,12 @@ export const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => 
         if (newProgress >= 100) {
           setTimeout(() => {
             onLoadingComplete();
-          }, 500);
+          }, 800); // Added delay before completion
         }
 
         return newProgress;
       });
-    }, 50);
+    }, 100); // Slowed down progress updates
 
     return () => clearInterval(timer);
   }, [onLoadingComplete, assetsLoaded]);
