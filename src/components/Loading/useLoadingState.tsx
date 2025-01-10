@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 
 interface UseLoadingStateProps {
   onLoadingComplete: () => void;
@@ -28,22 +29,23 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
       ];
 
       try {
-        // Preload images with proper error handling
+        // Preload images
         const imagePromises = imageUrls.map(url => {
           return new Promise<void>((resolve) => {
             const img = new Image();
             img.onload = () => resolve();
             img.onerror = () => {
               console.error(`Failed to load image: ${url}`);
-              resolve(); // Resolve anyway to prevent blocking
+              resolve();
             };
             img.src = url;
           });
         });
 
-        // Preload audio with better browser support
+        // Preload audio with better error handling
         const audioPromise = new Promise<void>((resolve) => {
           const audio = new Audio();
+          audio.preload = 'auto';
           
           const handleCanPlay = () => {
             console.log('Audio can play through');
@@ -52,22 +54,20 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
           };
 
           const handleError = (e: Event) => {
-            console.error('Audio failed to load', e);
+            console.error('Audio failed to load:', e);
+            toast.error('Error loading audio file. Music will be disabled.');
             audio.removeEventListener('error', handleError);
-            resolve(); // Resolve anyway to prevent blocking
+            resolve();
           };
 
           audio.addEventListener('canplaythrough', handleCanPlay);
           audio.addEventListener('error', handleError);
 
-          // Set audio properties before loading
-          audio.preload = 'auto';
+          // Set audio source
           audio.src = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
-          
-          // Force load for some browsers
           audio.load();
 
-          // Fallback timeout to prevent hanging
+          // Fallback timeout
           setTimeout(() => {
             audio.removeEventListener('canplaythrough', handleCanPlay);
             audio.removeEventListener('error', handleError);
@@ -79,47 +79,31 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
         // Add a minimum loading time for smooth experience
         const minimumLoadingTime = new Promise<void>(resolve => setTimeout(resolve, 2000));
 
+        // Update progress smoothly while assets load
+        const progressInterval = setInterval(() => {
+          setProgress(prev => {
+            if (prev >= 90) return prev;
+            return prev + 1;
+          });
+        }, 50);
+
         // Wait for all assets and minimum time
         await Promise.all([...imagePromises, audioPromise, minimumLoadingTime]);
+        
+        clearInterval(progressInterval);
         console.log('All assets loaded successfully');
         setAssetsLoaded(true);
+        setProgress(100);
+
       } catch (error) {
         console.error('Error preloading assets:', error);
-        // Even if some assets fail, we should still allow the site to load
+        toast.error('Some assets failed to load');
         setAssetsLoaded(true);
       }
     };
 
     preloadAssets();
-
-    // Smoother progress updates
-    const progressTimer = setInterval(() => {
-      setProgress((oldProgress) => {
-        if (oldProgress >= 100) {
-          clearInterval(progressTimer);
-          return 100;
-        }
-        
-        // If assets are loaded, move faster to 100%
-        const increment = assetsLoaded ? 5 : 1;
-        const newProgress = Math.min(oldProgress + increment, assetsLoaded ? 100 : 90);
-
-        // When we reach 100%, trigger completion
-        if (newProgress >= 100) {
-          clearInterval(progressTimer);
-          setTimeout(() => {
-            onLoadingComplete();
-          }, 500);
-        }
-
-        return newProgress;
-      });
-    }, 50); // Faster updates for smoother animation
-
-    return () => {
-      clearInterval(progressTimer);
-    };
-  }, [onLoadingComplete, assetsLoaded]);
+  }, [onLoadingComplete]);
 
   return { progress, assetsLoaded, handleSkip };
 };

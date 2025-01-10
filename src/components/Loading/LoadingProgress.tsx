@@ -9,21 +9,21 @@ interface LoadingProgressProps {
 export const LoadingProgress = ({ progress, assetsLoaded }: LoadingProgressProps) => {
   return (
     <motion.div 
-      className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-4 space-y-4 z-50"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      className="w-full max-w-md px-4 space-y-4"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
       <div className="relative">
         <Progress 
           value={progress} 
           className="h-2 bg-black/20 backdrop-blur-sm border border-white/10"
-          indicatorClassName="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-orange animate-gradient-flow"
+          indicatorClassName="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-orange animate-gradient-flow transition-all duration-300 ease-out"
         />
         <div className="absolute -top-2 left-0 w-full">
           <div 
-            className="h-4 w-4 bg-neon-blue rounded-full shadow-lg shadow-neon-blue/50 transform -translate-y-1/2"
-            style={{ left: `${progress}%`, transition: 'left 0.3s ease-out' }}
+            className="h-4 w-4 bg-neon-blue rounded-full shadow-lg shadow-neon-blue/50 transform -translate-y-1/2 transition-all duration-300 ease-out"
+            style={{ left: `${progress}%` }}
           />
         </div>
       </div>
