@@ -8,7 +8,7 @@ interface LoadingScreenProps {
 }
 
 export const LoadingScreen = ({ onLoadingComplete }: LoadingScreenProps) => {
-  const { progress, assetsLoaded, handleSkip } = useLoadingState({ onLoadingComplete });
+  const { progress, assetsLoaded } = useLoadingState({ onLoadingComplete });
 
   return (
     <motion.div 
