@@ -29,30 +29,47 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
 
       try {
         const imagePromises = imageUrls.map(url => {
-          return new Promise<void>((resolve) => {
+          return new Promise<void>((resolve, reject) => {
             const img = new Image();
-            img.src = url;
             img.onload = () => resolve();
             img.onerror = () => {
               console.error(`Failed to load image: ${url}`);
               resolve(); // Resolve anyway to prevent blocking
             };
+            img.src = url;
           });
         });
 
         // Add audio preloading with proper error handling
         const audioPromise = new Promise<void>((resolve) => {
-          const audio = new Audio('/lovable-uploads/zo staat het bestand nu in de public file.mp3');
-          audio.addEventListener('canplaythrough', () => resolve(), { once: true });
-          audio.addEventListener('error', () => {
-            console.error('Audio failed to load');
+          const audio = new Audio();
+          
+          audio.addEventListener('canplaythrough', () => {
+            console.log('Audio can play through');
+            resolve();
+          }, { once: true });
+          
+          audio.addEventListener('error', (e) => {
+            console.error('Audio failed to load', e);
             resolve(); // Resolve anyway to prevent blocking
           }, { once: true });
+
+          // Set audio properties before setting src
+          audio.preload = 'auto';
+          audio.src = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
+          
+          // Force load for some browsers
           audio.load();
+
+          // Set a timeout to resolve anyway after 5 seconds
+          setTimeout(() => {
+            console.log('Audio load timeout - continuing anyway');
+            resolve();
+          }, 5000);
         });
 
-        // Minimum loading time of 4 seconds for smooth experience
-        const minimumLoadingTime = new Promise<void>(resolve => setTimeout(resolve, 4000));
+        // Minimum loading time of 2 seconds for smooth experience
+        const minimumLoadingTime = new Promise<void>(resolve => setTimeout(resolve, 2000));
 
         // Wait for all assets and minimum time
         await Promise.all([...imagePromises, audioPromise, minimumLoadingTime]);
@@ -71,7 +88,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
     const progressTimer = setInterval(() => {
       setProgress((oldProgress) => {
         // If assets are loaded, move faster to 100%
-        const increment = assetsLoaded ? 5 : 2;
+        const increment = assetsLoaded ? 5 : 1;
         const newProgress = Math.min(oldProgress + increment, assetsLoaded ? 100 : 90);
 
         // When we reach 100%, trigger completion

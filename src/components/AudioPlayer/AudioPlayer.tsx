@@ -24,6 +24,7 @@ export const AudioPlayer = () => {
         setIsPlaying(false);
         toast.info('Music paused');
       } else {
+        // Create a user interaction context for autoplay
         const playPromise = audioRef.current.play();
         if (playPromise !== undefined) {
           playPromise
@@ -31,8 +32,8 @@ export const AudioPlayer = () => {
               setIsPlaying(true);
               toast.success('Playing music');
             })
-            .catch(e => {
-              console.error("Play error:", e);
+            .catch(error => {
+              console.error("Play error:", error);
               toast.error('Could not play audio. Please try again.');
               setIsPlaying(false);
             });
@@ -67,7 +68,8 @@ export const AudioPlayer = () => {
     const audioPath = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
     console.log("Loading audio from:", audioPath);
     
-    const audio = new Audio(audioPath);
+    const audio = new Audio();
+    audio.preload = 'auto';
     audioRef.current = audio;
     audio.loop = true;
     
@@ -91,6 +93,10 @@ export const AudioPlayer = () => {
     audio.addEventListener('canplay', handleCanPlay);
     audio.addEventListener('error', handleError);
     audio.addEventListener('ended', handleEnded);
+    
+    // Set source after adding event listeners
+    audio.src = audioPath;
+    audio.load();
     
     return () => {
       if (progressInterval.current) {
