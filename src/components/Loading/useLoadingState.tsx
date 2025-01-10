@@ -9,15 +9,6 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
   const [progress, setProgress] = useState(0);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
 
-  const handleSkip = () => {
-    if (assetsLoaded) {
-      setProgress(100);
-      setTimeout(() => {
-        onLoadingComplete();
-      }, 500);
-    }
-  };
-
   useEffect(() => {
     const preloadAssets = async () => {
       const imageUrls = [
@@ -63,7 +54,6 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
           audio.addEventListener('canplaythrough', handleCanPlay);
           audio.addEventListener('error', handleError);
 
-          // Set audio source
           audio.src = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
           audio.load();
 
@@ -95,15 +85,25 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
         setAssetsLoaded(true);
         setProgress(100);
 
+        // Add a small delay before triggering completion
+        setTimeout(() => {
+          onLoadingComplete();
+        }, 1000);
+
       } catch (error) {
         console.error('Error preloading assets:', error);
         toast.error('Some assets failed to load');
         setAssetsLoaded(true);
+        setProgress(100);
+        // Even if there's an error, we should still complete loading
+        setTimeout(() => {
+          onLoadingComplete();
+        }, 1000);
       }
     };
 
     preloadAssets();
   }, [onLoadingComplete]);
 
-  return { progress, assetsLoaded, handleSkip };
+  return { progress, assetsLoaded };
 };
