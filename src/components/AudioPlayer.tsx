@@ -15,9 +15,20 @@ export const AudioPlayer = () => {
           setIsPlaying(false);
           toast.info('Music paused');
         } else {
-          await audioRef.current.play();
-          setIsPlaying(true);
-          toast.success('Playing music');
+          // Create user interaction context for autoplay
+          const playPromise = audioRef.current.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                setIsPlaying(true);
+                toast.success('Playing music');
+              })
+              .catch(error => {
+                console.error("Play error:", error);
+                toast.error('Could not play audio. Please try again.');
+                setIsPlaying(false);
+              });
+          }
         }
       } catch (error) {
         console.error('Playback error:', error);
@@ -32,20 +43,31 @@ export const AudioPlayer = () => {
     const audioPath = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
     console.log("Loading audio from:", audioPath);
     
-    const audio = new Audio(audioPath);
+    const audio = new Audio();
+    audio.preload = 'auto';
     audioRef.current = audio;
     audio.loop = true;
     
-    // Don't try to autoplay initially, wait for user interaction
-    setIsPlaying(false);
-    
-    audio.addEventListener('error', (e) => {
+    const handleCanPlay = () => {
+      console.log("Audio can play now");
+    };
+
+    const handleError = (e: ErrorEvent) => {
       console.error("Audio error:", e);
       toast.error('Error loading audio file');
       setIsPlaying(false);
-    });
+    };
 
+    audio.addEventListener('canplay', handleCanPlay);
+    audio.addEventListener('error', handleError);
+    
+    // Set source after adding event listeners
+    audio.src = audioPath;
+    audio.load();
+    
     return () => {
+      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('error', handleError);
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = '';

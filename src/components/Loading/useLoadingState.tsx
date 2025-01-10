@@ -28,8 +28,9 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
       ];
 
       try {
+        // Preload images with proper error handling
         const imagePromises = imageUrls.map(url => {
-          return new Promise<void>((resolve, reject) => {
+          return new Promise<void>((resolve) => {
             const img = new Image();
             img.onload = () => resolve();
             img.onerror = () => {
@@ -40,35 +41,42 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
           });
         });
 
-        // Add audio preloading with proper error handling
+        // Preload audio with better browser support
         const audioPromise = new Promise<void>((resolve) => {
           const audio = new Audio();
           
-          audio.addEventListener('canplaythrough', () => {
+          const handleCanPlay = () => {
             console.log('Audio can play through');
+            audio.removeEventListener('canplaythrough', handleCanPlay);
             resolve();
-          }, { once: true });
-          
-          audio.addEventListener('error', (e) => {
-            console.error('Audio failed to load', e);
-            resolve(); // Resolve anyway to prevent blocking
-          }, { once: true });
+          };
 
-          // Set audio properties before setting src
+          const handleError = (e: Event) => {
+            console.error('Audio failed to load', e);
+            audio.removeEventListener('error', handleError);
+            resolve(); // Resolve anyway to prevent blocking
+          };
+
+          audio.addEventListener('canplaythrough', handleCanPlay);
+          audio.addEventListener('error', handleError);
+
+          // Set audio properties before loading
           audio.preload = 'auto';
           audio.src = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
           
           // Force load for some browsers
           audio.load();
 
-          // Set a timeout to resolve anyway after 5 seconds
+          // Fallback timeout to prevent hanging
           setTimeout(() => {
+            audio.removeEventListener('canplaythrough', handleCanPlay);
+            audio.removeEventListener('error', handleError);
             console.log('Audio load timeout - continuing anyway');
             resolve();
           }, 5000);
         });
 
-        // Minimum loading time of 2 seconds for smooth experience
+        // Add a minimum loading time for smooth experience
         const minimumLoadingTime = new Promise<void>(resolve => setTimeout(resolve, 2000));
 
         // Wait for all assets and minimum time
@@ -84,9 +92,14 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
 
     preloadAssets();
 
-    // Separate timer for progress updates
+    // Smoother progress updates
     const progressTimer = setInterval(() => {
       setProgress((oldProgress) => {
+        if (oldProgress >= 100) {
+          clearInterval(progressTimer);
+          return 100;
+        }
+        
         // If assets are loaded, move faster to 100%
         const increment = assetsLoaded ? 5 : 1;
         const newProgress = Math.min(oldProgress + increment, assetsLoaded ? 100 : 90);
@@ -101,7 +114,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
 
         return newProgress;
       });
-    }, 100);
+    }, 50); // Faster updates for smoother animation
 
     return () => {
       clearInterval(progressTimer);
