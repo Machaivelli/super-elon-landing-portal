@@ -46,7 +46,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
 
           const handleError = (e: Event) => {
             console.error('Audio failed to load:', e);
-            toast.error('Error loading audio file. Music will be disabled.');
+            toast.error('Audio file could not be loaded. Continuing without audio.');
             audio.removeEventListener('error', handleError);
             resolve();
           };
@@ -54,16 +54,21 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
           audio.addEventListener('canplaythrough', handleCanPlay);
           audio.addEventListener('error', handleError);
 
+          // Use the correct path to the audio file
           audio.src = '/lovable-uploads/zo staat het bestand nu in de public file.mp3';
+          
+          // Start loading the audio
           audio.load();
 
-          // Fallback timeout
+          // Fallback timeout in case the audio takes too long to load
           setTimeout(() => {
-            audio.removeEventListener('canplaythrough', handleCanPlay);
-            audio.removeEventListener('error', handleError);
-            console.log('Audio load timeout - continuing anyway');
-            resolve();
-          }, 5000);
+            if (!audio.duration) {
+              console.log('Audio load timeout - continuing anyway');
+              audio.removeEventListener('canplaythrough', handleCanPlay);
+              audio.removeEventListener('error', handleError);
+              resolve();
+            }
+          }, 3000);
         });
 
         // Add a minimum loading time for smooth experience
@@ -95,6 +100,7 @@ export const useLoadingState = ({ onLoadingComplete }: UseLoadingStateProps) => 
         toast.error('Some assets failed to load');
         setAssetsLoaded(true);
         setProgress(100);
+        
         // Even if there's an error, we should still complete loading
         setTimeout(() => {
           onLoadingComplete();
