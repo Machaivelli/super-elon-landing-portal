@@ -69,6 +69,7 @@ export const Mission = () => {
             <div className="space-y-4 pt-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
+                onClick={() => window.open('https://pump.fun/coin/4xGs92mN3XS5GZkD3UwxFkawt4PUnxgAmFZ5yStHpump', '_blank')}
                 className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-3 rounded-full font-['Orbitron'] 
                          shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)]
                          transition-all duration-300 flex items-center gap-2 mx-auto text-lg animate-pulse"
