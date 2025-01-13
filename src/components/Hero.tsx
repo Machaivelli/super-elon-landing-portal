@@ -57,7 +57,7 @@ export const Hero = () => {
               <Button
                 size="lg"
                 className="theme-button"
-                onClick={() => window.open('https://pump.fun/coin/4xGs92mN3XS5GZkD3UwxFkawt4PUnxgAmFZ5yStHpump', '_blank')}
+                onClick={() => window.open('https://pump.fun/coin/Dx1P8YkUup2tGLy7ATRzz8ZA4dT9FtFMRpm5T6adpump', '_blank')}
               >
                 Buy Now
               </Button>

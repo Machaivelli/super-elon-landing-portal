@@ -61,7 +61,7 @@ export const TeamSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <a
-            href="https://pump.fun/coin/4xGs92mN3XS5GZkD3UwxFkawt4PUnxgAmFZ5yStHpump"
+            href="https://pump.fun/coin/Dx1P8YkUup2tGLy7ATRzz8ZA4dT9FtFMRpm5T6adpump"
             target="_blank"
             rel="noopener noreferrer"
           >
