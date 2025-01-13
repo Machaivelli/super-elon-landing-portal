@@ -17,7 +17,7 @@ export const Hero = () => {
             <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
             <div className="absolute inset-0 rounded-full animate-pulse-glow"></div>
             <img 
-              src="/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png"
+              src="/lovable-uploads/9b351870-5175-4c05-b956-12705f2e0d6b.png"
               alt="Super Elon Coin"
               className="relative w-full h-auto object-contain drop-shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:drop-shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-all duration-300 transform hover:scale-105"
             />

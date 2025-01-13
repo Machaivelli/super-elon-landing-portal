@@ -29,7 +29,7 @@ export const Header = () => {
             <div className="relative group">
               <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
               <img
-                src="/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png"
+                src="/lovable-uploads/9b351870-5175-4c05-b956-12705f2e0d6b.png"
                 alt="Super Elon Coin"
                 className="relative h-24 w-24 object-contain transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]"
               />
