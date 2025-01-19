@@ -27,11 +27,11 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-lg blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
               <img
-                src="/lovable-uploads/9b351870-5175-4c05-b956-12705f2e0d6b.png"
-                alt="Super Elon Coin"
-                className="relative h-12 w-12 rounded-full object-cover transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]"
+                src="/lovable-uploads/9d3c4fe3-48a2-4917-9e77-2a723a0863d6.png"
+                alt="Elon Musk"
+                className="relative h-10 w-10 object-cover transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]"
               />
             </div>
           </div>
