@@ -19,7 +19,7 @@ export const Hero = () => {
             <img 
               src="/lovable-uploads/9d3c4fe3-48a2-4917-9e77-2a723a0863d6.png"
               alt="Elon Musk"
-              className="relative w-full h-full object-cover drop-shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:drop-shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-all duration-300 transform hover:scale-105"
+              className="relative w-full h-full object-contain drop-shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:drop-shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-all duration-300 transform hover:scale-105"
             />
           </motion.div>
 
