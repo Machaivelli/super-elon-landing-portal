@@ -5,6 +5,7 @@ const socialLinks = [
     name: "Telegram",
     icon: "/lovable-uploads/1579688f-26be-4125-8ccb-379b008563a4.png",
     href: "https://t.me/superelonofficial",
+
   },
   {
     name: "X",
