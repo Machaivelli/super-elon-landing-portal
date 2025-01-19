@@ -12,14 +12,14 @@ export const Hero = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative group w-full max-w-[420px] mx-auto"
+            className="relative group w-64 h-64"
           >
-            <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
-            <div className="absolute inset-0 rounded-full animate-pulse-glow"></div>
+            <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-lg blur-xl opacity-40 group-hover:opacity-75 transition duration-500"></div>
+            <div className="absolute inset-0 rounded-lg animate-pulse-glow"></div>
             <img 
-              src="/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png"
-              alt="Super Elon Coin"
-              className="relative w-full h-auto object-contain drop-shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:drop-shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-all duration-300 transform hover:scale-105"
+              src="/lovable-uploads/9d3c4fe3-48a2-4917-9e77-2a723a0863d6.png"
+              alt="Elon Musk"
+              className="relative w-full h-full object-contain drop-shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:drop-shadow-[0_0_30px_rgba(139,92,246,0.7)] transition-all duration-300 transform hover:scale-105"
             />
           </motion.div>
 
@@ -57,6 +57,7 @@ export const Hero = () => {
               <Button
                 size="lg"
                 className="theme-button"
+                onClick={() => window.open('https://pump.fun/coin/Dx1P8YkUup2tGLy7ATRzz8ZA4dT9FtFMRpm5T6adpump', '_blank')}
               >
                 Buy Now
               </Button>

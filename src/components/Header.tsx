@@ -27,11 +27,11 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <div className="relative group">
-              <div className="absolute -inset-2 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-full blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-theme-primary via-neon-purple to-theme-secondary rounded-lg blur-lg opacity-40 group-hover:opacity-75 transition duration-500"></div>
               <img
-                src="/lovable-uploads/a3d0231f-607a-4a29-8dd8-5bb4d6a542cf.png"
-                alt="Super Elon Coin"
-                className="relative h-24 w-24 object-contain transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]"
+                src="/lovable-uploads/9d3c4fe3-48a2-4917-9e77-2a723a0863d6.png"
+                alt="Elon Musk"
+                className="relative h-12 w-12 object-contain transition-all duration-300 transform hover:scale-105 hover:drop-shadow-[0_0_12px_rgba(139,92,246,0.6)]"
               />
             </div>
           </div>
@@ -76,6 +76,7 @@ export const Header = () => {
               variant="outline"
               size="sm"
               className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] animate-pulse-glow ml-2"
+              onClick={() => window.open('https://pump.fun/coin/Dx1P8YkUup2tGLy7ATRzz8ZA4dT9FtFMRpm5T6adpump', '_blank')}
             >
               Buy Now
             </Button>
@@ -122,7 +123,10 @@ export const Header = () => {
                 variant="outline"
                 size="sm"
                 className="border-theme-primary text-theme-primary hover:bg-theme-primary/10 font-['Orbitron'] w-full"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.open('https://pump.fun/coin/4xGs92mN3XS5GZkD3UwxFkawt4PUnxgAmFZ5yStHpump', '_blank');
+                }}
               >
                 Buy Now
               </Button>

@@ -69,12 +69,26 @@ export const Mission = () => {
             <div className="space-y-4 pt-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
+                onClick={() => window.open('https://pump.fun/coin/Dx1P8YkUup2tGLy7ATRzz8ZA4dT9FtFMRpm5T6adpump', '_blank')}
                 className="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white px-8 py-3 rounded-full font-['Orbitron'] 
                          shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:shadow-[0_0_30px_rgba(255,215,0,0.5)]
                          transition-all duration-300 flex items-center gap-2 mx-auto text-lg animate-pulse"
               >
                 <Rocket className="w-5 h-5" />
                 Secure Your Spot Now!
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+
+              {/* Join Now Button */}
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                onClick={() => window.open('https://pump.fun/coin/Dx1P8YkUup2tGLy7ATRzz8ZA4dT9FtFMRpm5T6adpump', '_blank')}
+                className="bg-gradient-to-r from-blue-400 to-blue-600 text-white px-8 py-3 rounded-full font-['Orbitron'] 
+                         shadow-[0_0_20px_rgba(66,153,225,0.3)] hover:shadow-[0_0_30px_rgba(66,153,225,0.5)]
+                         transition-all duration-300 flex items-center gap-2 mx-auto text-lg"
+              >
+                <Users className="w-5 h-5" />
+                Join Now
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
 
